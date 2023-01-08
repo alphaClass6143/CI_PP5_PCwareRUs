@@ -1,0 +1,7 @@
+'''
+Urlpatterns
+'''
+
+urlpatterns = [
+
+]

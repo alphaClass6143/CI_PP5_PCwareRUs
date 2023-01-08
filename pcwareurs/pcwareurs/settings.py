@@ -48,6 +48,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.google',
     'sass_processor',
     'compressor',
     'allauth',
@@ -60,6 +63,7 @@ INSTALLED_APPS = [
     'product',
     'category',
     'search',
+    'cart',
     'checkout',
 ]
 
@@ -179,5 +183,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Login redirect
 LOGIN_REDIRECT_URL = '/'
 
-# Setup custom user
-AUTH_USER_MODEL = 'accounts.User'
+# Setup all auth user
+
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_REQUIRED_FIELDS = ['first_name', 'last_name']
