@@ -171,6 +171,9 @@ STATICFILES_FINDERS = [
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+
+SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static/sass')
+
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
