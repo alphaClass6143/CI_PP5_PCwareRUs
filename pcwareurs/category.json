@@ -1,0 +1,67 @@
+[
+    {
+        "model": "category.category",
+        "fields": {
+            "name": "Processors",
+            "handle": "processors",
+            "description": "A central processing unit (CPU) is the electronic circuitry within a computer that carries out the instructions of a computer program by performing the basic arithmetic, logic, controlling, and input/output (I/O) operations specified by the instructions."
+        }
+    },
+    {
+        "model": "category.category",
+        "fields": {
+            "name": "Graphics Cards",
+            "handle": "graphics-cards",
+            "description": "A graphics processing unit (GPU) is a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images in a frame buffer intended for output to a display device."
+        }
+    },
+    {
+        "model": "category.category",
+        "fields": {
+            "name": "Power Supplies",
+            "handle": "power-supplies",
+            "description": "A power supply unit (PSU) is the component that supplies power to the other components in a computer. It receives power from the outlet and converts it to the appropriate voltage and current for the computer's components."
+    
+        }
+    },
+    {
+        "model": "category.category",
+        "fields": {
+            "name": "Cases",
+            "handle": "cases",
+            "description": "A computer case, also known as a tower or chassis, is the enclosure that contains the main components of a computer. It provides structural support and protection for the components, and controls the airflow to keep the components cool."
+        }
+    },
+    {
+        "model": "category.category",
+        "fields": {
+            "name": "Motherboards",
+            "handle": "motherboards",
+            "description": "A motherboard is the main circuit board in a computer. It houses the CPU, memory, and other components, and provides connectors for the peripherals and expansion cards."
+        }
+    },
+    {
+        "model": "category.category",
+        "fields": {
+            "name": "Storage",
+            "handle": "storage",
+            "description": "Storage refers to the devices and media that are used to store data and programs on a computer. These can include hard drives, solid state drives, and other types of storage devices."
+        }
+    },
+    {
+        "model": "category.category",
+        "fields": {
+            "name": "Memory",
+            "handle": "memory",
+            "description": "Memory refers to the devices and media used to store data and programs on a computer. These can include RAM, ROM, and other types of memory."
+        }
+    },
+    {
+        "model": "category.category",
+        "fields": {
+            "name": "Cooling Solutions",
+            "handle": "cooling-solutions",
+            "description": "Cooling solutions are devices and systems used to keep the components of a computer cool and prevent overheating. These can include fans, heat sinks, water cooling systems, and other cooling devices."
+        }
+    }
+]
