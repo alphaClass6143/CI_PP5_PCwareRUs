@@ -46,9 +46,11 @@
         </section>
         <section>
             <h2>Categories</h2>
-            <nav>
-                <h3></h3>
-            </nav>
+            <ul>
+                {% for category in category_list %}
+                    <li><a href="{% url 'category_detail' category.handle %}">{{ category.name }}</a></li>
+                {% endfor %}
+            </ul>
         </section>
         {% block cart %}
         <div id="cart">
