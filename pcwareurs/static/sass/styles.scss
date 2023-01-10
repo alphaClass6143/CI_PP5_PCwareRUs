@@ -1,3 +1,92 @@
-body {
-    background:green;
+@import "variables";
+@import "mixins.scss";
+@import "./reset.scss";
+
+
+#header-menu {
+    display:flex;
+    flex-direction: column;
+    padding:1rem 2rem 1rem 2rem;
+    align-items: center;
+    width:100%;
+    top:0;
+    left:0;
+    background-color: $main-color;
+    color:white;
+    justify-content: space-between;
+
+    #header-search {
+        position: relative;
+        display: flex;
+
+
+        .search-input {
+            width: 100%;
+            border: 3px solid $inverted-color;
+            border-right: none;
+            padding: 5px;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            color: $inverted-text-color;
+          }
+          
+          .search-btn {
+            width: 40px;
+            border: 1px solid $inverted-color;
+            background: $inverted-color;
+            text-align: center;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 20px;
+            transition: 0.3s;
+          }
+          .search-btn:hover {
+            transition:0.3s;
+            background-color:$secondary-color;
+          }
+    }
+
+    
 }
+
+
+#cart {
+    position:fixed;
+    background:green;
+    top:5rem;
+    width:20rem;
+    height:100vh;
+    transition:0.5s;
+    right:-30rem;
+    border-left:3px solid black;
+
+
+    .cart-item {
+        display:flex;
+        width:90%;
+        flex-direction: column;
+
+        .cart-item-control {
+            display: flex;
+        }
+    }
+}
+
+#cart.cart-toggle {
+    display:flex;
+    flex-direction: column;
+    // transform: translateX(0rem);
+    right:0rem;
+    transition:0.5s;
+
+}
+
+@media only screen and (min-width: 900px) {
+    #header-menu {
+        flex-direction: row;
+    }
+    #header-user {
+        order:3;
+    }
+  }
