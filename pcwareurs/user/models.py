@@ -1,3 +1,7 @@
+'''
+User models
+'''
+from datetime import datetime
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -35,6 +39,5 @@ class Address(models.Model):
     )
 
     address_created_at = models.DateTimeField(
-        auto_now_add=True
+        default=datetime.now
     )
-

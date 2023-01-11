@@ -5,4 +5,19 @@
 <h1>{{ category.name }}</h1>
 <p>{{ category.description }}</p>
 
+<table>
+    <thead>
+      <tr>
+        <th>Product Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td>{{ product.product_name }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
 {% endblock %}

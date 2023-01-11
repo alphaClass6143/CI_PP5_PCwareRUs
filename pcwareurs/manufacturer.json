@@ -1,0 +1,30 @@
+[
+    {
+        "model": "product.manufacturer",
+        "pk": 1,
+        "fields": {
+            "manufacturer_name": "Intel"
+        }
+    },
+    {
+        "model": "product.manufacturer",
+        "pk": 2,
+        "fields": {
+            "manufacturer_name": "AMD"
+        }
+    },
+    {
+        "model": "product.manufacturer",
+        "pk": 3,
+        "fields": {
+            "manufacturer_name": "Asus"
+        }
+    },
+    {
+        "model": "product.manufacturer",
+        "pk": 4,
+        "fields": {
+            "manufacturer_name": "MSI"
+        }
+    }
+]

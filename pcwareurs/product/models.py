@@ -1,10 +1,13 @@
 '''
 Product models
 '''
+from datetime import datetime
+
 from django.db import models
-from category.models import Category
 from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator, MinValueValidator
+
+from category.models import Category
 
 
 # Create your models here.
@@ -17,7 +20,7 @@ class Manufacturer(models.Model):
     )
 
     manufacturer_added_at = models.DateTimeField(
-        auto_now_add=True
+        default=datetime.now
     )
 
 
@@ -46,7 +49,7 @@ class Product(models.Model):
     )
 
     product_created_at = models.DateTimeField(
-        auto_now_add=True
+        default=datetime.now
     )
 
     product_modified_at = models.DateTimeField(
@@ -78,7 +81,7 @@ class Review(models.Model):
     )
 
     review_created_at = models.DateTimeField(
-        auto_now_add=True
+        default=datetime.now
     )
 
     review_modified_at = models.DateTimeField(

@@ -1,3 +1,7 @@
+'''
+Checkout models
+'''
+from datetime import datetime
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -22,7 +26,7 @@ class Order(models.Model):
     )
 
     ordered_at = models.DateTimeField(
-        auto_now_add=True
+        default=datetime.now
     )
 
     payment_method = models.ForeignKey(
@@ -52,21 +56,12 @@ class Order(models.Model):
         related_name='billing_address'
     )
 
-    product_created_at = models.DateTimeField(
-        auto_now_add=True
-    )
-
-    product_modified_at = models.DateTimeField(
-        null=True
-    )
-
 
 class OrderPosition(models.Model):
     '''
     OrderPosition model
     '''
     position = models.IntegerField()
-
 
     order = models.ForeignKey(
         'Order',
@@ -79,5 +74,3 @@ class OrderPosition(models.Model):
     )
 
     quantity = models.IntegerField()
-
-

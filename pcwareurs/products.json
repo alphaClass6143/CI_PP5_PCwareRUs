@@ -1,0 +1,69 @@
+[
+    {
+        "model": "product.Product",
+        "pk": 1,
+        "fields": {
+            "product_name": "Intel Core i9-10900K",
+            "product_handle": "i9-10900K",
+            "product_description": "A powerful 10th Gen Intel Core i9 processor with a base clock speed of 3.7GHz and a maximum turbo frequency of 5.3GHz",
+            "manufacturer": 1,
+            "category": 1
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 2,
+        "fields": {
+            "product_name": "AMD Ryzen 9 5900X",
+            "product_handle": "ryzen-5900X",
+            "product_description": "A high-performance 3rd Gen AMD Ryzen 9 processor with a base clock speed of 3.7GHz and a maximum turbo frequency of 4.8GHz",
+            "manufacturer": 2,
+            "category": 1
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 3,
+        "fields": {
+            "product_name": "Intel Core i7-11700K",
+            "product_handle": "i7-11700K",
+            "product_description": "A powerful 11th Gen Intel Core i7 processor with a base clock speed of 3.6GHz and a maximum turbo frequency of 4.9GHz",
+            "manufacturer": 1,
+            "category": 1
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 4,
+        "fields": {
+            "product_name": "ASUS ROG Maximus XIII",
+            "product_handle": "maximus-xiii",
+            "product_description": "A high-performance gaming motherboard with support for the latest Intel and AMD processors, featuring advanced cooling and overclocking options.",
+            "manufacturer": 3,
+            "category": 2
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 5,
+        "fields": {
+            "product_name": "MSI MPG B550 Gaming Edge WiFi",
+            "product_handle": "b550-gaming-edge",
+            "product_description": "A budget-friendly gaming motherboard with support for the latest AMD processors, featuring advanced cooling and overclocking options.",
+            "manufacturer": 4,
+            "category": 2
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 6,
+        "fields": {
+            "product_name": "ASUS ROG Strix B450-E Gaming",
+            "product_handle": "strix-b450-e",
+            "product_description": "A high-performance gaming motherboard with support for the latest AMD processors, featuring advanced cooling and overclocking options.",
+            "manufacturer": 3,
+            "category": 2
+        }
+    }
+]
+           

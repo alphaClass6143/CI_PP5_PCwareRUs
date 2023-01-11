@@ -1,6 +1,7 @@
 [
     {
         "model": "category.category",
+        "pk": 1,
         "fields": {
             "name": "Processors",
             "handle": "processors",
@@ -9,6 +10,7 @@
     },
     {
         "model": "category.category",
+        "pk": 2,
         "fields": {
             "name": "Graphics Cards",
             "handle": "graphics-cards",
@@ -17,6 +19,7 @@
     },
     {
         "model": "category.category",
+        "pk": 3,
         "fields": {
             "name": "Power Supplies",
             "handle": "power-supplies",
@@ -26,6 +29,7 @@
     },
     {
         "model": "category.category",
+        "pk": 4,
         "fields": {
             "name": "Cases",
             "handle": "cases",
@@ -34,6 +38,7 @@
     },
     {
         "model": "category.category",
+        "pk": 5,
         "fields": {
             "name": "Motherboards",
             "handle": "motherboards",
@@ -42,6 +47,7 @@
     },
     {
         "model": "category.category",
+        "pk": 6,
         "fields": {
             "name": "Storage",
             "handle": "storage",
@@ -50,6 +56,7 @@
     },
     {
         "model": "category.category",
+        "pk": 7,
         "fields": {
             "name": "Memory",
             "handle": "memory",
@@ -58,6 +65,7 @@
     },
     {
         "model": "category.category",
+        "pk": 8,
         "fields": {
             "name": "Cooling Solutions",
             "handle": "cooling-solutions",
