@@ -3,6 +3,8 @@ Product models
 '''
 from django.db import models
 from category.models import Category
+from django.contrib.auth import get_user_model
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 # Create your models here.
@@ -48,5 +50,37 @@ class Product(models.Model):
     )
 
     product_modified_at = models.DateTimeField(
+        null=True
+    )
+
+
+class Review(models.Model):
+    '''
+    Review model
+    '''
+    rating = models.IntegerField(
+        validators=[
+            MinValueValidator(1),
+            MaxValueValidator(5)
+        ]
+    )
+
+    content = models.TextField()
+
+    user = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+    )
+
+    product = models.ForeignKey(
+        'Product',
+        on_delete=models.CASCADE,
+    )
+
+    review_created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    review_modified_at = models.DateTimeField(
         null=True
     )
