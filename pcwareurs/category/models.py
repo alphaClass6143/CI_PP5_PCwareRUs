@@ -14,7 +14,7 @@ class Category(models.Model):
         max_length=255
     )
 
-    handle = models.CharField(
+    category_handle = models.CharField(
         max_length=255
     )
 

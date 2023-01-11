@@ -14,7 +14,7 @@
     <tbody>
       {% for product in products %}
       <tr>
-        <td>{{ product.product_name }}</td>
+        <td><a href="{% url 'product_detail' category_handle=category.category_handle product_handle=product.product_handle %}">{{ product.product_name }}</a></td>
       </tr>
       {% endfor %}
     </tbody>
