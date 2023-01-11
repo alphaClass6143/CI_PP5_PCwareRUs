@@ -43,11 +43,13 @@ class Order(models.Model):
     delivery_address = models.ForeignKey(
         'user.Address',
         on_delete=models.CASCADE,
+        related_name='delivery_address'
     )
 
     billing_address = models.ForeignKey(
         'user.Address',
         on_delete=models.CASCADE,
+        related_name='billing_address'
     )
 
     product_created_at = models.DateTimeField(
