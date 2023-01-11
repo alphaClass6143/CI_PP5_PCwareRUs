@@ -20,11 +20,11 @@ class Category(models.Model):
 
     description = models.TextField()
 
-    created_at = models.DateTimeField(
+    category_created_at = models.DateTimeField(
         default=datetime.now
     )
 
-    modified_at = models.DateTimeField(
+    category_modified_at = models.DateTimeField(
         null=True,
         blank=True
     )
