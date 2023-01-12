@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+    
+    <h1>Confirm</h1>
+    <div>
+        <a href="{% url 'cancel_step' %}">Cancel</a>
+        <a href="{% url 'previous_step' %}">Previous</a>
+    </div>
+    
+</main>
+
+{% endblock %}

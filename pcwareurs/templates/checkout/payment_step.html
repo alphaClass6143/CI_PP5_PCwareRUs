@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+    
+    <h1>Payment step</h1>
+    <div>
+        <a href="{% url 'cancel_step' %}">Cancel</a>
+        <a href="{% url 'previous_step' %}">Previous</a>
+        <a href="{% url 'next_step' %}">Next</a>
+    </div>
+    
+</main>
+
+{% endblock %}
