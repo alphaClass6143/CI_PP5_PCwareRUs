@@ -52,9 +52,10 @@
                 {% endfor %}
             </ul>
         </section>
-        {% block cart %}
+        
         <div id="cart">
             <h2>Shopping cart</h2>
+            {% block cart %}
             <div class="cart-item">
                 <img src="https://picsum.photos/200/200" alt="">
                 <h3>This is an olive garden</h3>
@@ -73,8 +74,9 @@
                     </button>
                 </div>
             </div>
+            {% endblock cart %}
         </div>
-        {% endblock cart %}
+        
 
     </header>
     {% endblock header %}

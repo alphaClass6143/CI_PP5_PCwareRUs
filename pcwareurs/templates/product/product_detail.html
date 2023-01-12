@@ -5,4 +5,14 @@
 <h1>{{ product.product_name }}</h1>
 <p>{{ product.product_description }}</p>
 
+
+<button onclick="addToCart({{product.id}}, {{1}})">
+    Add to cart
+</button>
+
+<form>
+    <input type="hidden" id="csrf_token" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    <!-- other fields and buttons -->
+</form>
+
 {% endblock %}

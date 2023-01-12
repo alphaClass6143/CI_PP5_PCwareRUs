@@ -1,0 +1,27 @@
+{% block cart %}
+
+<h2>Shopping cart</h2>
+{% for key, item in cart.items %}
+    <div class="cart-item">
+        <img src="https://picsum.photos/200/200" alt="">
+        <h3>{{ item.product_name }}</h3>
+        <div class="cart-item-control">
+            <div class="cart-item-quantity">
+                <button class="cart-item-quantity-minus">
+                    <i class="fa-solid fa-minus"></i>
+                </button>
+                <input type="number" id="" value="{{ item.quantity }}">
+                <button class="cart-item-quantity-plus">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <button class="btn">
+                <i class="fa-solid fa-trash-can"></i>
+            </button>
+        </div>
+    </div>
+
+{% endfor %}
+
+
+{% endblock %}
