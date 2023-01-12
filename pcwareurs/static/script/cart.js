@@ -21,7 +21,40 @@ function addToCart(productId, quantity) {
         // handle the response from the server
         if (data.success) {
             console.log("success")
-            document.querySelector('#cart').classList.toggle('cart-toggle');
+
+            if (!document.querySelector('#cart').classList.contains("cart-toggle")) {
+                document.querySelector('#cart').classList.toggle('cart-toggle');
+            }
+            
+            document.querySelector('#cart').innerHTML = data.cart_html
+        } else {
+            // show an error message
+            console.log(data)
+        }
+    });
+}
+
+function removeFromCart(productId) {
+    let csrf_token = document.getElementById("csrf_token").value;
+
+    return fetch('/cart/remove/', {
+        method: 'POST',
+        headers: { 
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrf_token 
+        },
+        body: JSON.stringify({ 'product_id': productId })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // handle the response from the server
+        if (data.success) {
+            console.log("success")
+            
+            if (!document.querySelector('#cart').classList.contains("cart-toggle")) {
+                document.querySelector('#cart').classList.toggle('cart-toggle');
+            }
+            
             document.querySelector('#cart').innerHTML = data.cart_html
         } else {
             // show an error message

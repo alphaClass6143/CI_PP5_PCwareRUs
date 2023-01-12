@@ -46,15 +46,21 @@ def cart_remove(request):
     '''
     Remove product from cart
     '''
-    product_id = request.POST['product_id']
+    data = json.loads(request.body)
+    product_id = data['product_id']
 
-    cart = request.session.get('cart', {})
-    if product_id in cart:
-        del cart[product_id]
+    if request.method == "POST":
+        if Product.objects.filter(id=product_id).exists():
+            product = Product.objects.get(id=product_id)
 
-        request.session['cart'] = cart
-        return JsonResponse({'success': True})
-    return JsonResponse({'error': 'Product not in cart'})
+            cart = request.session.get('cart', {})
+            if str(product.id) in cart.keys():
+                del cart[str(product.id)]
+
+                request.session['cart'] = cart
+                return render_cart(request)
+        return JsonResponse({'error': 'Product not in cart'})
+    return JsonResponse({'error': 'Invalid request method'})
 
 
 def cart_update(request):
