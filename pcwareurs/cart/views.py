@@ -67,16 +67,26 @@ def cart_update(request):
     '''
     Update product in cart
     '''
-    product_id = request.POST['product_id']
-    quantity = request.POST['quantity']
+    if request.method == "POST":
+        data = json.loads(request.body)
+        product_id = data['product_id']
+        quantity = data['quantity']
+        
+        if Product.objects.filter(id=product_id).exists():
+            product = Product.objects.get(id=product_id)
+            cart = request.session.get('cart', {})
 
-    cart = request.session.get('cart', {})
-    if product_id in cart:
-        cart[product_id] = int(quantity)
+            if str(product.id) in cart.keys():
+                if quantity < 1:
+                    del cart[str(product.id)]
+                else:
+                    cart[str(product.id)]["quantity"] = int(quantity)
 
-        request.session['cart'] = cart
-        return JsonResponse({'success': True})
-    return JsonResponse({'error': 'Product not in cart'})
+                request.session['cart'] = cart
+                return render_cart(request)
+            return JsonResponse({'error': 'This product is not in the cart'})
+        return JsonResponse({'error': 'Product does not exist'})
+    return JsonResponse({'error': 'Invalid request method'})
 
 
 def render_cart(request):
