@@ -1,0 +1,37 @@
+
+@mixin reset-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin col-layout {
+    display:flex;
+    flex-direction: column;
+}
+
+@mixin col-layout-centered {
+    @include col-layout;
+    align-items: center;
+}
+
+
+@mixin row-layout {
+    display:flex;
+}
+
+@mixin row-layout-wrap {
+    @include row-layout;
+    flex-wrap: wrap;
+}
+
+@mixin row-layout-centered {
+    @include row-layout;
+    justify-content: center;
+}
+
+@mixin row-layout-centered-wrap {
+    @include row-layout-centered;
+    flex-wrap: wrap;
+}
+

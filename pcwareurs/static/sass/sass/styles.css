@@ -68,6 +68,36 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important; } }
 
+header {
+  display: flex;
+  flex-direction: column; }
+  header section {
+    padding: 0; }
+
+body {
+  font-family: Ubunutu, sans-serif; }
+
+#category-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  background-color: #10316B;
+  justify-content: space-around;
+  color: #F2F7FF;
+  font-size: 1.5rem;
+  padding: 0.5rem; }
+  #category-links a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+    height: 100%; }
+  #category-links a:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    color: black;
+    background-color: #F2F7FF; }
+
 #header-menu {
   display: flex;
   flex-direction: column;
@@ -105,18 +135,24 @@ select {
       background-color: #10316B; }
 
 #cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: fixed;
-  background: green;
-  top: 5rem;
-  width: 20rem;
+  background-color: azure;
+  top: 4.5rem;
+  width: 30rem;
   height: 100vh;
   transition: 0.5s;
-  right: -30rem;
-  border-left: 3px solid black; }
+  right: -40rem;
+  border-left: 1px solid black;
+  box-shadow: 5px 0px 15px 0px rgba(0, 0, 0, 0.75); }
   #cart .cart-item {
     display: flex;
-    width: 90%;
-    flex-direction: column; }
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 5px; }
     #cart .cart-item .cart-item-control {
       display: flex; }
 
@@ -125,6 +161,43 @@ select {
   flex-direction: column;
   right: 0rem;
   transition: 0.5s; }
+
+footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 3rem 1rem;
+  gap: 2rem;
+  align-items: center;
+  background-color: #0B409C;
+  color: #F2F7FF; }
+  footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+    footer ul a {
+      color: #F2F7FF; }
+
+.btn {
+  transition: 0.3s; }
+
+.btn:hover {
+  cursor: pointer;
+  transition: 0.3s; }
+
+.btn-primary {
+  transition: 0.3s;
+  color: black;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid black;
+  background-color: #ffa600;
+  border-radius: 5px; }
+
+.btn-primary:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  background-color: #db8f00;
+  transition: 0.3s; }
 
 @media only screen and (min-width: 900px) {
   #header-menu {

@@ -2,22 +2,20 @@
 
 {% block content %}
 
-<h1>{{ category.name }}</h1>
-<p>{{ category.description }}</p>
 
-<table>
-    <thead>
-      <tr>
-        <th>Product Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for product in products %}
-      <tr>
-        <td><a href="{% url 'product_detail' category_handle=category.category_handle product_handle=product.product_handle %}">{{ product.product_name }}</a></td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+<main>
+    <h1>{{ category.name }}</h1>
+    <p>{{ category.description }}</p>
+
+    <section class="item-container">
+        {% for product in products %}
+            <a href="{% url 'product_detail' category_handle=category.category_handle product_handle=product.product_handle %}">
+                <img src="https://picsum.photos/200/200" alt="">
+                {{ product.product_name }}
+
+            </a>
+        {% endfor %}
+    </section>
+</main>
 
 {% endblock %}
