@@ -3,19 +3,26 @@
 {% block content %}
 
 
-<main>
-    <h1>{{ category.name }}</h1>
-    <p>{{ category.description }}</p>
+<main class="" id="category-main">
+    <aside>
+        <h2>Filters</h2>
+        <p>WIP</p>
+    </aside>
+    <article>
+        <h1>{{ category.name }}</h1>
+        <p>{{ category.description }}</p>
 
-    <section class="item-container">
-        {% for product in products %}
-            <a href="{% url 'product_detail' category_handle=category.category_handle product_handle=product.product_handle %}">
-                <img src="https://picsum.photos/200/200" alt="">
-                {{ product.product_name }}
+        <section class="item-container">
+            {% for product in products %}
+                <a href="{% url 'product_detail' category_handle=category.category_handle product_handle=product.product_handle %}" class="item">
+                    <img src="https://picsum.photos/200/200" alt="">
+                    {{ product.product_name }}
 
-            </a>
-        {% endfor %}
-    </section>
+                </a>
+            {% endfor %}
+        </section>
+    </article>
+    
 </main>
 
 {% endblock %}

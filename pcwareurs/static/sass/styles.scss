@@ -164,6 +164,42 @@ footer {
     transition:0.3s;
 }
 
+.main {
+    @include col-layout-centered;
+    padding:5rem 0.5rem;
+    min-height:calc(90vh - 10rem);
+}
+
+#category-main {
+    @include row-layout-centered;
+    padding:5rem 0.5rem;
+    gap:3rem;
+    min-height:calc(90vh - 10rem);
+
+    aside {
+        padding:1rem;
+        border:1px solid black;
+    }
+
+    .item-container {
+        @include row-layout-wrap;
+        gap:3rem;
+
+        .item {
+            @include col-layout-centered;
+            border:2px solid black;
+            padding:2rem;
+            border-radius: 5px;
+            transition: 0.3s;
+
+        }
+        .item:hover {
+            cursor: pointer;
+            transition: 0.3s;
+            transform: translateY(-3px);
+        }
+    }
+}
 
 .item {
 

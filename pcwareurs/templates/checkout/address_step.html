@@ -2,13 +2,39 @@
 
 {% block content %}
 
-<main>
+<main class="main">
     
-    <h1>Enter your address</h1>
+    <h1>Address</h1>
+    <h2>Your delivery address</h2>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="delivery_street">Street: </label>
+          <input type="text" class="form-control" id="delivery_address" name="address" required>
+        </div>
+        <div class="form-group">
+          <label for="delivery_city">City: </label>
+          <input type="text" class="form-control" id="delivery_city" name="city" required>
+        </div>
+        <div class="form-group">
+          <label for="delivery_state">State: </label>
+          <input type="text" class="form-control" id="delivery_state" name="state" required>
+        </div>
+        <div class="form-group">
+          <label for="delivery_zip">Zip: </label>
+          <input type="text" class="form-control" id="delivery_zip" name="zip" required>
+        </div>
+        <div class="form-group">
+          <label for="delivery_country">Country: </label>
+          <input type="text" class="form-control" id="delivery_country" name="country" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    
     <div>
-        <a href="{% url 'cancel_step' %}">Cancel</a>
-        <a href="{% url 'previous_step' %}">Previous</a>
-        <a href="{% url 'next_step' %}">Next</a>
+        <a href="{% url 'cancel_step' %}" class="btn btn-primary">Cancel</a>
+        <a href="{% url 'previous_step' %}" class="btn btn-primary">Previous</a>
+        <a href="{% url 'next_step' %}" class="btn btn-primary">Next</a>
     </div>
     
 </main>

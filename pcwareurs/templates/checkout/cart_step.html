@@ -2,12 +2,36 @@
 
 {% block content %}
 
-<main>
+<main class="main">
     
     <h1>Cart overview</h1>
+    <div class="cart-overview-container cart-view">
+        {% for key, item in cart.items %}
+            <div class="cart-item">
+                <img src="https://picsum.photos/200/200" alt="">
+                <h3>{{ item.product_name }}</h3>
+                <div class="cart-item-control">
+                    <div class="cart-item-quantity">
+                        <button class="cart-item-quantity-minus" onclick="updateCart({{ key }}, {{ item.quantity}}-1)">
+                            <i class="fa-solid fa-minus"></i>
+                        </button>
+                        <input type="number" id="" value="{{ item.quantity }}">
+                        <button class="cart-item-quantity-plus" onclick="updateCart({{ key }}, {{ item.quantity}}+1)">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                    <button class="btn btn-primary" onclick="removeFromCart({{ key }})">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+    
     <div>
-        <a href="{% url 'cancel_step' %}">Cancel</a>
-        <a href="{% url 'next_step' %}">Next</a>
+        <a href="{% url 'cancel_step' %}" class="btn btn-primary">Cancel</a>
+        <a href="{% url 'next_step' %}" class="btn btn-primary">Next</a>
     </div>
     
 </main>
