@@ -194,3 +194,6 @@ LOGIN_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_REQUIRED_FIELDS = ['first_name', 'last_name']
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

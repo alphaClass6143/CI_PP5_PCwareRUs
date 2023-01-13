@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<main class="main">
+    <section>
+        {% if user.user_picture %}
+            <img class="profile-icon" src="{{ user.user_picture }}" alt="Profile picture"/>
+        {% else %}
+            <i class="fa-solid fa-user fa-inverse fa-2x"></i>
+        {% endif %}
+        <h2>{{ user.username }}</h2>
+        <p>{{ user.first_name }}{{ user.last_name }}</p>
+        <p>{{ user.date_joined }}</p>
+    </section>
+    <section>
+        <div>
+            <h2>Addresses</h2>
+        </div>
+        <div>
+            <h2>View order</h2>
+        </div>
+    </section>
+    <section>
+        <div>
+            <h2></h2>
+        </div>
+        <div>
+            <h2></h2>
+        </div>
+    </section>
+</main>
+
+
+
+
+
+{% endblock %}

@@ -37,14 +37,14 @@
 
                 {% if request.user.is_authenticated %}
                 {% if user.user_picture %}
-                        <a href="" class="btn" aria-label="Visit own profile"><img class="profile-icon" src="{{ user.user_picture }}" alt="Profile picture"></a>
+                        <a href="{% url 'user_overview' %}" class="btn" aria-label="Visit own profile"><img class="profile-icon" src="{{ user.user_picture }}" alt="Profile picture"></a>
                     {% else %}
-                        <a href="" class="btn" aria-label="Visit own profile"><i class="fa-solid fa-user fa-inverse fa-2x"></i>
+                        <a href="{% url 'user_overview' %}" class="btn" aria-label="Visit own profile"><i class="fa-solid fa-user fa-inverse fa-2x"></i>
                     {% endif %}
-                    <a class="btn btn-danger" role="button" href="{% url 'account_logout' %}">Logout</a>
+                    <a class="btn btn-primary" role="button" href="{% url 'account_logout' %}">Logout</a>
                 {% else %}
                     <a class="btn btn-primary" role="button" href="{% url 'account_login' %}">Login</a>
-                    <a class="btn btn-success" role="button" href="{% url 'account_signup' %}">Register</a>
+                    <a class="btn btn-primary" role="button" href="{% url 'account_signup' %}">Register</a>
                 {% endif %}
                 
             </div>
@@ -75,7 +75,7 @@
                                 <button class="cart-item-quantity-minus" onclick="updateCart({{ key }}, {{ item.quantity}}-1)">
                                     <i class="fa-solid fa-minus"></i>
                                 </button>
-                                <input type="number" id="" value="{{ item.quantity }}">
+                                <input type="number" id="" value="{{ item.quantity }}" readonly>
                                 <button class="cart-item-quantity-plus" onclick="updateCart({{ key }}, {{ item.quantity}}+1)">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
@@ -86,8 +86,9 @@
                         </div>
                     </div>
                 {% endfor %}
-                <a href="{% url 'load_step' %}" class="btn-primary" aria-role="button">Checkout</a>
+                
             {% endblock cart %}
+            <a href="{% url 'load_step' %}" class="btn-primary" aria-role="button">Checkout</a>
         </div>
         
 
@@ -124,6 +125,11 @@
             </ul>
         </section>
     </footer>
+
+    <form>
+        <input type="hidden" id="csrf_token" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+        <!-- other fields and buttons -->
+    </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
     <script src="{% static 'script/cart.js' %}"></script>
