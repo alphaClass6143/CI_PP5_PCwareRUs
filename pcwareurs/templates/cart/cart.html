@@ -7,21 +7,21 @@
         <h3>{{ item.product_name }}</h3>
         <div class="cart-item-control">
             <div class="cart-item-quantity">
-                <button class="cart-item-quantity-minus" onclick="updateCart({{ key }}, {{ item.quantity}}-1)">
+                <button class="cart-item-quantity-minus btn-primary" onclick="updateCart({{ key }}, {{ item.quantity}}-1)">
                     <i class="fa-solid fa-minus"></i>
                 </button>
                 <input type="number" id="" value="{{ item.quantity }}">
-                <button class="cart-item-quantity-plus" onclick="updateCart({{ key }}, {{ item.quantity}}+1)">
+                <button class="cart-item-quantity-plus btn-primary" onclick="updateCart({{ key }}, {{ item.quantity}}+1)">
                     <i class="fa-solid fa-plus"></i>
                 </button>
             </div>
-            <button class="btn" onclick="removeFromCart({{ key }})">
+            <button class="btn btn-primary" onclick="removeFromCart({{ key }})">
                 <i class="fa-solid fa-trash-can"></i>
             </button>
         </div>
     </div>
 
 {% endfor %}
-
+    <a href="{% url 'load_step' %}" class="btn-primary" aria-role="button">Checkout</a>
 
 {% endblock %}

@@ -39,7 +39,7 @@
                 {% if user.user_picture %}
                         <a href="{% url 'user_overview' %}" class="btn" aria-label="Visit own profile"><img class="profile-icon" src="{{ user.user_picture }}" alt="Profile picture"></a>
                     {% else %}
-                        <a href="{% url 'user_overview' %}" class="btn" aria-label="Visit own profile"><i class="fa-solid fa-user fa-inverse fa-2x"></i>
+                        <a href="{% url 'user_overview' %}" class="btn" aria-label="Visit own profile"><i class="fa-solid fa-user fa-inverse fa-2x"></i></a>
                     {% endif %}
                     <a class="btn btn-primary" role="button" href="{% url 'account_logout' %}">Logout</a>
                 {% else %}
@@ -72,11 +72,11 @@
                         <h3>{{ item.product_name }}</h3>
                         <div class="cart-item-control">
                             <div class="cart-item-quantity">
-                                <button class="cart-item-quantity-minus" onclick="updateCart({{ key }}, {{ item.quantity}}-1)">
+                                <button class="cart-item-quantity-minus btn-primary" onclick="updateCart({{ key }}, {{ item.quantity}}-1)">
                                     <i class="fa-solid fa-minus"></i>
                                 </button>
                                 <input type="number" id="" value="{{ item.quantity }}" readonly>
-                                <button class="cart-item-quantity-plus" onclick="updateCart({{ key }}, {{ item.quantity}}+1)">
+                                <button class="cart-item-quantity-plus btn-primary" onclick="updateCart({{ key }}, {{ item.quantity}}+1)">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
                             </div>

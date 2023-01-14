@@ -17,6 +17,16 @@
     <section>
         <div>
             <h2>Addresses</h2>
+            {% for address in address_list %}
+                <div>
+                    <p>{{ address.street }}</p>
+                    <p>{{ address.zip }}, {{ address.city }}</p>
+                    <p>{{ address.state }}</p>
+                    <p>{{ address.country }}</p>
+                </div>
+                
+            {% endfor %}
+            <a href="{% url 'add_address' %}" class="btn btn-primary" aria-label="Add address">Add address</a>
         </div>
         <div>
             <h2>View order</h2>

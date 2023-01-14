@@ -24,7 +24,9 @@ class Address(models.Model):
         max_length=255
     )
 
-    zip = models.IntegerField()
+    zip = models.CharField(
+        max_length=32
+    )
 
     state = models.CharField(
         max_length=255

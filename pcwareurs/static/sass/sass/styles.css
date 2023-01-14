@@ -68,6 +68,10 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important; } }
 
+a {
+  text-decoration: none;
+  color: inherit; }
+
 header {
   display: flex;
   flex-direction: column; }
@@ -88,8 +92,6 @@ body {
   font-size: 1.5rem;
   padding: 0.5rem; }
   #category-links a {
-    text-decoration: none;
-    color: inherit;
     transition: 0.3s;
     height: 100%; }
   #category-links a:hover {
@@ -179,6 +181,7 @@ footer {
       color: #F2F7FF; }
 
 .btn {
+  padding: 0.25rem 0.5rem;
   transition: 0.3s; }
 
 .btn:hover {
@@ -190,13 +193,13 @@ footer {
   color: black;
   padding: 0.25rem 0.5rem;
   border: 1px solid black;
-  background-color: #ffa600;
+  background-color: #FDBE34;
   border-radius: 5px; }
 
 .btn-primary:hover {
   cursor: pointer;
   transform: scale(1.05);
-  background-color: #db8f00;
+  background-color: #ffa600;
   transition: 0.3s; }
 
 .main {
