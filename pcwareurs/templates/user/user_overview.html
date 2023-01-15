@@ -23,6 +23,9 @@
                     <p>{{ address.zip }}, {{ address.city }}</p>
                     <p>{{ address.state }}</p>
                     <p>{{ address.country }}</p>
+
+                    <a href="{% url 'edit_address' address.id %}" class="btn btn-primary" aria-label="Edit address">Edit address</a>
+                    <a href="{% url 'delete_address' address.id %}" class="btn btn-primary" aria-label="Delete address">Delete address</a>
                 </div>
                 
             {% endfor %}
