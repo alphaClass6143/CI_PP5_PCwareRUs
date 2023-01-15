@@ -204,8 +204,33 @@ footer {
     }
 }
 
-.item {
+#product-detail-main {
+    @include col-layout-centered;
 
+    #product-overview {
+        @include row-layout;
+
+        #product-images {
+            @include col-layout-centered;
+        }
+
+        #product-details {
+            @include col-layout-centered;
+
+        }
+    }
+
+    #review-summary {
+        @include row-layout;
+        
+    }
+
+    #review-list {
+        @include col-layout-centered;
+
+
+    }
+    
 }
 
 @media only screen and (min-width: 900px) {

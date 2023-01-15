@@ -4,8 +4,9 @@ from django.shortcuts import render
 
 
 from django.shortcuts import render
-from .models import Product
+from .models import Product, Review
 
 def product_detail(request, category_handle, product_handle):
     product = Product.objects.get(product_handle=product_handle)
-    return render(request, 'product/product_detail.html', {'product': product})
+    reviews = Review.objects.filter(product=product)
+    return render(request, 'product/product_detail.html', {'product': product, 'reviews': reviews})

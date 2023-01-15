@@ -235,6 +235,27 @@ footer {
       transition: 0.3s;
       transform: translateY(-3px); }
 
+#product-detail-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  #product-detail-main #product-overview {
+    display: flex; }
+    #product-detail-main #product-overview #product-images {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+    #product-detail-main #product-overview #product-details {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+  #product-detail-main #review-summary {
+    display: flex; }
+  #product-detail-main #review-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+
 @media only screen and (min-width: 900px) {
   #header-menu {
     flex-direction: row; }

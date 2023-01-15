@@ -3,16 +3,41 @@
 {% block content %}
 
 
-<main>
-    <section>
-
+<main id="product-detail-main" class="main">
+    <section id="product-overview">
+        <div id="product-images">
+            <img src="https://picsum.photos/200/200" alt="">
+        </div>
+        <div id="product-details">
+            <h1>{{ product.product_name }}</h1>
+            <p>{{ product.product_description }}</p>
+            <button onclick="addToCart({{product.id}}, {{1}})">
+                Add to cart
+            </button>
+        </div>
     </section>
-    <section>
-        <h1>{{ product.product_name }}</h1>
-        <p>{{ product.product_description }}</p>
-        <button onclick="addToCart({{product.id}}, {{1}})">
-            Add to cart
-        </button>
+    <section id="review-summary">
+        <div>
+            <i class="fa-solid fa-star"></i>
+            <h2>4</h2>
+        </div>
+        <div>
+            <h2>4 - Reviews</h2>
+        </div>
+    </section>
+    <section id="review-add">
+        <form action="">
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <button type="submit">Post review</button>
+        </form>
+    </section>
+    <section id="review-list">
+        {% for review in reviews %}
+            <div class="review">
+
+            </div>
+            {{ review.content }}
+        {% endfor%}
     </section>
 </main>
 

@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 
+from user.models import Address
+
 # Create your views here.
 def load_step(request):
     '''
@@ -9,8 +11,9 @@ def load_step(request):
     print(step)
 
     if step == 1:
+        addresses = Address.objects.filter(user=request.user)
         return render(request,
-                      'checkout/cart_step.html')
+                      'checkout/cart_step.html', {'addresses': addresses})
 
     elif step == 2:
         return render(request,
@@ -45,11 +48,13 @@ def previous_step(request):
                   'home/index.html')
 
 
+
 def next_step(request):
     '''
     Next step
     '''
     step = request.session.get('step')
+
     if not step < 1 and not step >= 4:
         request.session['step'] = step + 1
         return redirect('load_step')
