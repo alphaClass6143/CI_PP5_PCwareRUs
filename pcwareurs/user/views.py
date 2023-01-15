@@ -97,10 +97,24 @@ def edit_address(request, address_id):
 
 
 def delete_address(request, address_id):
+    '''
+    Delete address
+    '''
     if request.user.is_authenticated:
         address = get_object_or_404(Address, pk=address_id)
 
         if address.user == request.user:
+            print(request.method)
 
-            if request.method == 'DELETE':
-                pass
+            if request.method == 'POST':
+                # Check if address is used
+                # If it is used only set it to inactive
+                # is_used refers to an order
+                if address.is_used:
+                    address.is_active = False
+                    address.save()
+                else:
+                    address.delete()
+
+        return redirect('user_overview')
+    return redirect('home')

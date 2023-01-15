@@ -40,6 +40,10 @@ class Address(models.Model):
         default=False
     )
 
+    is_active = models.BooleanField(
+        default=True
+    )
+
     address_created_at = models.DateTimeField(
         default=datetime.now
     )
