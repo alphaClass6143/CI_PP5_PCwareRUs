@@ -5,7 +5,7 @@
 <main id="address-step-main" class="main">
     
     <h1>Address</h1>
-    
+    <p>{{ delivery_address }}</p>
     <form method="post" action="{% url 'confirm_address' %}">
         {% csrf_token %}
         <fieldset>
@@ -17,18 +17,33 @@
               </div>
             <div class="form-user-address-container">
                 {% for address in address_list %}
-                    <div class="address-option-container">
-                        <label for="address-option-{{ address.id }}">
-                            <input type="radio" name="delivery_address" id="address-option-{{ address.id }}" value="{{ address.id }}">
-                            <div class="address-option">
-                                <p>{{ address.street }}</p>
-                                <p>{{ address.zip }}, {{ address.city }}</p>
-                                <p>{{ address.state }}</p>
-                                <p>{{ address.country }}</p>
-                            </div>
-                            
-                        </label>
-                    </div>
+                    {% if address.id|stringformat:'d' == delivery_address %}                     
+                        <div class="address-option-container">
+                            <label for="address-option-{{ address.id }}">
+                                <input type="radio" name="delivery_address" id="address-option-{{ address.id }}" value="{{ address.id }}" checked>
+                                <div class="address-option">
+                                    <p>{{ address.street }}</p>
+                                    <p>{{ address.zip }}, {{ address.city }}</p>
+                                    <p>{{ address.state }}</p>
+                                    <p>{{ address.country }}</p>
+                                </div>
+                                
+                            </label>
+                        </div>
+                    {% else %}
+                        <div class="address-option-container">
+                            <label for="address-option-{{ address.id }}">
+                                <input type="radio" name="delivery_address" id="address-option-{{ address.id }}" value="{{ address.id }}">
+                                <div class="address-option">
+                                    <p>{{ address.street }}</p>
+                                    <p>{{ address.zip }}, {{ address.city }}</p>
+                                    <p>{{ address.state }}</p>
+                                    <p>{{ address.country }}</p>
+                                </div>
+                                
+                            </label>
+                        </div>
+                    {% endif %}
                     
                 {% endfor %}
             </div>
@@ -36,23 +51,23 @@
             <div class="address-fields">
                 <div class="form-group">
                     <label for="delivery_street">Street: </label>
-                    <input type="text" class="form-control" id="delivery_street" name="custom_delivery_address[street]">
+                    <input type="text" class="form-control" id="delivery_street" name="custom_delivery_street">
                 </div>
                   <div class="form-group">
                     <label for="delivery_city">City: </label>
-                    <input type="text" class="form-control" id="delivery_city" name="custom_delivery_address[city]">
+                    <input type="text" class="form-control" id="delivery_city" name="custom_delivery_city">
                 </div>
                 <div class="form-group">
                     <label for="delivery_state">State: </label>
-                    <input type="text" class="form-control" id="delivery_state" name="custom_delivery_address[state]">
+                    <input type="text" class="form-control" id="delivery_state" name="custom_delivery_state">
                 </div>
                 <div class="form-group">
                     <label for="delivery_zip">Zip: </label>
-                    <input type="text" class="form-control" id="delivery_zip" name="custom_delivery_address[zip]">
+                    <input type="text" class="form-control" id="delivery_zip" name="custom_delivery_zip">
                   </div>
                   <div class="form-group">
                     <label for="delivery_country">Country: </label>
-                    <input type="text" class="form-control" id="delivery_country" name="custom_country_address">
+                    <input type="text" class="form-control" id="delivery_country" name="custom_delivery_country">
                 </div>
 
             </div>
@@ -64,7 +79,7 @@
             </div>
         </fieldset>
         <fieldset id="delivery-address-fieldset" class="hidden">
-            
+            <h2>Your billing address</h2>
             <div>
                 {% for address in address_list %}
                     <label>
@@ -83,23 +98,23 @@
               </div>
             <div class="form-group">
                 <label for="billing_street">Street: </label>
-                <input type="text" class="form-control" id="billing_street" name="custom_billing_address[street]">
+                <input type="text" class="form-control" id="billing_street" name="custom_billing_street">
               </div>
               <div class="form-group">
                 <label for="billing_city">City: </label>
-                <input type="text" class="form-control" id="billing_city" name="custom_billing_address[city]">
+                <input type="text" class="form-control" id="billing_city" name="custom_billing_city">
               </div>
               <div class="form-group">
                 <label for="billing_state">State: </label>
-                <input type="text" class="form-control" id="billing_state" name="custom_billing_address[state]">
+                <input type="text" class="form-control" id="billing_state" name="custom_billing_state">
               </div>
               <div class="form-group">
                 <label for="billing_zip">Zip: </label>
-                <input type="text" class="form-control" id="billing_zip" name="custom_billing_address[zip]">
+                <input type="text" class="form-control" id="billing_zip" name="custom_billing_zip">
               </div>
               <div class="form-group">
                 <label for="billing_country">Country: </label>
-                <input type="text" class="form-control" id="billing_country" name="custom_billing_address[country]">
+                <input type="text" class="form-control" id="billing_country" name="custom_billing_country">
               </div>
         </fieldset>
         <button type="submit" class="btn btn-primary">Confirm addresses</button>

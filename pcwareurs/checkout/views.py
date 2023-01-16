@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
 from user.models import Address
+from checkout.forms import AddressForm
 
 # Create your views here.
 def load_step(request):
@@ -18,8 +19,12 @@ def load_step(request):
     elif step == 2:
         address_list = Address.objects.filter(user=request.user)
         print(address_list)
+
+        delivery_address = request.session.get('delivery_address')
+        billing_address = request.session.get('billing_address')
+
         return render(request,
-                      'checkout/address_step.html', {'address_list': address_list})
+                      'checkout/address_step.html', {'address_list': address_list, 'delivery_address': delivery_address, 'billing_address': billing_address})
 
     elif step == 3:
         return render(request,
@@ -61,25 +66,52 @@ def confirm_address(request):
     Confirming the address
     '''
     if request.method == 'POST':
+        print("confirming address")
+        form = AddressForm(request.POST, user=request.user)
+        if form.is_valid():
+            print("is valid")
+            if request.POST['delivery_address'] == 'custom':
+                delivery_address = {
+                    'street': request.POST['custom_delivery_street'],
+                    'city': request.POST['custom_delivery_city'],
+                    'zip': request.POST['custom_delivery_zip'],
+                    'state': request.POST['custom_delivery_state'],
+                    'country': request.POST['custom_delivery_country']
+                }
+                request.session['delivery_address'] = delivery_address
+            
+            if request.POST['same_address'] == '1':
+                if request.POST['delivery_address'] == 'custom':
+                    request.session['billing_address'] = delivery_address
 
-        # Check if step is created or updated
+                else:
+                    request.session['delivery_address'] = request.POST['delivery_address']
+                    request.session['billing_address'] = request.POST['delivery_address']
 
-        if 'addresses' not in request.session:
-            # Create
-            request.session['addresses'] = ""
+            else:
+                if not request.POST['delivery_address'] == 'custom':
+                    request.session['delivery_address'] = request.POST['delivery_address']
 
-
-
+                if request.POST['billing_address'] == 'custom':
+                    request.session['billing_address'] = {
+                        'street': request.POST['custom_billing_street'],
+                        'city': request.POST['custom_billing_city'],
+                        'zip': request.POST['custom_billing_zip'],
+                        'state': request.POST['custom_billing_state'],
+                        'country': request.POST['custom_billing_country']
+                    }
+                else:
+                    request.session['billing_address'] = request.POST['billing_address']
+            
+            print("advance")
+            step = request.session.get('step')
+            request.session['step'] = step + 1
+            return redirect('load_step')
         else:
-            # Update 
-            addresses = request.session.get('addresses')
+            print(form.errors)
+    else:
 
-            # Check if address is selected
-        
-
-        #Create step
-        #
-    request.session['addresses']
+        print("not post")
 
 
 def confirm_payment(request):
