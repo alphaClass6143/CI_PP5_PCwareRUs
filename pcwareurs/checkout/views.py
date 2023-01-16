@@ -11,13 +11,15 @@ def load_step(request):
     print(step)
 
     if step == 1:
-        addresses = Address.objects.filter(user=request.user)
+        
         return render(request,
-                      'checkout/cart_step.html', {'addresses': addresses})
+                      'checkout/cart_step.html')
 
     elif step == 2:
+        address_list = Address.objects.filter(user=request.user)
+        print(address_list)
         return render(request,
-                      'checkout/address_step.html')
+                      'checkout/address_step.html', {'address_list': address_list})
 
     elif step == 3:
         return render(request,
@@ -46,6 +48,51 @@ def previous_step(request):
 
     return render(request,
                   'home/index.html')
+
+
+
+
+def confirm_cart(request):
+    return redirect('next_step')
+
+
+def confirm_address(request):
+    '''
+    Confirming the address
+    '''
+    if request.method == 'POST':
+
+        # Check if step is created or updated
+
+        if 'addresses' not in request.session:
+            # Create
+            request.session['addresses'] = ""
+
+
+
+        else:
+            # Update 
+            addresses = request.session.get('addresses')
+
+            # Check if address is selected
+        
+
+        #Create step
+        #
+    request.session['addresses']
+
+
+def confirm_payment(request):
+
+    
+
+    # TODO Confirm payment
+    return redirect('next_step')
+
+
+def confirm_order(request):
+    # TODO Create final order
+    return redirect('next_step')
 
 
 

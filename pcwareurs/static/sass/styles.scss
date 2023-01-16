@@ -222,7 +222,7 @@ footer {
 
     #review-summary {
         @include row-layout;
-        
+
     }
 
     #review-list {
@@ -231,6 +231,27 @@ footer {
 
     }
     
+}
+
+#address-step-main {
+    
+
+    .form-user-address-container {
+
+
+        input[type="radio"] {
+            display: none;
+
+        }
+
+        input[type="radio"]:checked + .address-option {
+            border:2px solid blue;
+        }
+    }
+}
+
+.hidden {
+    display:none;
 }
 
 @media only screen and (min-width: 900px) {
