@@ -34,11 +34,6 @@ class Order(models.Model):
         on_delete=models.CASCADE,
     )
 
-    category = models.ForeignKey(
-        'category.Category',
-        on_delete=models.CASCADE,
-    )
-
     user = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,

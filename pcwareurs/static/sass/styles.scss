@@ -21,13 +21,19 @@ body {
 }
 
 #category-links {
-    @include reset-list;
-    @include row-layout;
+    // @include reset-list;
+    // @include row-layout;
     background-color: $secondary-color;
-    justify-content: space-around;
-    color:$text-color;
-    font-size:1.5rem;
-    padding:0.5rem;
+    
+    
+
+    ul {
+        width:100%;
+        font-size:1.5rem;
+        padding:0.5rem;
+        justify-content: space-around;
+        color:$text-color;
+    }
 
     a {
         transition: 0.3s;

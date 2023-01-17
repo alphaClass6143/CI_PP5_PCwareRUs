@@ -82,15 +82,13 @@ body {
   font-family: Ubunutu, sans-serif; }
 
 #category-links {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  background-color: #10316B;
-  justify-content: space-around;
-  color: #F2F7FF;
-  font-size: 1.5rem;
-  padding: 0.5rem; }
+  background-color: #10316B; }
+  #category-links ul {
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    justify-content: space-around;
+    color: #F2F7FF; }
   #category-links a {
     transition: 0.3s;
     height: 100%; }

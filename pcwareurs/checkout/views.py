@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from user.models import Address
 from checkout.forms import AddressForm
 
+import stripe
+
 # Create your views here.
 def load_step(request):
     '''
@@ -116,6 +118,22 @@ def confirm_address(request):
 
 def confirm_payment(request):
 
+    if request.method == 'POST':
+        stripe_token = request.POST['stripeToken']
+        try:
+            stripe.api_key = settings.STRIPE_SECRET_KEY
+            charge = stripe.Charge.create(
+                amount=1000,
+                currency='usd',
+                source=stripe_token,
+                description='Example charge'
+            )
+            # Handle successful payment
+            return redirect('order_confirmation')
+        except stripe.error.CardError as e:
+            # Handle errors
+            pass
+    return render(request, 'payment_error.html')
     
 
     # TODO Confirm payment
