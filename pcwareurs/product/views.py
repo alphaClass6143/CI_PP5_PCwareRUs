@@ -8,10 +8,47 @@ from product.forms import ReviewAddForm, ReviewEditForm
 
 from product.models import Product, Review
 
+
 def product_detail(request, category_handle, product_handle):
+    '''
+    Shows product page
+    '''
     product = Product.objects.get(product_handle=product_handle)
     reviews = Review.objects.filter(product=product)
     return render(request, 'product/product_detail.html', {'product': product, 'reviews': reviews})
+
+
+
+def add_product(request):
+    '''
+    Adds product
+    '''
+    # Query for the post
+    if request.user.is_staff():
+        # Add a new post
+        if request.method == 'POST':
+            if request.user.is_authenticated:
+                form = CommentForm(request.POST)
+                if form.is_valid():
+                    PostComment.objects.create(
+                        user=request.user,
+                        post=post,
+                        content=form.cleaned_data['content'],
+                        created_at=datetime.now()
+                    )
+                    return redirect('view_post', post_id=post.id)
+
+        return render(request,
+                    'product/add_product.html',
+                    {'error_message': 'Invalid request'})
+
+    return render(request,
+                    'home/index.html',
+                    {'error_message': 'No editing'})
+
+
+def edit_product(request, product_id):
+    pass
 
 
 

@@ -7,8 +7,6 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-from category.models import Category
-
 
 # Create your models here.
 class Manufacturer(models.Model):
@@ -23,6 +21,16 @@ class Manufacturer(models.Model):
         default=datetime.now
     )
 
+    manufacturer_modified_at = models.DateTimeField(
+        null=True
+    )
+
+    def __str__(self):
+        '''
+        Returns manufacturer name
+        '''
+        return self.manufacturer_name
+
 
 class Product(models.Model):
     '''
@@ -33,7 +41,8 @@ class Product(models.Model):
     )
 
     product_handle = models.CharField(
-        max_length=255
+        max_length=255,
+        unique=True
     )
 
     product_description = models.TextField()
@@ -55,6 +64,12 @@ class Product(models.Model):
     product_modified_at = models.DateTimeField(
         null=True
     )
+
+    def __str__(self):
+        '''
+        Returns product name
+        '''
+        return self.product_name
 
 
 class Review(models.Model):

@@ -17,8 +17,34 @@ class ReviewAddForm(forms.Form):
 
 class ReviewEditForm(forms.Form):
     '''
-    Review editform
+    Review edit form
     '''
     content = forms.CharField(
         widget=forms.Textarea
     )
+
+
+class ManufacturerForm(forms.Form):
+    '''
+    Manufacturer form
+    '''
+    manufacturer_name = forms.CharField(
+        max_length=255
+    )
+
+
+class ProductForm(forms.Form):
+    '''
+    Product form
+    '''
+    product_name = forms.CharField(
+        max_length=255
+    )
+
+    product_description = forms.CharField(
+        widget=forms.Textarea
+    )
+
+    manufacturer_id = forms.IntegerField()
+
+    category_id = forms.IntegerField()
