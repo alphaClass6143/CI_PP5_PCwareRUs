@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PCwareRUs</title>
 
-    <meta name="description" content="MiniTwitter, post your thoughts!">
-    <meta name="keywords" content="twitter, posting, thoughts, voting, login, commenting">
-    <meta name="author" content="Robin Bosch">
+    {% block meta %}
+        <meta name="description" content="MiniTwitter, post your thoughts!">
+        <meta name="keywords" content="twitter, posting, thoughts, voting, login, commenting">
+        <meta name="author" content="Robin Bosch">
+    {% endblock %}
 
     {% load static %}
     <link rel="icon" type="image/x-icon" href="{% static 'images/paper-plane-solid.svg' %}">
@@ -24,16 +26,18 @@
     {% load sass_tags %}
     <link rel="stylesheet" href="{% sass_src 'sass/styles.scss' %}">
 
+
+
     <!-- Include Bootstrap CSS from BootstrapCDN -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
 </head>
 <body >
     {% block header %}
-    <header class="">
+    <header>
         <section id="header-menu">
             <div id="header-logo">PCwareRUs</div>
             <div id="header-user">
-                <button id="cart-btn" class="btn btn-primary">
+                <button class="btn btn-primary cart-btn">
                     <i class="fa-solid fa-cart-shopping"></i>
                 </button>
 
@@ -66,31 +70,40 @@
         </nav>
         
         <div id="cart" aria-busy="true">
-            <h2>Shopping cart</h2>
-            {% block cart %}
+            <div id="cart-header">
+                <h2>Shopping cart</h2>
+                <button id="close-cart-btn" class="btn btn-danger">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <div id="cart-content">
+            {% block cart_content %}
                 {% for key, item in cart.items %}
                     <div class="cart-item">
-                        <img src="https://picsum.photos/200/200" alt="">
-                        <h3>{{ item.product_name }}</h3>
+                        <a class="cart-item-overview" href="{% url 'product_detail' category_handle=item.category_handle product_handle=item.product_handle %}">
+                            <img src="https://picsum.photos/200/200" alt="">
+                            <h3>{{ item.product_name }}</h3>
+                        </a>
                         <div class="cart-item-control">
                             <div class="cart-item-quantity">
-                                <button class="cart-item-quantity-minus btn-primary" onclick="updateCart({{ key }}, {{ item.quantity}}-1)">
+                                <button class="cart-item-quantity-minus btn btn-danger" onclick="updateCart({{ key }}, {{ item.quantity}}-1)">
                                     <i class="fa-solid fa-minus"></i>
                                 </button>
-                                <input type="number" id="" value="{{ item.quantity }}" readonly>
-                                <button class="cart-item-quantity-plus btn-primary" onclick="updateCart({{ key }}, {{ item.quantity}}+1)">
+                                <input type="number" class="quantity-number" value="{{ item.quantity }}" readonly>
+                                <button class="cart-item-quantity-plus btn btn-success" onclick="updateCart({{ key }}, {{ item.quantity}}+1)">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
                             </div>
-                            <button class="btn btn-primary" onclick="removeFromCart({{ key }})">
+                            <button class="btn btn-danger" onclick="removeFromCart({{ key }})">
                                 <i class="fa-solid fa-trash-can"></i>
                             </button>
                         </div>
                     </div>
                 {% endfor %}
-                
-            {% endblock cart %}
-            <a href="{% url 'load_step' %}" class="btn-primary" aria-role="button">Checkout</a>
+            {% endblock cart_content %}
+            </div>
+            <a href="{% url 'load_step' %}" class="btn btn-primary" aria-role="button">Checkout</a>
         </div>
         
 

@@ -68,99 +68,145 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important; } }
 
-a {
-  text-decoration: none;
-  color: inherit; }
-
 header {
   display: flex;
   flex-direction: column; }
-  header section {
-    padding: 0; }
-
-body {
-  font-family: Ubunutu, sans-serif; }
-
-#category-links {
-  background-color: #10316B; }
-  #category-links ul {
+  header #header-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem 1rem 2rem;
+    align-items: center;
     width: 100%;
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    justify-content: space-around;
-    color: #F2F7FF; }
-  #category-links a {
-    transition: 0.3s;
-    height: 100%; }
-  #category-links a:hover {
-    cursor: pointer;
-    transition: 0.3s;
-    color: black;
-    background-color: #F2F7FF; }
-
-#header-menu {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 2rem 1rem 2rem;
-  align-items: center;
-  width: 100%;
-  top: 0;
-  left: 0;
-  background-color: #0B409C;
-  color: white;
-  justify-content: space-between; }
-  #header-menu #header-search {
-    position: relative;
-    display: flex; }
-    #header-menu #header-search .search-input {
+    top: 0;
+    left: 0;
+    background-color: #0B409C;
+    color: white;
+    justify-content: space-between; }
+    header #header-menu #header-search {
+      position: relative;
+      display: flex; }
+      header #header-menu #header-search .search-input {
+        width: 100%;
+        border: 2px solid #FDBE34;
+        border-right: none;
+        padding: 5px;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        color: black; }
+      header #header-menu #header-search .search-btn {
+        width: 40px;
+        border: 1px solid #FDBE34;
+        background: #FDBE34;
+        text-align: center;
+        color: #fff;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 20px;
+        transition: 0.3s; }
+      header #header-menu #header-search .search-btn:hover {
+        transition: 0.3s;
+        background-color: #10316B; }
+  header #category-links {
+    background-color: #10316B; }
+    header #category-links ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
       width: 100%;
-      border: 3px solid #FDBE34;
-      border-right: none;
-      padding: 5px;
-      border-radius: 5px 0 0 5px;
-      outline: none;
-      color: black; }
-    #header-menu #header-search .search-btn {
-      width: 40px;
-      border: 1px solid #FDBE34;
-      background: #FDBE34;
-      text-align: center;
-      color: #fff;
-      border-radius: 0 5px 5px 0;
-      cursor: pointer;
-      font-size: 20px;
-      transition: 0.3s; }
-    #header-menu #header-search .search-btn:hover {
+      font-size: 1.5rem;
+      justify-content: space-around;
+      color: #F2F7FF; }
+    header #category-links a {
+      display: flex;
       transition: 0.3s;
-      background-color: #10316B; }
-
+      padding: 1rem; }
+    header #category-links a:hover {
+      cursor: pointer;
+      transition: 0.3s;
+      color: black;
+      background-color: #F2F7FF; }
+  @media only screen and (min-width: 900px) {
+    header #header-menu {
+      flex-direction: row; }
+    header #header-user {
+      order: 3; } }
 #cart {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: fixed;
-  background-color: azure;
-  top: 4.5rem;
-  width: 30rem;
   height: 100vh;
+  background-color: white;
+  overflow-y: auto;
+  top: 0rem;
+  width: 100vw;
   transition: 0.5s;
-  right: -40rem;
-  border-left: 1px solid black;
-  box-shadow: 5px 0px 15px 0px rgba(0, 0, 0, 0.75); }
+  left: 105vw;
+  box-shadow: 5px 0px 15px 0px rgba(0, 0, 0, 0.75);
+  gap: 2rem;
+  padding: 2rem; }
+  #cart #cart-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between; }
+  #cart #cart-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem; }
   #cart .cart-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid black;
-    border-radius: 5px; }
+    padding: 2rem;
+    width: clamp(5rem, 90vw, 20rem);
+    background: azure;
+    border-radius: 10px;
+    gap: 1rem;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75); }
+    #cart .cart-item .cart-item-overview {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
     #cart .cart-item .cart-item-control {
-      display: flex; }
+      display: flex;
+      width: 100%;
+      justify-content: space-between; }
+      #cart .cart-item .cart-item-control .quantity-number {
+        width: 2rem; }
 
 #cart.cart-toggle {
+  left: 0;
+  transition: 0.5s; }
+
+@media only screen and (min-width: 800px) {
+  #cart {
+    width: 50vw; }
+  #cart.cart-toggle {
+    left: 50vw; } }
+
+@media only screen and (min-width: 600px) {
+  #cart {
+    width: 75vw; }
+  #cart.cart-toggle {
+    left: 25vw; } }
+
+@media only screen and (min-width: 900px) {
+  #cart {
+    width: 30rem; }
+  #cart.cart-toggle {
+    left: calc(100vw - 30rem); } }
+
+a {
+  text-decoration: none;
+  color: inherit; }
+
+body {
   display: flex;
   flex-direction: column;
-  right: 0rem;
-  transition: 0.5s; }
+  width: 100%;
+  font-family: Ubunutu, sans-serif; }
 
 footer {
   display: flex;
@@ -180,25 +226,36 @@ footer {
 
 .btn {
   padding: 0.25rem 0.5rem;
-  transition: 0.3s; }
+  transition: 0.3s;
+  border-radius: 5px;
+  border: none; }
 
 .btn:hover {
   cursor: pointer;
+  transform: scale(1.05);
   transition: 0.3s; }
 
 .btn-primary {
   transition: 0.3s;
   color: black;
-  padding: 0.25rem 0.5rem;
-  border: 1px solid black;
-  background-color: #FDBE34;
-  border-radius: 5px; }
+  background-color: #FDBE34; }
 
 .btn-primary:hover {
   cursor: pointer;
-  transform: scale(1.05);
-  background-color: #ffa600;
-  transition: 0.3s; }
+  background-color: #ffa600; }
+
+.btn-danger {
+  color: white;
+  background-color: #c00000; }
+
+.btn-danger:hover {
+  background-color: #6d0000; }
+
+.btn-success {
+  background-color: #00b100; }
+
+.btn-success:hover {
+  background-color: green; }
 
 .main {
   display: flex;
@@ -262,11 +319,5 @@ footer {
 
 .hidden {
   display: none; }
-
-@media only screen and (min-width: 900px) {
-  #header-menu {
-    flex-direction: row; }
-  #header-user {
-    order: 3; } }
 
 /*# sourceMappingURL=styles.css.map */

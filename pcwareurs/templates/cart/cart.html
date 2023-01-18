@@ -1,27 +1,24 @@
-{% block cart %}
-
-<h2>Shopping cart</h2>
-{% for key, item in cart.items %}
-    <div class="cart-item">
-        <img src="https://picsum.photos/200/200" alt="">
-        <h3>{{ item.product_name }}</h3>
-        <div class="cart-item-control">
-            <div class="cart-item-quantity">
-                <button class="cart-item-quantity-minus btn-primary" onclick="updateCart({{ key }}, {{ item.quantity}}-1)">
-                    <i class="fa-solid fa-minus"></i>
-                </button>
-                <input type="number" id="" value="{{ item.quantity }}">
-                <button class="cart-item-quantity-plus btn-primary" onclick="updateCart({{ key }}, {{ item.quantity}}+1)">
-                    <i class="fa-solid fa-plus"></i>
+{% block cart_content %}
+    {% for key, item in cart.items %}
+        <div class="cart-item">
+            <div class="cart-item-overview">
+                <img src="https://picsum.photos/200/200" alt="">
+                <h3>{{ item.product_name }}</h3>
+            </div>
+            <div class="cart-item-control">
+                <div class="cart-item-quantity">
+                    <button class="cart-item-quantity-minus btn-primary" onclick="updateCart({{ key }}, {{ item.quantity}}-1)">
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <input type="number" class="quantity-number" value="{{ item.quantity }}" readonly>
+                    <button class="cart-item-quantity-plus btn-primary" onclick="updateCart({{ key }}, {{ item.quantity}}+1)">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+                <button class="btn btn-primary" onclick="removeFromCart({{ key }})">
+                    <i class="fa-solid fa-trash-can"></i>
                 </button>
             </div>
-            <button class="btn btn-primary" onclick="removeFromCart({{ key }})">
-                <i class="fa-solid fa-trash-can"></i>
-            </button>
         </div>
-    </div>
-
-{% endfor %}
-    <a href="{% url 'load_step' %}" class="btn-primary" aria-role="button">Checkout</a>
-
+    {% endfor %}
 {% endblock %}

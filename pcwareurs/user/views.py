@@ -5,6 +5,7 @@ from datetime import datetime
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 from django.views.generic import (
     CreateView,
     UpdateView,
@@ -17,13 +18,13 @@ from user.forms import AddressForm
 from user.models import Address
 
 # Create your views here.
+@login_required
 def user_overview(request):
     '''
     User overview
     '''
-    if request.user.is_authenticated:
-        address_list = Address.objects.filter(user=request.user, is_used=False)
-        return render(request, 'user/user_overview.html', {'address_list': address_list})
+    address_list = Address.objects.filter(user=request.user, is_used=False)
+    return render(request, 'user/user_overview.html', {'address_list': address_list})
 
 
 def add_address(request):

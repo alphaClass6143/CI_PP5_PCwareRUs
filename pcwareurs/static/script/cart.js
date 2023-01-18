@@ -1,7 +1,11 @@
 
-document.querySelector('#cart-btn').addEventListener('click', function() {
+document.querySelector('.cart-btn').addEventListener('click', function() {
     document.querySelector('#cart').classList.toggle('cart-toggle');
     console.log("Used")
+});
+
+document.querySelector('#close-cart-btn').addEventListener('click', function() {
+    document.querySelector('#cart').classList.remove('cart-toggle');
 });
 
 
@@ -22,11 +26,11 @@ function addToCart(productId, quantity) {
         if (data.success) {
             console.log("success")
 
-            if (!document.querySelector('#cart').classList.contains("cart-toggle")) {
-                document.querySelector('#cart').classList.toggle('cart-toggle');
+            if (!document.querySelector('#cart-content').classList.contains("cart-toggle")) {
+                document.querySelector('#cart-content').classList.toggle('cart-toggle');
             }
             
-            document.querySelector('#cart').innerHTML = data.cart_html
+            document.querySelector('#cart-content').innerHTML = data.cart_html
         } else {
             // show an error message
             console.log(data)
@@ -51,11 +55,11 @@ function removeFromCart(productId) {
         if (data.success) {
             console.log("success")
             
-            if (!document.querySelector('#cart').classList.contains("cart-toggle")) {
-                document.querySelector('#cart').classList.toggle('cart-toggle');
+            if (!document.querySelector('#cart-content').classList.contains("cart-toggle")) {
+                document.querySelector('#cart-content').classList.toggle('cart-toggle');
             }
 
-            document.querySelector('#cart').innerHTML = data.cart_html
+            document.querySelector('#cart-content').innerHTML = data.cart_html
         } else {
             // show an error message
             console.log(data)
@@ -81,11 +85,11 @@ function updateCart(productId, quantity) {
         if (data.success) {
             console.log("success")
             
-            if (!document.querySelector('#cart').classList.contains("cart-toggle")) {
-                document.querySelector('#cart').classList.toggle('cart-toggle');
+            if (!document.querySelector('#cart-content').classList.contains("cart-toggle")) {
+                document.querySelector('#cart-content').classList.toggle('cart-toggle');
             }
             
-            document.querySelector('#cart').innerHTML = data.cart_html
+            document.querySelector('#cart-content').innerHTML = data.cart_html
         } else {
             // show an error message
             console.log(data)
