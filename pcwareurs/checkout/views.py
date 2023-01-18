@@ -4,6 +4,17 @@ from user.models import Address
 from checkout.forms import AddressForm
 
 import stripe
+import json
+from django.contrib import messages
+
+from django.conf import settings
+
+
+from django.http import JsonResponse
+from django.views import View
+
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 # Create your views here.
 def load_step(request):
@@ -29,6 +40,38 @@ def load_step(request):
                       'checkout/address_step.html', {'address_list': address_list, 'delivery_address': delivery_address, 'billing_address': billing_address})
 
     elif step == 3:
+        stripe_public_key = settings.STRIPE_PUBLIC_KEY
+        stripe_secret_key = settings.STRIPE_SECRET_KEY
+
+        cart = request.session.get('cart', {})
+        if not cart:
+            messages.error(request,
+                           "There's nothing in your bag at the moment")
+            return redirect('home')
+
+        #TODO Update with real total
+        total = 100
+        stripe_total = round(total * 100)
+        stripe.api_key = stripe_secret_key
+        intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
+        )
+
+
+        if not stripe_public_key:
+            messages.warning(request, ('Stripe public key is missing. '
+                                    'Did you forget to set it in '
+                                    'your environment?'))
+
+        template = 'checkout/payment_step.html'
+        context = {
+            'stripe_public_key': stripe_public_key,
+            'client_secret': intent.client_secret,
+        }
+
+        return render(request, template, context)
+
         return render(request,
                       'checkout/payment_step.html')
 
@@ -116,12 +159,31 @@ def confirm_address(request):
         print("not post")
 
 
+class CreatePaymentView(View):
+    def post(self, request):
+        try:
+            data = json.loads(request.body)
+            # Create a PaymentIntent with the order amount and currency
+            intent = stripe.PaymentIntent.create(
+                amount=200,
+                currency='eur',
+                automatic_payment_methods={
+                    'enabled': True,
+                },
+            )
+            return JsonResponse({
+                'clientSecret': intent['client_secret']
+            })
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=403)
+    
+
 def confirm_payment(request):
 
     if request.method == 'POST':
         stripe_token = request.POST['stripeToken']
         try:
-            stripe.api_key = settings.STRIPE_SECRET_KEY
+            
             charge = stripe.Charge.create(
                 amount=1000,
                 currency='usd',

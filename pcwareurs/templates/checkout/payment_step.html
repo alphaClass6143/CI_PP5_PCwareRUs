@@ -6,6 +6,7 @@
     
     <h1>Payment step</h1>
     <form id="payment-form" action="{% url 'confirm_payment' %}" method="POST">
+        {% csrf_token %}
         <div id="link-authentication-element">
             <!--Stripe.js injects the Link Authentication Element-->
           </div>
@@ -26,12 +27,21 @@
     </div>
     
 </main>
+
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"stripePublic" }}
+    {{ client_secret|json_script:"clientSecret" }}
+{% endblock %}
+
 <script src="https://js.stripe.com/v3/"></script>
 <script>
-    var stripe = Stripe('');
-    var elements = stripe.elements();
-    var cardElement = elements.create('card');
-    cardElement.mount('#card-element');
+    const stripePublic = JSON.parse(document.getElementById('stripePublic').textContent);
+    const clientSecret = JSON.parse(document.getElementById('clientSecret').textContent);
+    // var stripe = Stripe('');
+    // var elements = stripe.elements();
+    // var cardElement = elements.create('card');
+    // cardElement.mount('#card-element');
 
     var form = document.getElementById('payment-form');
 form.addEventListener('submit', function(event) {
@@ -53,10 +63,10 @@ form.addEventListener('submit', function(event) {
 });
 
 // This is your test publishable API key.
-const stripe = Stripe("pk_test_51MKv3eFoMAW3piUFKEesXVBIZn1QdsJ0HE2bHNCB20sIVj4M1OiRmFaCyXT6Bs6lYoeSTWY7N37ajBoFwygp6CAO00dal6hIIy");
+const stripe = Stripe(stripePublic);
 
 // The items the customer wants to buy
-const items = [{ id: "xl-tshirt" }];
+const items = [{ "id":"this"}];
 
 let elements;
 
@@ -70,12 +80,15 @@ document
 var emailAddress = '';
 // Fetches a payment intent and captures the client secret
 async function initialize() {
-  const response = await fetch("/create-payment-intent", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ items }),
-  });
-  const { clientSecret } = await response.json();
+//   const response = await fetch("/checkout/create-payment", {
+//     method: "POST",
+//     headers: { 
+//         "Content-Type": "application/json",
+//         "X-CSRFToken": "{{ csrf_token }}"
+//     },
+//     body: JSON.stringify({ "id":"this"}),
+//   });
+//   const { clientSecret } = await response.json();
 
   const appearance = {
     theme: 'stripe',
@@ -315,3 +328,5 @@ button:disabled {
 </style>
 
 {% endblock %}
+
+

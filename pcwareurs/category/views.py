@@ -8,6 +8,11 @@ from .models import Category
 from product.models import Product
 
 def category_detail(request, handle):
+    '''
+    List category
+    '''
     category = Category.objects.get(category_handle=handle)
     products = Product.objects.filter(category=category)
     return render(request, 'category/category_detail.html', {'category': category, 'products': products})
+
+

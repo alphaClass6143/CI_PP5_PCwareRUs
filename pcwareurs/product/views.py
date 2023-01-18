@@ -4,9 +4,10 @@ Product views
 from datetime import datetime
 from django.shortcuts import render, redirect, get_object_or_404
 
-from product.forms import ReviewAddForm, ReviewEditForm
+from product.forms import ReviewAddForm, ReviewEditForm, ProductForm
 
-from product.models import Product, Review
+from product.models import Product, Review, Manufacturer
+from category.models import Category
 
 
 def product_detail(request, category_handle, product_handle):
@@ -24,23 +25,32 @@ def add_product(request):
     Adds product
     '''
     # Query for the post
-    if request.user.is_staff():
+    if request.user.is_staff:
         # Add a new post
         if request.method == 'POST':
-            if request.user.is_authenticated:
-                form = CommentForm(request.POST)
-                if form.is_valid():
-                    PostComment.objects.create(
-                        user=request.user,
-                        post=post,
-                        content=form.cleaned_data['content'],
-                        created_at=datetime.now()
-                    )
-                    return redirect('view_post', post_id=post.id)
+            form = ProductForm(request.POST)
+            if form.is_valid():
+                
+                # Get category and manufacturer
+                category = Category.objects.get(id=form.cleaned_data['category_id'])
+                manufacturer = Manufacturer.objects.get(id=form.cleaned_data['manufacturer_id'])
+
+                Product.objects.create(
+                    product_name=form.cleaned_data['name'],
+                    handle=form.cleaned_data['handle'],
+                    product_description=form.cleaned_data['description'],
+                    manufacturer=manufacturer,
+                    category=category,
+                    product_created_at=datetime.now()
+                )
+                return redirect('product_detail', category_handle=category.category_handle, product_handle=form.cleaned_data['handle'],)
+
+            return render(request,
+                'product/add_product.html',
+                {'error_message': 'Invalid request'})
 
         return render(request,
-                    'product/add_product.html',
-                    {'error_message': 'Invalid request'})
+                    'product/add_product.html')
 
     return render(request,
                     'home/index.html',
@@ -48,8 +58,28 @@ def add_product(request):
 
 
 def edit_product(request, product_id):
+    '''
+    Edit product
+    '''
     pass
 
+
+def delete_product(request, product_id):
+    '''
+    Delete product
+    '''
+    # Query for the post
+    if request.user.is_staff:
+        product = get_object_or_404(Product, pk=product_id)
+        category_handle = product.category.category_handle
+
+        product.delete()
+
+        return redirect('category_detail', category_handle=category_handle)
+
+    return render(request,
+                    'home/index.html',
+                    {'error_message': 'No editing'})
 
 
 def add_review(request, product_id):
@@ -79,7 +109,7 @@ def add_review(request, product_id):
             # Invalid request for review add -> exists
             return render(request,
                   'home/index.html',
-                  {'error_message': 'Invalid request'})
+                  {'error_message': 'This review does not exist'})
 
     return render(request,
                   'home/index.html',

@@ -65,11 +65,29 @@ class Product(models.Model):
         null=True
     )
 
+
     def __str__(self):
         '''
         Returns product name
         '''
         return self.product_name
+
+
+class Stock(models.Model):
+    '''
+    Stock model
+    '''
+    product = models.ForeignKey(
+        'Product',
+        on_delete=models.CASCADE,
+    )
+
+    price = models.DecimalField(
+        max_digits=9,
+        decimal_places=2
+    )
+
+    quantity = models.PositiveIntegerField()
 
 
 class Review(models.Model):

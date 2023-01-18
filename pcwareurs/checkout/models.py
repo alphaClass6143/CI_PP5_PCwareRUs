@@ -68,4 +68,4 @@ class OrderPosition(models.Model):
         on_delete=models.CASCADE,
     )
 
-    quantity = models.IntegerField()
+    quantity = models.PositiveIntegerField()

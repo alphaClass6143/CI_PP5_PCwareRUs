@@ -32,6 +32,7 @@ def cart_add(request):
                 cart[str(product.id)] = {
                     "product_id": product_id,
                     "product_name": product.product_name,
+                    # TODO: Add image
                     "product_image": "nope",
                     'quantity': int(quantity)
                 }

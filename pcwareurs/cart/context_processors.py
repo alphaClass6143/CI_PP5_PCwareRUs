@@ -1,5 +1,9 @@
 
 
+
+def cart(request):
+    pass
+
 def cart_list(request):
     '''
     Provide cart
