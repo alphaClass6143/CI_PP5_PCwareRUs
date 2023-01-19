@@ -1,0 +1,75 @@
+[
+    {
+        "model": "product.Stock",
+        "pk": 1,
+        "fields": {
+            "product": 1,
+            "price": 200.00,
+            "quantity": 15
+        }
+    },
+    {
+        "model": "product.Stock",
+        "pk": 2,
+        "fields": {
+            "product": 1,
+            "price": 190.00,
+            "quantity": 5
+        }
+    },
+    {
+        "model": "product.Stock",
+        "pk": 3,
+        "fields": {
+            "product": 2,
+            "price": 350.00,
+            "quantity": 15
+        }
+    },
+    {
+        "model": "product.Stock",
+        "pk": 4,
+        "fields": {
+            "product": 3,
+            "price": 300.00,
+            "quantity": 20
+        }
+    },
+    {
+        "model": "product.Stock",
+        "pk": 5,
+        "fields": {
+            "product": 4,
+            "price": 300.00,
+            "quantity": 20
+        }
+    },
+    {
+        "model": "product.Stock",
+        "pk": 6,
+        "fields": {
+            "product": 4,
+            "price": 280.00,
+            "quantity": 3
+        }
+    },
+    {
+        "model": "product.Stock",
+        "pk": 7,
+        "fields": {
+            "product": 5,
+            "price": 150.00,
+            "quantity": 18
+        }
+    },
+    {
+        "model": "product.Stock",
+        "pk": 8,
+        "fields": {
+            "product": 6,
+            "price": 90.00,
+            "quantity": 20
+        }
+    }
+    
+]

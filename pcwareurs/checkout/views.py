@@ -72,8 +72,6 @@ def load_step(request):
 
         return render(request, template, context)
 
-        return render(request,
-                      'checkout/payment_step.html')
 
     elif step == 4:
         return render(request,

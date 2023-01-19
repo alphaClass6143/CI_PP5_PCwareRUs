@@ -1,0 +1,1 @@
+web: pipenv shell && gunicorn pcwareurs.wsgi:application

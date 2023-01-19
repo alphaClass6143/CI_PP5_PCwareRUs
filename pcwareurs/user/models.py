@@ -16,6 +16,10 @@ class Address(models.Model):
         on_delete=models.CASCADE,
     )
 
+    full_name = models.CharField(
+        max_length=255
+    )
+
     street = models.CharField(
         max_length=255
     )

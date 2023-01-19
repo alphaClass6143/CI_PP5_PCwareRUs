@@ -1,0 +1,6 @@
+{
+    "python.linting.pycodestyleEnabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.enabled": true,
+    "python.linting.pylintPath": "C:\\Users\\alpha\\.virtualenvs\\CI_PP5-g0T7nrxC\\Scripts\\pylint.exe"
+}
