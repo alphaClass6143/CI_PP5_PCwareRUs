@@ -71,11 +71,6 @@ def load_step(request):
         }
 
         return render(request, template, context)
-
-
-    elif step == 4:
-        return render(request,
-                      'checkout/confirm_step.html')
     
     else:
         # Step does not exist
@@ -115,6 +110,7 @@ def confirm_address(request):
             print("is valid")
             if request.POST['delivery_address'] == 'custom':
                 delivery_address = {
+                    'full_name': request.POST['custom_delivery_full_name'],
                     'street': request.POST['custom_delivery_street'],
                     'city': request.POST['custom_delivery_city'],
                     'zip': request.POST['custom_delivery_zip'],

@@ -31,15 +31,6 @@
         "model": "category.category",
         "pk": 4,
         "fields": {
-            "name": "Cases",
-            "handle": "cases",
-            "description": "A computer case, also known as a tower or chassis, is the enclosure that contains the main components of a computer. It provides structural support and protection for the components, and controls the airflow to keep the components cool."
-        }
-    },
-    {
-        "model": "category.category",
-        "pk": 5,
-        "fields": {
             "name": "Motherboards",
             "handle": "motherboards",
             "description": "A motherboard is the main circuit board in a computer. It houses the CPU, memory, and other components, and provides connectors for the peripherals and expansion cards."
@@ -47,7 +38,7 @@
     },
     {
         "model": "category.category",
-        "pk": 6,
+        "pk": 5,
         "fields": {
             "name": "Storage",
             "handle": "storage",
@@ -56,20 +47,11 @@
     },
     {
         "model": "category.category",
-        "pk": 7,
+        "pk": 6,
         "fields": {
             "name": "Memory",
             "handle": "memory",
             "description": "Memory refers to the devices and media used to store data and programs on a computer. These can include RAM, ROM, and other types of memory."
-        }
-    },
-    {
-        "model": "category.category",
-        "pk": 8,
-        "fields": {
-            "name": "Cooling Solutions",
-            "handle": "cooling-solutions",
-            "description": "Cooling solutions are devices and systems used to keep the components of a computer cool and prevent overheating. These can include fans, heat sinks, water cooling systems, and other cooling devices."
         }
     }
 ]

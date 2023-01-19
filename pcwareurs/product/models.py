@@ -57,6 +57,15 @@ class Product(models.Model):
         on_delete=models.CASCADE,
     )
 
+    price = models.DecimalField(
+        max_digits=9,
+        decimal_places=2
+    )
+
+    is_active = models.BooleanField(
+        default=True
+    )
+
     product_created_at = models.DateTimeField(
         default=datetime.now
     )
@@ -71,23 +80,6 @@ class Product(models.Model):
         Returns product name
         '''
         return self.product_name
-
-
-class Stock(models.Model):
-    '''
-    Stock model
-    '''
-    product = models.ForeignKey(
-        'Product',
-        on_delete=models.CASCADE,
-    )
-
-    price = models.DecimalField(
-        max_digits=9,
-        decimal_places=2
-    )
-
-    quantity = models.PositiveIntegerField()
 
 
 class Review(models.Model):

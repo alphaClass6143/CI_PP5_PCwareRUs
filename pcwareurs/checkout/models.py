@@ -7,15 +7,6 @@ from django.contrib.auth import get_user_model
 
 
 # Create your models here.
-class PaymentMethod(models.Model):
-    '''
-    PaymentMethod model
-    '''
-    payment_name = models.CharField(
-        max_length=255
-    )
-
-
 class Order(models.Model):
     '''
     Order model
@@ -29,9 +20,8 @@ class Order(models.Model):
         default=datetime.now
     )
 
-    payment_method = models.ForeignKey(
-        'PaymentMethod',
-        on_delete=models.CASCADE,
+    payment_id = models.CharField(
+        max_length=255
     )
 
     user = models.ForeignKey(
@@ -56,7 +46,7 @@ class OrderPosition(models.Model):
     '''
     OrderPosition model
     '''
-    position = models.IntegerField()
+    position = models.PositiveIntegerField()
 
     order = models.ForeignKey(
         'Order',
