@@ -8,6 +8,12 @@ class AddressForm(forms.Form):
     '''
     Address form
     '''
+    full_name = forms.CharField(
+        label='full_name',
+        max_length=255,
+        required=True
+    )
+
     street = forms.CharField(
         label='street',
         max_length=255,

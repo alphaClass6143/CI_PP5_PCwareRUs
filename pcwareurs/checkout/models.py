@@ -24,6 +24,10 @@ class Order(models.Model):
         max_length=255
     )
 
+    payment_successful = models.BooleanField(
+        default=False
+    )
+
     user = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,

@@ -68,6 +68,7 @@ def load_step(request):
         context = {
             'stripe_public_key': stripe_public_key,
             'client_secret': intent.client_secret,
+            'total': total
         }
 
         return render(request, template, context)
@@ -151,25 +152,6 @@ def confirm_address(request):
     else:
 
         print("not post")
-
-
-class CreatePaymentView(View):
-    def post(self, request):
-        try:
-            data = json.loads(request.body)
-            # Create a PaymentIntent with the order amount and currency
-            intent = stripe.PaymentIntent.create(
-                amount=200,
-                currency='eur',
-                automatic_payment_methods={
-                    'enabled': True,
-                },
-            )
-            return JsonResponse({
-                'clientSecret': intent['client_secret']
-            })
-        except Exception as e:
-            return JsonResponse({'error': str(e)}, status=403)
     
 
 def confirm_payment(request):

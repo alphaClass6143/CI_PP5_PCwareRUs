@@ -14,10 +14,16 @@ def product_detail(request, category_handle, product_handle):
     '''
     Shows product page
     '''
-    product = Product.objects.get(product_handle=product_handle)
+    get_object_or_404(Category, category_handle=category_handle)
+    product = get_object_or_404(Product, product_handle=product_handle)
     reviews = Review.objects.filter(product=product)
-    return render(request, 'product/product_detail.html', {'product': product, 'reviews': reviews})
 
+    template = 'product/product_detail.html'
+    context = {
+        'product': product,
+        'reviews': reviews
+    }
+    return render(request, template, context)
 
 
 def add_product(request):
@@ -30,7 +36,7 @@ def add_product(request):
         if request.method == 'POST':
             form = ProductForm(request.POST)
             if form.is_valid():
-                
+
                 # Get category and manufacturer
                 category = Category.objects.get(id=form.cleaned_data['category_id'])
                 manufacturer = Manufacturer.objects.get(id=form.cleaned_data['manufacturer_id'])
@@ -43,18 +49,28 @@ def add_product(request):
                     category=category,
                     product_created_at=datetime.now()
                 )
-                return redirect('product_detail', category_handle=category.category_handle, product_handle=form.cleaned_data['handle'],)
+                return redirect(
+                    'product_detail',
+                    category_handle=category.category_handle,
+                    product_handle=form.cleaned_data['handle']
+                )
 
-            return render(request,
+            return render(
+                request,
                 'product/add_product.html',
-                {'error_message': 'Invalid request'})
+                {'error_message': 'Invalid request'}
+            )
 
-        return render(request,
-                    'product/add_product.html')
+        return render(
+            request,
+            'product/add_product.html'
+        )
 
-    return render(request,
-                    'home/index.html',
-                    {'error_message': 'No editing'})
+    return render(
+        request,
+        'home/index.html',
+        {'error_message': 'No editing'}
+    )
 
 
 def edit_product(request, product_id):
@@ -75,11 +91,16 @@ def delete_product(request, product_id):
 
         product.delete()
 
-        return redirect('category_detail', category_handle=category_handle)
+        return redirect(
+            'category_detail',
+            category_handle=category_handle
+        )
 
-    return render(request,
-                    'home/index.html',
-                    {'error_message': 'No editing'})
+    return render(
+        request,
+        'home/index.html',
+        {'error_message': 'No editing'}
+    )
 
 
 def add_review(request, product_id):
@@ -107,13 +128,17 @@ def add_review(request, product_id):
                     return redirect('product_detail', product_id=product.id)
 
             # Invalid request for review add -> exists
-            return render(request,
-                  'home/index.html',
-                  {'error_message': 'This review does not exist'})
+            return render(
+                request,
+                'home/index.html',
+                {'error_message': 'This review does not exist'}
+            )
 
-    return render(request,
-                  'home/index.html',
-                  {'error_message': 'Invalid request'})
+    return render(
+        request,
+        'home/index.html',
+        {'error_message': 'Invalid request'}
+    )
 
 
 def edit_review(request, review_id):

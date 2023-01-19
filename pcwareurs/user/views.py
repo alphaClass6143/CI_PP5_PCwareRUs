@@ -9,6 +9,8 @@ from django.contrib.auth.decorators import login_required
 from user.forms import AddressForm
 
 from user.models import Address
+from checkout.models import Order
+from product.models import Review
 
 # Create your views here.
 @login_required
@@ -16,11 +18,15 @@ def user_overview(request):
     '''
     User overview
     '''
-    address_list = Address.objects.filter(user=request.user, is_used=False)
+    address_list = Address.objects.filter(user=request.user, is_active=True)
+    order_list = Order.objects.filter(user=request.user)
+    review_list = Review.objects.filter(user=request.user)
 
     template = 'user/user_overview.html'
     context = {
-        'address_list': address_list
+        'address_list': address_list,
+        'order_list': order_list,
+        'review_list': review_list
     }
     return render(request, template, context)
 
@@ -32,9 +38,9 @@ def add_address(request):
     '''
 
     if request.method == 'POST':
-        
+
         form = AddressForm(request.POST)
-        
+
         if form.is_valid():
             Address.objects.create(
                 user=request.user,
@@ -46,9 +52,10 @@ def add_address(request):
             )
 
             return redirect('user_overview')
-            
+
         return render(request, 'user/add_address.html', {'error_message': 'Invalid input'})
     return render(request, 'user/add_address.html')
+
 
 @login_required
 def edit_address(request, address_id):
@@ -60,9 +67,9 @@ def edit_address(request, address_id):
     if address.user == request.user:
 
         if request.method == 'POST':
-        
+
             form = AddressForm(request.POST)
-            
+
             if form.is_valid():
                 if address.is_used:
                     Address.objects.create(
@@ -88,6 +95,7 @@ def edit_address(request, address_id):
     # TODO: Add restricted access message
     return redirect('user_overview')
 
+
 @login_required
 def delete_address(request, address_id):
     '''
@@ -107,5 +115,5 @@ def delete_address(request, address_id):
                 address.save()
             else:
                 address.delete()
-
+    # TODO: Add errors for naughty users
     return redirect('user_overview')

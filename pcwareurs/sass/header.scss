@@ -50,14 +50,11 @@ header {
     #category-links {
         background-color: $secondary-color;
     
-        ul {
-            @include reset-list;
-            @include row-layout;
+            @include row-layout-centered;
+            flex-direction: row;
             width:100%;
-            font-size:1.5rem;
-            justify-content: space-around;
+            // font-size:1.5rem;
             color:$text-color;
-        }
     
         a {
             display: flex;

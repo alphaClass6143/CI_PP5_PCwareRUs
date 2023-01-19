@@ -107,16 +107,12 @@ header {
         transition: 0.3s;
         background-color: #10316B; }
   header #category-links {
-    background-color: #10316B; }
-    header #category-links ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      width: 100%;
-      font-size: 1.5rem;
-      justify-content: space-around;
-      color: #F2F7FF; }
+    background-color: #10316B;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    color: #F2F7FF; }
     header #category-links a {
       display: flex;
       transition: 0.3s;

@@ -246,3 +246,16 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
+# Socialaccount
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+        'SCOPE': ['user:email'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'METHOD': 'oauth2',
+        'APP': {
+            'client_id': os.getenv('GH_CLIENT_ID'),
+            'secret': os.getenv('GH_SECRET_KEY'),
+            'key': ''
+        }
+    }
+}

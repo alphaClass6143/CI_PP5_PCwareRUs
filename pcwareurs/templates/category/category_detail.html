@@ -4,19 +4,18 @@
 
 
 <main class="" id="category-main">
-    <aside>
-        <h2>Filters</h2>
-        <p>WIP</p>
-    </aside>
     <article>
         <h1>{{ category.name }}</h1>
         <p>{{ category.description }}</p>
 
         <section class="item-container">
             {% for product in products %}
-                <a href="{% url 'product_detail' category_handle=category.category_handle product_handle=product.product_handle %}" class="item">
-                    <img src="https://picsum.photos/200/200" alt="">
-                    {{ product.product_name }}
+                <a href="{% url 'product_detail' category_handle=category.category_handle product_handle=product.product_handle %}" class="item card">
+                    <img src="https://picsum.photos/200/200" alt="" class="card-img-top">
+                    <p class="card-body">
+                        <h5>{{ product.product_name }}</h5>
+                    </p>
+                    
 
                 </a>
             {% endfor %}

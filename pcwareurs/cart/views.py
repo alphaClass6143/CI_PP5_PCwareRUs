@@ -8,6 +8,8 @@ from django.shortcuts import render
 from product.models import Product
 from django.template.loader import render_to_string
 
+from cart.context_processors import cart_list
+
 
 
 # Create your views here.
@@ -20,24 +22,21 @@ def cart_add(request):
         product_id = data['product_id']
         quantity = data['quantity']
         
-        if Product.objects.filter(id=product_id).exists():
-            product = Product.objects.get(id=product_id)
+        if Product.objects.filter(id=int(product_id)).exists():
             cart = request.session.get('cart', {})
+            print(product_id)
 
-            if str(product.id) in cart.keys():
-                cart[str(product.id)]["quantity"] += int(quantity)
+            if product_id in cart.keys():
+                cart[product_id]["quantity"] += int(quantity)
             else:
-                cart[str(product.id)] = {
-                    "product_id": product_id,
-                    "product_name": product.product_name,
-                    "product_handle": product.product_handle,
-                    "category_handle": product.category.category_handle,
-                    # TODO: Add image
-                    "product_image": "nope",
+                cart[product_id] = {
                     'quantity': int(quantity)
                 }
-
+            print(cart)
             request.session['cart'] = cart
+
+            print(request.session.get('cart', {}))
+    
             return render_cart(request)
         return JsonResponse({'error': 'Product does not exist'})
     return JsonResponse({'error': 'Invalid request method'})
@@ -51,12 +50,11 @@ def cart_remove(request):
     product_id = data['product_id']
 
     if request.method == "POST":
-        if Product.objects.filter(id=product_id).exists():
-            product = Product.objects.get(id=product_id)
+        if Product.objects.filter(id=int(product_id)).exists():
 
             cart = request.session.get('cart', {})
-            if str(product.id) in cart.keys():
-                del cart[str(product.id)]
+            if product_id in cart.keys():
+                del cart[product_id]
 
                 request.session['cart'] = cart
                 return render_cart(request)
@@ -70,18 +68,18 @@ def cart_update(request):
     '''
     if request.method == "POST":
         data = json.loads(request.body)
-        product_id = data['product_id']
+        product_id = str(data['product_id'])
         quantity = data['quantity']
         
-        if Product.objects.filter(id=product_id).exists():
-            product = Product.objects.get(id=product_id)
+        if Product.objects.filter(id=int(product_id)).exists():
             cart = request.session.get('cart', {})
-
-            if str(product.id) in cart.keys():
+            print(cart.keys())
+            print(data['product_id'])
+            if product_id in cart.keys():
                 if quantity < 1:
-                    del cart[str(product.id)]
+                    del cart[product_id]
                 else:
-                    cart[str(product.id)]["quantity"] = int(quantity)
+                    cart[product_id]["quantity"] = int(quantity)
 
                 request.session['cart'] = cart
                 return render_cart(request)
@@ -94,6 +92,5 @@ def render_cart(request):
     """
     Renders the cart HTML and returns a JSON response
     """
-    cart = request.session.get('cart', {})
-    cart_html = render_to_string('cart/cart.html', {'cart': cart})
+    cart_html = render_to_string('cart/cart.html', cart_list(request))
     return JsonResponse({'success': True, 'cart_html': cart_html})
