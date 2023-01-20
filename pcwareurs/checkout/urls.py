@@ -4,6 +4,7 @@ Urlpatterns
 from django.urls import path
 
 from checkout import views
+from checkout import webhooks
 
 
 urlpatterns = [
@@ -33,8 +34,9 @@ urlpatterns = [
         name='confirm_address'
     ),
     path(
-        'checkout/confirm_payment',
-        views.confirm_payment,
-        name='confirm_payment'
-    )
+        'checkout/confirm_order',
+        views.confirm_order,
+        name='confirm_order'
+    ),
+    path('webhook', views.stripe_webhook) # new
 ]

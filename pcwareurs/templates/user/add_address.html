@@ -8,6 +8,10 @@
     <form method="post" action="">
         {% csrf_token %}
         <div class="form-group">
+            <label for="delivery_full_name">Full name: </label>
+            <input type="text" class="form-control" id="delivery_full_name" name="full_name" required>
+          </div>
+        <div class="form-group">
           <label for="delivery_street">Street: </label>
           <input type="text" class="form-control" id="delivery_street" name="street" required>
         </div>

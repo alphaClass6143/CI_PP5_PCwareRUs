@@ -14,6 +14,7 @@ class Address(models.Model):
     user = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
+        blank=True,
     )
 
     full_name = models.CharField(

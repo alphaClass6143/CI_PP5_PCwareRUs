@@ -111,7 +111,9 @@
                         </div>
                     </div>
                 {% endfor %}
+                <p>{{ cart_info.total }}</p>
             {% endblock cart_content %}
+
             </div>
             <a href="{% url 'load_step' %}" class="btn btn-primary" aria-role="button">Checkout</a>
         </div>

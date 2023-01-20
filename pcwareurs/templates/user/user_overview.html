@@ -36,6 +36,14 @@
         </div>
         <div>
             <h2>View order</h2>
+            {% for order in order_list %}
+            <div>
+                {{ order.total }}
+                {{ order.ordered_at }}
+                {{ order }}
+
+            </div>
+            {% endfor %}
         </div>
     </section>
     <section>
