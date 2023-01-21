@@ -7,6 +7,7 @@
             "product_handle": "i9-10900K",
             "product_description": "A powerful 10th Gen Intel Core i9 processor with a base clock speed of 3.7GHz and a maximum turbo frequency of 5.3GHz",
             "price": 400.00,
+            "image": "ryzen3900x.jpg",
             "is_active": true,
             "manufacturer": 1,
             "category": 1
@@ -21,6 +22,7 @@
             "product_description": "A high-performance 3rd Gen AMD Ryzen 9 processor with a base clock speed of 3.7GHz and a maximum turbo frequency of 4.8GHz",
             "price": 450.00,
             "is_active": true,
+            "image": "ryzen3900x.jpg",
             "manufacturer": 2,
             "category": 1
         }
@@ -34,6 +36,7 @@
             "product_description": "A powerful 11th Gen Intel Core i7 processor with a base clock speed of 3.6GHz and a maximum turbo frequency of 4.9GHz",
             "manufacturer": 1,
             "price": 550.00,
+            "image": "ryzen3900x.jpg",
             "is_active": true,
             "category": 1
         }
@@ -47,6 +50,7 @@
             "product_description": "A high-performance gaming motherboard with support for the latest Intel and AMD processors, featuring advanced cooling and overclocking options.",
             "manufacturer": 3,
             "price": 200.00,
+            "image": "ryzen3900x.jpg",
             "is_active": true,
             "category": 2
         }
@@ -60,6 +64,7 @@
             "product_description": "A budget-friendly gaming motherboard with support for the latest AMD processors, featuring advanced cooling and overclocking options.",
             "manufacturer": 4,
             "price": 300.00,
+            "image": "ryzen3900x.jpg",
             "is_active": true,
             "category": 2
         }
@@ -73,6 +78,7 @@
             "product_description": "A high-performance gaming motherboard with support for the latest AMD processors, featuring advanced cooling and overclocking options.",
             "manufacturer": 3,
             "price": 250.00,
+            "image": "ryzen3900x.jpg",
             "is_active": false,
             "category": 2
         }

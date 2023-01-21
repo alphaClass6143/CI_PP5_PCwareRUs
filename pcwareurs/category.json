@@ -3,27 +3,27 @@
         "model": "category.category",
         "pk": 1,
         "fields": {
-            "name": "Processors",
-            "handle": "processors",
-            "description": "A central processing unit (CPU) is the electronic circuitry within a computer that carries out the instructions of a computer program by performing the basic arithmetic, logic, controlling, and input/output (I/O) operations specified by the instructions."
+            "category_name": "Processors",
+            "category_handle": "processors",
+            "category_description": "A central processing unit (CPU) is the electronic circuitry within a computer that carries out the instructions of a computer program by performing the basic arithmetic, logic, controlling, and input/output (I/O) operations specified by the instructions."
         }
     },
     {
         "model": "category.category",
         "pk": 2,
         "fields": {
-            "name": "Graphics Cards",
-            "handle": "graphics-cards",
-            "description": "A graphics processing unit (GPU) is a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images in a frame buffer intended for output to a display device."
+            "category_name": "Graphics Cards",
+            "category_handle": "graphics-cards",
+            "category_description": "A graphics processing unit (GPU) is a specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images in a frame buffer intended for output to a display device."
         }
     },
     {
         "model": "category.category",
         "pk": 3,
         "fields": {
-            "name": "Power Supplies",
-            "handle": "power-supplies",
-            "description": "A power supply unit (PSU) is the component that supplies power to the other components in a computer. It receives power from the outlet and converts it to the appropriate voltage and current for the computer's components."
+            "category_name": "Power Supplies",
+            "category_handle": "power-supplies",
+            "category_description": "A power supply unit (PSU) is the component that supplies power to the other components in a computer. It receives power from the outlet and converts it to the appropriate voltage and current for the computer's components."
     
         }
     },
@@ -31,27 +31,27 @@
         "model": "category.category",
         "pk": 4,
         "fields": {
-            "name": "Motherboards",
-            "handle": "motherboards",
-            "description": "A motherboard is the main circuit board in a computer. It houses the CPU, memory, and other components, and provides connectors for the peripherals and expansion cards."
+            "category_name": "Motherboards",
+            "category_handle": "motherboards",
+            "category_description": "A motherboard is the main circuit board in a computer. It houses the CPU, memory, and other components, and provides connectors for the peripherals and expansion cards."
         }
     },
     {
         "model": "category.category",
         "pk": 5,
         "fields": {
-            "name": "Storage",
-            "handle": "storage",
-            "description": "Storage refers to the devices and media that are used to store data and programs on a computer. These can include hard drives, solid state drives, and other types of storage devices."
+            "category_name": "Storage",
+            "category_handle": "storage",
+            "category_description": "Storage refers to the devices and media that are used to store data and programs on a computer. These can include hard drives, solid state drives, and other types of storage devices."
         }
     },
     {
         "model": "category.category",
         "pk": 6,
         "fields": {
-            "name": "Memory",
-            "handle": "memory",
-            "description": "Memory refers to the devices and media used to store data and programs on a computer. These can include RAM, ROM, and other types of memory."
+            "category_name": "Memory",
+            "category_handle": "memory",
+            "category_description": "Memory refers to the devices and media used to store data and programs on a computer. These can include RAM, ROM, and other types of memory."
         }
     }
 ]

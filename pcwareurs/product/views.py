@@ -60,10 +60,10 @@ def add_product(request):
                     product_handle=form.cleaned_data['handle']
                 )
 
+            messages.error(request, 'Invalid request')
             return render(
                 request,
                 'product/add_product.html',
-                {'error_message': 'Invalid request'}
             )
 
         return render(
@@ -71,12 +71,8 @@ def add_product(request):
             'product/add_product.html'
         )
 
-    messages.error(request, 'Sorry, only store owners can do that.')
-    return render(
-        request,
-        'home/index.html',
-        {'error_message': 'No editing'}
-    )
+    messages.error(request, 'You are not allowed to do that')
+    return redirect('home')
 
 
 def edit_product(request, product_id):
@@ -102,11 +98,8 @@ def delete_product(request, product_id):
             category_handle=category_handle
         )
 
-    return render(
-        request,
-        'home/index.html',
-        {'error_message': 'No editing'}
-    )
+    messages.error(request, 'You are not allowed to do that')
+    return redirect('home')
 
 
 def add_review(request, product_id):
@@ -134,16 +127,16 @@ def add_review(request, product_id):
                     return redirect('product_detail', product_id=product.id)
 
             # Invalid request for review add -> exists
+            messages.error(request, 'This review does not exist')
             return render(
                 request,
                 'home/index.html',
-                {'error_message': 'This review does not exist'}
             )
 
+    messages.error(request, 'Invalid request method')
     return render(
         request,
         'home/index.html',
-        {'error_message': 'Invalid request'}
     )
 
 
@@ -171,7 +164,13 @@ def edit_review(request, review_id):
                       'product/edit_review.html',
                       {'review': review})
 
-    return render(request,
-                  'product/product_detail.html',
-                  {'product_detail': review.product,
-                   'error_message': 'Really? No you cannot edit this review, this is not your review!'})
+    # User is not logged in and not allowed to edit it
+    messages.error(
+        request,
+        'Really? No you cannot edit this review, this is not your review!'
+    )
+    return render(
+        request,
+        'product/product_detail.html',
+        {'product_detail': review.product}
+    )

@@ -10,7 +10,7 @@ class Category(models.Model):
     '''
     Category model
     '''
-    name = models.CharField(
+    category_name = models.CharField(
         max_length=255
     )
 
@@ -18,7 +18,7 @@ class Category(models.Model):
         max_length=255
     )
 
-    description = models.TextField()
+    category_description = models.TextField()
 
     category_created_at = models.DateTimeField(
         default=datetime.now

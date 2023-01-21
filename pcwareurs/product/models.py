@@ -57,6 +57,11 @@ class Product(models.Model):
         on_delete=models.CASCADE,
     )
 
+    image = models.ImageField(
+        null=True,
+        blank=True
+    )
+
     price = models.DecimalField(
         max_digits=9,
         decimal_places=2

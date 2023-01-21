@@ -9,6 +9,7 @@ stripe = "*"
 pylint = "*"
 boto3 = "*"
 django-storages = "*"
+pillow = "*"
 
 [dev-packages]
 pycodestyle = "*"
