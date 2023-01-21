@@ -1,1 +1,1 @@
-web: gunicorn pcwareurs.wsgi:application
+web: gunicorn pcwareurs.pcwareurs.wsgi:application
