@@ -52,8 +52,10 @@ class StripeWH_Handler:
         # Set order with payment id true
 
         # Send confirm email if correct
+        print("payment succeeded")
+        print(self.request)
 
-        self._send_confirmation_email(order)
+        # self._send_confirmation_email(order)
         return HttpResponse(
             content=(f'Webhook received: {event["type"]} | SUCCESS: '
                         'Verified order already in database'),

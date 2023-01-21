@@ -250,11 +250,6 @@ def confirm_address(request):
         print("not post")
 
 
-def confirm_order(request):
-    # TODO Create final order
-    return redirect('next_step')
-
-
 
 def next_step(request):
     '''

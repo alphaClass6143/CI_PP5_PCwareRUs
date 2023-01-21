@@ -3,6 +3,7 @@ Product views
 '''
 from datetime import datetime
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 
 from product.forms import ReviewAddForm, ReviewEditForm, ProductForm
 
@@ -38,8 +39,12 @@ def add_product(request):
             if form.is_valid():
 
                 # Get category and manufacturer
-                category = Category.objects.get(id=form.cleaned_data['category_id'])
-                manufacturer = Manufacturer.objects.get(id=form.cleaned_data['manufacturer_id'])
+                category = Category.objects.get(
+                    id=form.cleaned_data['category_id']
+                )
+                manufacturer = Manufacturer.objects.get(
+                    id=form.cleaned_data['manufacturer_id']
+                )
 
                 Product.objects.create(
                     product_name=form.cleaned_data['name'],
@@ -66,6 +71,7 @@ def add_product(request):
             'product/add_product.html'
         )
 
+    messages.error(request, 'Sorry, only store owners can do that.')
     return render(
         request,
         'home/index.html',
