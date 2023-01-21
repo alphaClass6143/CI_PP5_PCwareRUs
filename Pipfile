@@ -13,6 +13,7 @@ pillow = "*"
 psycopg2 = "*"
 dj-database-url = "*"
 load-dotenv = "*"
+django-allauth = "*"
 
 [dev-packages]
 pycodestyle = "*"
