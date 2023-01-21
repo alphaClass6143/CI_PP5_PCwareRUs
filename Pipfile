@@ -10,6 +10,7 @@ pylint = "*"
 boto3 = "*"
 django-storages = "*"
 pillow = "*"
+psycopg2 = "*"
 
 [dev-packages]
 pycodestyle = "*"
