@@ -11,6 +11,7 @@ boto3 = "*"
 django-storages = "*"
 pillow = "*"
 psycopg2 = "*"
+dj-database-url = "*"
 
 [dev-packages]
 pycodestyle = "*"
