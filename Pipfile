@@ -14,6 +14,9 @@ psycopg2 = "*"
 dj-database-url = "*"
 load-dotenv = "*"
 django-allauth = "*"
+libsass = "*"
+django-compressor = "*"
+django-sass-processor = "*"
 
 [dev-packages]
 pycodestyle = "*"
