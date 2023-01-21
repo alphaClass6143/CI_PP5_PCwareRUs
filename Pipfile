@@ -12,6 +12,7 @@ django-storages = "*"
 pillow = "*"
 psycopg2 = "*"
 dj-database-url = "*"
+load-dotenv = "*"
 
 [dev-packages]
 pycodestyle = "*"
