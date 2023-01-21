@@ -13,7 +13,7 @@
     {% endblock %}
 
     {% load static %}
-    <link rel="icon" type="image/x-icon" href="{% static 'images/paper-plane-solid.svg' %}">
+    <link rel="icon" type="image/x-icon" href="/media/logo/pcwarerus-icon.png">
 
     <!-- <link rel="stylesheet" href="{% static 'css/styles.css'%}"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -35,7 +35,9 @@
     {% block header %}
     <header>
         <section id="header-menu">
-            <a id="header-logo" href="{% url 'home' %}">PCwareRUs</a>
+            <a id="header-logo" href="{% url 'home' %}">
+                <img src="/media/logo/pcwarerus-logo.png" alt="PCwareRUs logo">
+            </a>
             <div id="header-user">
                 <button class="btn btn-primary cart-btn">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -61,7 +63,7 @@
                 </button>
             </div>
         </section>
-        <nav class="navbar navbar-expand-lg" id="category-links">
+        <nav class="navbar navbar-dark navbar-expand-lg" id="category-links">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>

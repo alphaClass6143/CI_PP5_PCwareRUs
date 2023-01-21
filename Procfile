@@ -1,1 +1,1 @@
-web: pipenv run gunicorn pcwareurs/pcwareurs.wsgi:application
+web: cd pcwareurs && pipenv run gunicorn pcwareurs.wsgi:application
