@@ -3,10 +3,11 @@ Urlpatterns
 '''
 
 from django.urls import path
-from cart.views import cart_add, cart_remove, cart_update
+from cart import views
+
 
 urlpatterns = [
-    path('cart/add/', cart_add, name='cart_add'),
-    path('cart/remove/', cart_remove, name='cart_remove'),
-    path('cart/update/', cart_update, name='cart_update'),
+    path('cart/add/', views.cart_add, name='cart_add'),
+    path('cart/remove/', views.cart_remove, name='cart_remove'),
+    path('cart/update/', views.cart_update, name='cart_update'),
 ]

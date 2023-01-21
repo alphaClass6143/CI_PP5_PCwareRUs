@@ -2,8 +2,13 @@
 Urlpatterns
 '''
 from django.urls import path
-from . import views
+
+from category import views
 
 urlpatterns = [
-    path('categories/<str:handle>/', views.category_detail, name='category_detail'),
+    path(
+        'categories/<str:handle>/',
+        views.category_detail,
+        name='category_detail'
+    ),
 ]

@@ -11,7 +11,6 @@ from django.template.loader import render_to_string
 from cart.context_processors import cart_list
 
 
-
 # Create your views here.
 def cart_add(request):
     '''
@@ -65,7 +64,7 @@ def update_cart_cost(request):
 
     cart_info["total"] = str(current_total)
     cart_info["delivery_fee"] = delivery_fee
-    print(cart_info)
+
     request.session["cart_info"] = cart_info
 
 
@@ -101,8 +100,7 @@ def cart_update(request):
         
         if Product.objects.filter(id=int(product_id)).exists():
             cart = request.session.get('cart', {})
-            print(cart.keys())
-            print(data['product_id'])
+
             if product_id in cart.keys():
                 if quantity < 1:
                     del cart[product_id]
