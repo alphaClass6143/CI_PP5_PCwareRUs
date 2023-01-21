@@ -123,11 +123,22 @@
     {% endblock header %}
 
     
-    {% if error_message %}
-        <div class="alert alert-danger">{{ error_message }}</div>
-    {% endif %}
-    {% if success_message %}
-        <div class="alert alert-success">{{ success_message }}</div>
+    {% if messages %}
+        <div class="toast-container message-container position-fixed bottom-0 end-0 p-2">
+            {% for message in messages %}
+                {% with message.level as level %}
+                    {% if level == 40 %}
+                        {% include 'toasts/toast_error.html' %}
+                    {% elif level == 30 %}
+                        {% include 'toasts/toast_warning.html' %}
+                    {% elif level == 25 %}
+                        {% include 'toasts/toast_success.html' %}
+                    {% else %}
+                        {% include 'toasts/toast_info.html' %}
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+        </div>
     {% endif %}
 
     <!-- Content Goes here -->
@@ -162,6 +173,13 @@
 
     {% block postloadjs %}
     <script src="{% static 'script/cart.js' %}"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            const toastElList = document.querySelectorAll('.toast')
+            const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl).show())
+        };
+
+    </script>
     {% endblock %}
     
 </body>
