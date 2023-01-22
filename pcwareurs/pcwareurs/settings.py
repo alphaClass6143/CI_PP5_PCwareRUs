@@ -187,7 +187,6 @@ if 'USE_AWS' in os.environ:
     }
 
     # Bucket Config
-    #TODO: Setup personal aws
     AWS_STORAGE_BUCKET_NAME = 'pp5-pcwareurs'
     AWS_S3_REGION_NAME = 'eu-central-1'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
@@ -206,8 +205,7 @@ if 'USE_AWS' in os.environ:
 
 
 # Sass setup
-SASS_PROCESSOR_OUTPUT_DIR = os.path.join(BASE_DIR, 'static/css')
-SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'sass')
+SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static/sass')
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
