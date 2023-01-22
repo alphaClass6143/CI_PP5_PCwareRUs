@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<main class="" id="category-main">
+<main class="main">
     <article>
         <h1>{{ category.name }}</h1>
         <p>{{ category.description }}</p>
@@ -14,6 +14,7 @@
                     <img src="{{ product.image.url }}" alt="Product image for {{ product.prodcut_name }}" class="card-img-top">
                     <p class="card-body">
                         <h5>{{ product.product_name }}</h5>
+                        <p>{{ product.price }}</p>
                     </p>
                     
 

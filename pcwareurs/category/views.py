@@ -18,5 +18,8 @@ def category_detail(request, handle):
     return render(
         request,
         'category/category_detail.html',
-        {'category': category, 'products': products}
+        {
+            'category': category,
+            'products': products
+        }
     )

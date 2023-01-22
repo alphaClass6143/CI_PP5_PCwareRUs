@@ -4,37 +4,55 @@
 
 
 <main id="product-detail-main" class="main">
-    <section id="product-overview">
-        <div id="product-images">
-            <img src="{{ product.image.url }}" alt="Product image">
-        </div>
-        <div id="product-details">
-            <div id="product-details-text">
-                <h1>{{ product.product_name }}</h1>
-                <p>{{ product.product_description }}</p>
+    <section class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+                <div class="image-container my-5">
+                    {% if product.image %}
+                        <a href="{{ product.image.url }}" target="_blank">
+                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                        </a>
+                        {% else %}
+                        <a href="">
+                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                        </a>
+                    {% endif %}
+                </div>
             </div>
-            <div id="product-details-cart">
-                <p>{{ product.price }} USD</p>
-                <button class="btn btn-primary" onclick="addToCart({{product.id}}, {{1}})">
-                    Add to cart
-                </button>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="product-details-container mb-5 mt-md-5">
+                    <h5 class="mb-0">{{ product.product_name }}</h5>
+                    <p class="mb-0 text-left font-weight-bold">${{ product.price }}</p>
+                    {% if request.user.is_staff %}
+                        <small class="ml-3">
+                            <a href="{% url 'edit_product' product.id %}">Edit</a> | 
+                            <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                        </small>
+                    {% endif %}
+                    <p class="mt-3">{{ product.product_description }}</p>
+                    <div id="product-details-cart">
+                        <button class="btn btn-primary" onclick="addToCart({{product.id}}, {{1}})">
+                            Add to cart
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
     </section>
-    <section id="review-summary">
-        <div>
-            <i class="fa-solid fa-star"></i>
-            <h2>4</h2>
+    <section class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 d-flex ">
+                <i class="fa-solid fa-star"></i>
+                <h2>4</h2>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <h2>{{ reviews|length }} - Reviews</h2>
+            </div>
         </div>
-        <div>
-            <h2>{{ reviews|length }} - Reviews</h2>
-        </div>
+        
     </section>
     <section id="review-add">
-        <form action="">
-            <textarea name="" id="" cols="30" rows="10"></textarea>
-            <button type="submit">Post review</button>
-        </form>
+        {% if request.user.is_authenticated %}
+        <a href="{% 'add_review' product.id %}"></a>
     </section>
     <section id="review-list">
         {% for review in reviews %}

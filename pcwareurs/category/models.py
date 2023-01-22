@@ -28,3 +28,9 @@ class Category(models.Model):
         null=True,
         blank=True
     )
+
+    def __str__(self):
+        '''
+        Returns manufacturer name
+        '''
+        return self.category_name

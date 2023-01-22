@@ -82,6 +82,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'pcwareurs.urls'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -97,6 +99,10 @@ TEMPLATES = [
                 'cart.context_processors.cart_list',
                 'cart.context_processors.cart_info',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]

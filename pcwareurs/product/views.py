@@ -3,12 +3,19 @@ Product views
 '''
 from datetime import datetime
 from django.shortcuts import render, redirect, get_object_or_404
+
+from django.urls import reverse
 from django.contrib import messages
 
 from product.forms import ReviewAddForm, ReviewEditForm, ProductForm
 
 from product.models import Product, Review, Manufacturer
 from category.models import Category
+
+from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+from django.db.models.functions import Lower
+
 
 
 def product_detail(request, category_handle, product_handle):
@@ -27,52 +34,42 @@ def product_detail(request, category_handle, product_handle):
     return render(request, template, context)
 
 
+
+@login_required
 def add_product(request):
-    '''
-    Adds product
-    '''
-    # Query for the post
-    if request.user.is_staff:
-        # Add a new post
-        if request.method == 'POST':
-            form = ProductForm(request.POST)
-            if form.is_valid():
+    """ 
+    Add a product
+    """
+    if not request.user.is_staff:
+        messages.error(request, 'You are not allowed to do that')
+        return redirect('home')
 
-                # Get category and manufacturer
-                category = Category.objects.get(
-                    id=form.cleaned_data['category_id']
-                )
-                manufacturer = Manufacturer.objects.get(
-                    id=form.cleaned_data['manufacturer_id']
-                )
-
-                Product.objects.create(
-                    product_name=form.cleaned_data['name'],
-                    handle=form.cleaned_data['handle'],
-                    product_description=form.cleaned_data['description'],
-                    manufacturer=manufacturer,
-                    category=category,
-                    product_created_at=datetime.now()
-                )
-                return redirect(
-                    'product_detail',
-                    category_handle=category.category_handle,
-                    product_handle=form.cleaned_data['handle']
-                )
-
-            messages.error(request, 'Invalid request')
-            return render(
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save()
+            messages.success(request, 'Product has been added')
+            return redirect(reverse(
+                'product_detail',
+                kwargs={
+                    'category_handle': product.category.category_handle,
+                    'product_handle': product.product_handle
+                }))
+        else:
+            messages.error(
                 request,
-                'product/add_product.html',
+                'Invalid form data'
             )
+    else:
+        form = ProductForm()
 
-        return render(
-            request,
-            'product/add_product.html'
-        )
+    template = 'product/add_product.html'
+    context = {
+        'form': form,
+    }
 
-    messages.error(request, 'You are not allowed to do that')
-    return redirect('home')
+    return render(request, template, context)
+
 
 
 def edit_product(request, product_id):
