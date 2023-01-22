@@ -9,13 +9,13 @@
             <img src="{{ product.image.url }}" alt="Product image">
         </div>
         <div id="product-details">
-            <div>
+            <div id="product-details-text">
                 <h1>{{ product.product_name }}</h1>
                 <p>{{ product.product_description }}</p>
             </div>
-            <div>
-                <p>{{ product.price }}</p>
-                <button btn="btn-primary" onclick="addToCart({{product.id}}, {{1}})">
+            <div id="product-details-cart">
+                <p>{{ product.price }} USD</p>
+                <button class="btn btn-primary" onclick="addToCart({{product.id}}, {{1}})">
                     Add to cart
                 </button>
             </div>

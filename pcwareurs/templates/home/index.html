@@ -2,4 +2,34 @@
 
 {% block content %}
 
+<main class="main">
+    <section id="home-header">
+        <img src="" alt="">
+    </section>
+    <section id="newest-products">
+        <h2>Check out our newest products</h2>
+        {% for product in product_newest_list %}
+                <a href="{% url 'product_detail' category_handle=product.category.category_handle product_handle=product.product_handle %}" class="product-item card">
+                    <img src="{{ product.image.url }}" alt="Product image for {{ product.prodcut_name }}" class="card-img-top">
+                    <p class="card-body">
+                        <h5>{{ product.product_name }}</h5>
+                    </p>
+                </a>
+        {% endfor %}
+    </section>
+    <section id="cheapest-products" class="">
+        <h2>Get the best price for your product</h2>
+        {% for product in product_best_price %}
+                <a href="{% url 'product_detail' category_handle=product.category.category_handle product_handle=product.product_handle %}" class="product-item card">
+                    <img src="{{ product.image.url }}" alt="Product image for {{ product.prodcut_name }}" class="card-img-top">
+                    <p class="card-body">
+                        <h5>{{ product.product_name }}</h5>
+                    </p>
+                    
+
+                </a>
+        {% endfor %}
+    </section>
+</main>
+
 {%endblock%}

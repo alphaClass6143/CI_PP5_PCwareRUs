@@ -10,8 +10,8 @@
 
         <section class="item-container">
             {% for product in products %}
-                <a href="{% url 'product_detail' category_handle=category.category_handle product_handle=product.product_handle %}" class="item card">
-                    <img src="https://picsum.photos/200/200" alt="" class="card-img-top">
+                <a href="{% url 'product_detail' category_handle=category.category_handle product_handle=product.product_handle %}" class="product-item card">
+                    <img src="{{ product.image.url }}" alt="Product image for {{ product.prodcut_name }}" class="card-img-top">
                     <p class="card-body">
                         <h5>{{ product.product_name }}</h5>
                     </p>

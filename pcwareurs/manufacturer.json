@@ -24,7 +24,42 @@
         "model": "product.manufacturer",
         "pk": 4,
         "fields": {
+            "manufacturer_name": "EVGA"
+        }
+    },
+    {
+        "model": "product.manufacturer",
+        "pk": 5,
+        "fields": {
             "manufacturer_name": "MSI"
+        }
+    },
+    {
+        "model": "product.manufacturer",
+        "pk": 6,
+        "fields": {
+            "manufacturer_name": "Corsair"
+        }
+    },
+    {
+        "model": "product.manufacturer",
+        "pk": 7,
+        "fields": {
+            "manufacturer_name": "G.Skill"
+        }
+    },
+    {
+        "model": "product.manufacturer",
+        "pk": 8,
+        "fields": {
+            "manufacturer_name": "Kingston"
+        }
+    },
+    {
+        "model": "product.manufacturer",
+        "pk": 9,
+        "fields": {
+            "manufacturer_name": "Crucial"
         }
     }
 ]

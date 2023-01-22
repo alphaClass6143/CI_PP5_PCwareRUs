@@ -21,16 +21,6 @@
         "model": "category.category",
         "pk": 3,
         "fields": {
-            "category_name": "Power Supplies",
-            "category_handle": "power-supplies",
-            "category_description": "A power supply unit (PSU) is the component that supplies power to the other components in a computer. It receives power from the outlet and converts it to the appropriate voltage and current for the computer's components."
-    
-        }
-    },
-    {
-        "model": "category.category",
-        "pk": 4,
-        "fields": {
             "category_name": "Motherboards",
             "category_handle": "motherboards",
             "category_description": "A motherboard is the main circuit board in a computer. It houses the CPU, memory, and other components, and provides connectors for the peripherals and expansion cards."
@@ -38,16 +28,7 @@
     },
     {
         "model": "category.category",
-        "pk": 5,
-        "fields": {
-            "category_name": "Storage",
-            "category_handle": "storage",
-            "category_description": "Storage refers to the devices and media that are used to store data and programs on a computer. These can include hard drives, solid state drives, and other types of storage devices."
-        }
-    },
-    {
-        "model": "category.category",
-        "pk": 6,
+        "pk": 4,
         "fields": {
             "category_name": "Memory",
             "category_handle": "memory",

@@ -40,49 +40,49 @@ footer {
     }
 }
 
-.btn {
-    padding:0.25rem 0.5rem;
-    transition:0.3s;
-    border-radius:5px;
-    border:none;
-}
+// .btn {
+//     padding:0.25rem 0.5rem;
+//     transition:0.3s;
+//     border-radius:5px;
+//     border:none;
+// }
 
-.btn:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-    transition:0.3s;
-}
+// .btn:hover {
+//     cursor: pointer;
+//     transform: scale(1.05);
+//     transition:0.3s;
+// }
 
-.btn-primary {
-    transition:0.3s;
-    color:black;
+// .btn-primary {
+//     transition:0.3s;
+//     color:black;
     
-    background-color: $inverted-color;
+//     background-color: $inverted-color;
     
-}
+// }
 
-.btn-primary:hover {
-    cursor: pointer;
+// .btn-primary:hover {
+//     cursor: pointer;
     
-    background-color: rgb(255, 166, 0);
-}
+//     background-color: rgb(255, 166, 0);
+// }
 
-.btn-danger {
-    color:white;
-    background-color: rgb(192, 0, 0);
-}
+// .btn-danger {
+//     color:white;
+//     background-color: rgb(192, 0, 0);
+// }
 
-.btn-danger:hover {
-    background-color: rgb(109, 0, 0);
-}
+// .btn-danger:hover {
+//     background-color: rgb(109, 0, 0);
+// }
 
-.btn-success {
-    background-color: rgb(0, 177, 0);
-}
+// .btn-success {
+//     background-color: rgb(0, 177, 0);
+// }
 
-.btn-success:hover {
-    background-color: green;
-}
+// .btn-success:hover {
+//     background-color: green;
+// }
 
 .main {
     @include col-layout-centered;
@@ -160,6 +160,26 @@ footer {
     border-radius: 10px;
 }
 
+.product-item {
+    @include col-layout-centered;
+    color:black;
+    text-decoration: none;
+    width:clamp(10rem, 90vw, 20rem);
+    padding:0.5rem;
+    transition:0.3s;
+
+    img {
+        @include col-layout-centered;
+        width:100%;
+    }
+}
+
+.product-item:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition:0.3s;
+}
+
 #category-main {
     @include row-layout-centered;
     padding:5rem 0.5rem;
@@ -199,11 +219,21 @@ footer {
 
         #product-images {
             @include col-layout-centered;
+
+            img {
+                width:clamp(2rem, 90vw, 30rem);
+            }
         }
 
         #product-details {
             @include col-layout-centered;
 
+            #product-details-cart {
+                @include row-layout;
+                justify-content: space-between;
+                align-items: center;
+                gap:3rem;
+            }
         }
     }
 

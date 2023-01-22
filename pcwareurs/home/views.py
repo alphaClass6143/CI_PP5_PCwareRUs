@@ -5,6 +5,8 @@ import boto3
 
 from django.shortcuts import render
 
+from product.models import Product
+
 
 # Create your views here.
 def home(request):
@@ -25,8 +27,17 @@ def home(request):
     except Exception as e:
         print("Error connecting to S3: ", e)
 
+    product_newest_list = Product.objects.filter(is_active=True).order_by('-product_created_at')[:10]
+    product_best_price = Product.objects.filter(is_active=True).order_by('price')[:10]
+
+    context = {
+        'product_newest_list': product_newest_list,
+        'product_best_price': product_best_price,
+    }
+
     # request.session["cart"] = {}
     return render(
         request,
-        'home/index.html'
+        'home/index.html',
+        context
     )

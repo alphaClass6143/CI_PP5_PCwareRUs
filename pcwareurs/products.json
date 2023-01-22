@@ -7,7 +7,7 @@
             "product_handle": "i9-10900K",
             "product_description": "A powerful 10th Gen Intel Core i9 processor with a base clock speed of 3.7GHz and a maximum turbo frequency of 5.3GHz",
             "price": 400.00,
-            "image": "ryzen3900x.jpg",
+            "image": "core-i9-10900k.jpg",
             "is_active": true,
             "manufacturer": 1,
             "category": 1
@@ -17,12 +17,12 @@
         "model": "product.Product",
         "pk": 2,
         "fields": {
-            "product_name": "AMD Ryzen 9 5900X",
-            "product_handle": "ryzen-5900X",
-            "product_description": "A high-performance 3rd Gen AMD Ryzen 9 processor with a base clock speed of 3.7GHz and a maximum turbo frequency of 4.8GHz",
-            "price": 450.00,
+            "product_name": "AMD Ryzen 9 3900X",
+            "product_handle": "ryzen-9-3900x",
+            "product_description": "A powerful 12-core, 24-thread processor with a base clock speed of 3.7GHz and a maximum boost frequency of 4.8GHz",
+            "price": 420.00,
+            "image": "ryzen-9-3900x.jpg",
             "is_active": true,
-            "image": "ryzen3900x.jpg",
             "manufacturer": 2,
             "category": 1
         }
@@ -31,13 +31,13 @@
         "model": "product.Product",
         "pk": 3,
         "fields": {
-            "product_name": "Intel Core i7-11700K",
-            "product_handle": "i7-11700K",
-            "product_description": "A powerful 11th Gen Intel Core i7 processor with a base clock speed of 3.6GHz and a maximum turbo frequency of 4.9GHz",
-            "manufacturer": 1,
-            "price": 550.00,
-            "image": "ryzen3900x.jpg",
+            "product_name": "AMD Ryzen 7 5800X",
+            "product_handle": "ryzen-7-5800x",
+            "product_description": "An 8-core, 16-thread processor with a base clock speed of 3.8GHz and a maximum boost frequency of 4.7GHz",
+            "price": 350.00,
+            "image": "ryzen-7-5800x.jpg",
             "is_active": true,
+            "manufacturer": 2,
             "category": 1
         }
     },
@@ -45,43 +45,187 @@
         "model": "product.Product",
         "pk": 4,
         "fields": {
-            "product_name": "ASUS ROG Maximus XIII",
-            "product_handle": "maximus-xiii",
-            "product_description": "A high-performance gaming motherboard with support for the latest Intel and AMD processors, featuring advanced cooling and overclocking options.",
-            "manufacturer": 3,
-            "price": 200.00,
-            "image": "ryzen3900x.jpg",
+            "product_name": "AMD Ryzen 5 3600X",
+            "product_handle": "ryzen-5-3600x",
+            "product_description": "A 6-core, 12-thread processor with a base clock speed of 3.7GHz and a maximum boost frequency of 4.6GHz",
+            "price": 170.00,
+            "image": "ryzen-5-3600x.jpg",
             "is_active": true,
-            "category": 2
+            "manufacturer": 2,
+            "category": 1
         }
     },
     {
         "model": "product.Product",
         "pk": 5,
         "fields": {
-            "product_name": "MSI MPG B550 Gaming Edge WiFi",
-            "product_handle": "b550-gaming-edge",
-            "product_description": "A budget-friendly gaming motherboard with support for the latest AMD processors, featuring advanced cooling and overclocking options.",
-            "manufacturer": 4,
+            "product_name": "Intel Core i7-10700K",
+            "product_handle": "i7-10700K",
+            "product_description": "A powerful 10th Gen Intel Core i7 processor with a base clock speed of 3.8GHz and a maximum turbo frequency of 5.1GHz",
             "price": 300.00,
-            "image": "ryzen3900x.jpg",
+            "image": "core-i7-10700K.jpg",
             "is_active": true,
-            "category": 2
+            "manufacturer": 1,
+            "category": 1
         }
     },
     {
         "model": "product.Product",
         "pk": 6,
         "fields": {
-            "product_name": "ASUS ROG Strix B450-E Gaming",
-            "product_handle": "strix-b450-e",
-            "product_description": "A high-performance gaming motherboard with support for the latest AMD processors, featuring advanced cooling and overclocking options.",
+            "product_name": "Intel Core i5-10600K",
+            "product_handle": "i5-10600K",
+            "product_description": "A powerful 10th Gen Intel Core i5 processor with a base clock speed of 4.1GHz and a maximum turbo frequency of 4.8GHz",
+            "price": 200.00,
+            "image": "core-i5-10600K.jpg",
+            "is_active": true,
+            "manufacturer": 1,
+            "category": 1
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 7,
+        "fields": {
+            "product_name": "AMD Ryzen 9 5950X",
+            "product_handle": "ryzen-9-5950x",
+            "product_description": "A powerful 16-core, 32-thread processor with a base clock speed of 3.4GHz and a maximum boost frequency of 4.9GHz",
+            "price": 600.00,
+            "image": "ryzen-9-5950x.jpg",
+            "is_active": true,
+            "manufacturer": 2,
+            "category": 1
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 8,
+        "fields": {
+            "product_name": "AMD Ryzen 7 3700X",
+            "product_handle": "ryzen-7-3700x",
+            "product_description": "An 8-core, 16-thread processor with a base clock speed of 3.8GHz and a maximum boost frequency of 4.6GHz",
+            "price": 300.00,
+            "image": "ryzen-7-3700x.jpg",
+            "is_active": true,
+            "manufacturer": 2,
+            "category": 1
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 9,
+        "fields": {
+            "product_name": "ASUS ROG Maximus XII Hero Z490",
+            "product_handle": "rog-maximus-xii-hero",
+            "product_description": "A high-performance motherboard compatible with 10th Gen Intel Core processors, featuring advanced overclocking options and Aura Sync RGB lighting",
+            "price": 300.00,
+            "image": "rog-maximus-xii-hero.jpg",
+            "is_active": true,
             "manufacturer": 3,
+            "category": 3
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 10,
+        "fields": {
+            "product_name": "MSI MPG Z490 Gaming Edge WiFi",
+            "product_handle": "mpg-z490-gaming-edge",
+            "product_description": "A high-performance motherboard compatible with 10th Gen Intel Core processors, featuring advanced overclocking options and Mystic Light RGB lighting",
             "price": 250.00,
-            "image": "ryzen3900x.jpg",
-            "is_active": false,
-            "category": 2
+            "image": "mpg-z490-gaming-edge.jpg",
+            "is_active": true,
+            "manufacturer": 5,
+            "category": 3
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 11,
+        "fields": {
+            "product_name": "EVGA Z490 FTW WiFi",
+            "product_handle": "evga-z490-ftw",
+            "product_description": "A high-performance motherboard compatible with 10th Gen Intel Core processors, featuring advanced overclocking options and RGB lighting",
+            "price": 280.00,
+            "image": "evga-z490-ftw.jpg",
+            "is_active": true,
+            "manufacturer": 4,
+            "category": 3
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 12,
+        "fields": {
+            "product_name": "ASUS Prime Z490-A",
+            "product_handle": "prime-z490-a",
+            "product_description": "A high-performance motherboard compatible with 10th Gen Intel Core processors, featuring advanced overclocking options and Aura Sync RGB lighting",
+            "price": 240.00,
+            "image": "prime-z490-a.jpg",
+            "is_active": true,
+            "manufacturer": 3,
+            "category": 3
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 13,
+        "fields": {
+            "product_name": "G.Skill Ripjaws V DDR4-3200 32GB (2x16GB)",
+            "product_handle": "ripjaws-v-ddr4-3200",
+            "product_description": "High-performance DDR4 memory with a speed of 3200MHz and a capacity of 32GB (2x16GB), compatible with Intel and AMD motherboards",
+            "price": 90.00,
+            "image": "ripjaws-v-ddr4-3200.jpg",
+            "is_active": true,
+            "manufacturer": 7,
+            "category": 4
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 14,
+        "fields": {
+            "product_name": "Corsair Vengeance LPX DDR4-3200 32GB (2x16GB)",
+            "product_handle": "vengeance-lpx-ddr4-3200",
+            "product_description": "High-performance DDR4 memory with a speed of 3200MHz and a capacity of 32GB (2x16GB), compatible with Intel and AMD motherboards",
+            "price": 90.00,
+            "image": "vengeance-lpx-ddr4-3200.jpg",
+            "is_active": true,
+            "manufacturer": 6,
+            "category": 4
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 15,
+        "fields": {
+            "product_name": "Kingston HyperX Fury DDR4-3200 16GB (2x8GB)",
+            "product_handle": "hyperx-fury-ddr4-3200",
+            "product_description": "High-performance DDR4 memory with a speed of 3200MHz and a capacity of 16GB (2x8GB), compatible with Intel and AMD motherboards",
+            "price": 45.00,
+            "image": "hyperx-fury-ddr4-3200.jpg",
+            "is_active": true,
+            "manufacturer": 8,
+            "category": 4
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 16,
+        "fields": {
+            "product_name": "Crucial Ballistix Sport LT DDR4-3200 16GB (1x16GB)",
+            "product_handle": "ballistix-sport-lt-ddr4-3200",
+            "product_description": "High-performance DDR4 memory with a speed of 3200MHz and a capacity of 16GB (1x16GB), compatible with Intel and AMD motherboards",
+            "price": 55.00,
+            "image": "ballistix-sport-lt-ddr4-3200.jpg",
+            "is_active": true,
+            "manufacturer": 9,
+            "category": 4
         }
     }
+
+
+
+
 ]
            
