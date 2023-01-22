@@ -6,15 +6,19 @@
 <main id="product-detail-main" class="main">
     <section id="product-overview">
         <div id="product-images">
-            <img src="{{ product.image.url }}" alt="">
+            <img src="{{ product.image.url }}" alt="Product image">
         </div>
         <div id="product-details">
-            <h1>{{ product.product_name }}</h1>
-            <p>{{ product.product_description }}</p>
-            <p>{{ product.price }}</p>
-            <button onclick="addToCart({{product.id}}, {{1}})">
-                Add to cart
-            </button>
+            <div>
+                <h1>{{ product.product_name }}</h1>
+                <p>{{ product.product_description }}</p>
+            </div>
+            <div>
+                <p>{{ product.price }}</p>
+                <button btn="btn-primary" onclick="addToCart({{product.id}}, {{1}})">
+                    Add to cart
+                </button>
+            </div>
         </div>
     </section>
     <section id="review-summary">
@@ -23,7 +27,7 @@
             <h2>4</h2>
         </div>
         <div>
-            <h2>4 - Reviews</h2>
+            <h2>{{ reviews|length }} - Reviews</h2>
         </div>
     </section>
     <section id="review-add">

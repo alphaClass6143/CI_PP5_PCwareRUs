@@ -1,0 +1,16 @@
+Thank you for your order {{ order.delivery_address.full_name }}!
+
+This is your confirmation for your order:
+
+Order Number: {{ order.id }}
+Order Date: {{ order.ordered_at }}
+
+Order Total: ${{ order.total }}
+
+Your order will be shipped to {{ order.delivery_address.street }} in {{ order.delivery_address.city }}, {{ order.delivery_address.country }}.
+
+If you have any questions, feel free to contact us at {{ contact_email }}.
+
+Thank you for your order!
+
+You can view all your orders on your user dashboard.

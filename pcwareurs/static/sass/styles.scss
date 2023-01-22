@@ -15,14 +15,9 @@ a {
 
 
 body {
-    @include col-layout;
+    @include col-layout-centered;
     width:100%;
-    font-family: Ubunutu, sans-serif;
 }
-
-
-
-
 
 
 
@@ -93,6 +88,76 @@ footer {
     @include col-layout-centered;
     padding:5rem 0.5rem;
     min-height:calc(90vh - 10rem);
+}
+
+.text-main {
+    max-width: 80rem;
+}
+
+.address-fields {
+    .form-group {
+        margin:1rem;
+    }
+}
+
+.progresses {
+    position: relative;
+    width:clamp(10rem, 90vw, 80rem);
+    margin: auto;
+}
+
+.progresses ul {
+    list-style: none;
+    /* border: 1px solid red; */
+    padding: 0;
+}
+
+.progresses ul li {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    top:3px;
+    background-color: #f0f0f0;
+    z-index: 200;
+    position: relative;
+}
+
+.progresses ul li.blue {
+    background-color: $main-color;
+}
+
+.progresses ul li.green {
+    background-color: green;
+}
+
+.progresses ul li::after {
+    position: absolute;
+    top: 35px;
+    left: -4rem;
+
+    width: 10rem;
+    text-align: center;
+}
+
+#step-1::after {
+    content: "Cart overview";
+}
+
+#step-2::after {
+    content: "Addresses";
+}
+
+#step-3::after {
+    content: "Payment";
+}
+
+.progresses .progress {
+    height: 0.8rem;
+    width: 100%;
+    top: 33px;
+    position: absolute;
+    background-color: #f0f0f0;
+    border-radius: 10px;
 }
 
 #category-main {

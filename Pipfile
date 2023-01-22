@@ -18,6 +18,7 @@ libsass = "*"
 django-compressor = "*"
 django-sass-processor = "*"
 gunicorn = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 pycodestyle = "*"

@@ -46,19 +46,28 @@ def load_step(request):
 
     # Load address_step
     elif step == 2:
-        address_list = Address.objects.filter(user=request.user)
-
         delivery_address = request.session.get('delivery_address')
         billing_address = request.session.get('billing_address')
 
-        return render(
-            request,
-            'checkout/address_step.html',
-            {
+        if request.user.is_authenticated:
+            address_list = Address.objects.filter(user=request.user)
+
+            context = {
                 'address_list': address_list,
                 'delivery_address': delivery_address,
                 'billing_address': billing_address
             }
+
+        else:
+            context = {
+                'delivery_address': delivery_address,
+                'billing_address': billing_address
+            }
+
+        return render(
+            request,
+            'checkout/address_step.html',
+            context
         )
 
     # Load payment step
