@@ -98,6 +98,7 @@ TEMPLATES = [
                 'category.context_processors.category_list',
                 'cart.context_processors.cart_list',
                 'cart.context_processors.cart_info',
+                'django.template.context_processors.media',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
@@ -209,20 +210,6 @@ if 'USE_AWS' in os.environ:
     # Override static and media URLs in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
-
-
-# Sass setup
-SASS_PROCESSOR_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'django_libsass.SassCompiler'),
-)
-
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'sass_processor.finders.CssFinder',
-    'compressor.finders.CompressorFinder'
-]
 
 
 # Default primary key field type

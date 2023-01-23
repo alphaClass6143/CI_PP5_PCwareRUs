@@ -1,20 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container content">
-    <div class="row">
-      <div class="col">
-        <h1 class="my-5">
-          ERROR 404
-        </h1>
-      </div>
+<main class="main">
+    <h1>Error 404</h1>
+
+    <div class="container d-flex flex-column align-items-center content justify-content-center">
+        <h2 class = "fs-4">Content not found :(</h2>
+        <p>An Error seems to have occurred</p>
+        <a class="btn btn-primary" href="{% url 'home' %}">Back home</a>
     </div>
-</div>
-<div class="container d-flex flex-column align-items-center content justify-content-center">
-    <h2 class = "fs-4">Content not found :(</h2>
-    <p>AN Error seems to have occurred</p>
-    <a class="btn btn-primary" href="{% url 'home' %}">Back home</a>
-</div>
+</main>
 
 
 {% endblock %}

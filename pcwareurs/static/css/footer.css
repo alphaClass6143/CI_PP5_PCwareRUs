@@ -1,0 +1,16 @@
+footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 3rem 1rem;
+    gap: 2rem;
+    align-items: center;
+    background-color: #0B409C;
+    color: #F2F7FF; }
+    footer ul {
+      margin: 0;
+      padding: 0;
+      list-style: none; }
+      footer ul a {
+        color: #F2F7FF; }
+  
