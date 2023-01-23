@@ -3,31 +3,31 @@
 {% block content %}
 
 <main class="main">
-    
+    <div class="progresses py-4">
+        <ul class="d-flex align-items-center justify-content-between">
+            <li id="step-1" class="green"></li>
+            <li id="step-2" class="green"></li>
+            <li id="step-3" class="blue"></li>
+        </ul>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0"
+                aria-valuemax="100"></div>
+        </div>
+    </div>
     <h1>Payment step</h1>
     <form id="payment-form" action="{% url 'confirm_order' %}" method="POST">
         {% csrf_token %}
-        <div id="link-authentication-element">
-            <!--Stripe.js injects the Link Authentication Element-->
-          </div>
           <div id="payment-element">
             <!--Stripe.js injects the Payment Element-->
           </div>
           <button id="submit">
             <div class="spinner hidden" id="spinner"></div>
-            <span id="button-text">Pay now</span>
+            <span id="button-text">Checkout</span>
           </button>
           <div id="payment-message" class="hidden"></div>
-          <input type="hidden" id="order_id" name="order_id" value="{{ order_id }}">
-          <input type="hidden" id="payment_id" name="payment_id" value="{{ payment_id }}">
       </form>
-      <p>{{ total }}</p>
-      
-    <div>
-        <a href="{% url 'cancel_step' %}" class="btn btn-primary">Cancel</a>
-        <a href="{% url 'previous_step' %}" class="btn btn-primary">Previous</a>
-        <a href="{% url 'next_step' %}" class="btn btn-primary">Next</a>
-    </div>
+      <p>Your total: ${{ total }}</p>
+    
     
 </main>
 
@@ -83,27 +83,18 @@ document
 var emailAddress = '';
 // Fetches a payment intent and captures the client secret
 async function initialize() {
-//   const response = await fetch("/checkout/create-payment", {
-//     method: "POST",
-//     headers: { 
-//         "Content-Type": "application/json",
-//         "X-CSRFToken": "{{ csrf_token }}"
-//     },
-//     body: JSON.stringify({ "id":"this"}),
-//   });
-//   const { clientSecret } = await response.json();
 
   const appearance = {
     theme: 'stripe',
   };
   elements = stripe.elements({ appearance, clientSecret });
 
-  const linkAuthenticationElement = elements.create("linkAuthentication");
-  linkAuthenticationElement.mount("#link-authentication-element");
+//   const linkAuthenticationElement = elements.create("linkAuthentication");
+//   linkAuthenticationElement.mount("#link-authentication-element");
 
-  linkAuthenticationElement.on('change', (event) => {
-    emailAddress = event.value.email;
-  });
+//   linkAuthenticationElement.on('change', (event) => {
+//     emailAddress = event.value.email;
+//   });
 
   const paymentElementOptions = {
     layout: "tabs",
@@ -111,6 +102,24 @@ async function initialize() {
 
   const paymentElement = elements.create("payment", paymentElementOptions);
   paymentElement.mount("#payment-element");
+
+//   var style = {
+//     base: {
+//         color: '#000',
+//         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+//         fontSmoothing: 'antialiased',
+//         fontSize: '16px',
+//         '::placeholder': {
+//             color: '#aab7c4'
+//         }
+//     },
+//     invalid: {
+//         color: '#dc3545',
+//         iconColor: '#dc3545'
+//     }
+// };
+// var card = elements.create('card', {style: style});
+// card.mount('#card-element');
 }
 
 async function handleSubmit(e) {
@@ -120,9 +129,8 @@ async function handleSubmit(e) {
   const { error } = await stripe.confirmPayment({
     elements,
     confirmParams: {
-      // Make sure to change this to your payment completion page
-      return_url: "http://localhost:8000/",
       receipt_email: emailAddress,
+      return_url: "http://localhost:8000/checkout/next_step"
     },
   });
 

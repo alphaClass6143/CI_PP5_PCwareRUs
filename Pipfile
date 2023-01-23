@@ -19,6 +19,7 @@ django-compressor = "*"
 django-sass-processor = "*"
 gunicorn = "*"
 django-crispy-forms = "*"
+django-countries = "*"
 
 [dev-packages]
 pycodestyle = "*"

@@ -2,6 +2,7 @@
 @import "mixins.scss";
 @import "./reset.scss";
 @import "./header.scss";
+@import "./footer.scss";
 @import "./cart.scss";
 
 
@@ -21,24 +22,7 @@ body {
 
 
 
-footer {
-    @include row-layout-centered;
 
-    width:100%;
-    padding:3rem 1rem;
-    gap:2rem;
-    align-items: center;
-    background-color: $main-color;
-    color:$text-color;
-
-    ul {
-        @include reset-list;
-
-        a {
-            color:$text-color;
-        }
-    }
-}
 
 
 .main {

@@ -5,22 +5,21 @@
 
 <main class="main">
     <article>
-        <h1>{{ category.name }}</h1>
-        <p>{{ category.description }}</p>
+        <h1>{{ category.category_name }}</h1>
+        <p>{{ category.category_description }}</p>
 
-        <section class="item-container">
+        <div class="item-container">
             {% for product in products %}
-                <a href="{% url 'product_detail' category_handle=category.category_handle product_handle=product.product_handle %}" class="product-item card">
-                    <img src="{{ product.image.url }}" alt="Product image for {{ product.prodcut_name }}" class="card-img-top">
-                    <p class="card-body">
-                        <h5>{{ product.product_name }}</h5>
-                        <p>{{ product.price }}</p>
-                    </p>
+                <a href="{% url 'product_detail' category_handle=product.category.category_handle product_handle=product.product_handle %}" class="product-item">
+                    <img src="{{ product.image.url }}" alt="Product image for {{ product.product_name }}">
+                    <div class="item-description">
+                        <p>{{ product.product_name }}</p>
+                        <p>$ {{ product.price }}</p>
+                    </div>
                     
-
                 </a>
             {% endfor %}
-        </section>
+        </div>
     </article>
     
 </main>

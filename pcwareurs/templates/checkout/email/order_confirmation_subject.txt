@@ -1,1 +1,1 @@
-PCwareRUs Order confirmation: {{ order.id }}
+PCwareRUs Order confirmation: {{ order.order_id }}

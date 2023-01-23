@@ -5,6 +5,7 @@ from datetime import datetime
 from django.db import models
 from django.contrib.auth import get_user_model
 
+from django_countries.fields import CountryField
 
 # Create your models here.
 class Address(models.Model):

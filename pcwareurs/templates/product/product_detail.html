@@ -52,14 +52,15 @@
     </section>
     <section id="review-add">
         {% if request.user.is_authenticated %}
-        <a href="{% 'add_review' product.id %}"></a>
+            <a class="btn btn-primary" href="{% url 'add_review' product.id %}">Write a review</a>
+        {% endif %}
     </section>
     <section id="review-list">
         {% for review in reviews %}
             <div class="review">
-
+                {{ review.content }}
             </div>
-            {{ review.content }}
+            
         {% endfor%}
     </section>
 </main>

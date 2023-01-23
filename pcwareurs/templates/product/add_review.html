@@ -6,15 +6,14 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <hr>
                 <h5 class="text-muted">Add review</h5>
-                <hr>
+
             </div>
         </div>
 
         <div class="row">
             <div class="col-12 col-md-6">
-                <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
+                <form method="POST" action="{% url 'add_review' product.id %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form %}
                         {% if field.name != 'image' %}
@@ -26,7 +25,7 @@
 
                     <div class="text-right">
                         <a class="btn btn-danger" href="{% url 'home' %}">Cancel</a>
-                        <button class="btn btn-success" type="submit">Add Product</button>
+                        <button class="btn btn-success" type="submit">Add Review</button>
                     </div>
                 </form>
             </div>            

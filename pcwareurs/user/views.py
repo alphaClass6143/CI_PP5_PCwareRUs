@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 
 from user.forms import AddressForm
 
+from django.contrib import messages
+
 from user.models import Address
 from checkout.models import Order
 from product.models import Review
@@ -36,24 +38,26 @@ def add_address(request):
     '''
     Adds address
     '''
+    
 
     if request.method == 'POST':
-
         form = AddressForm(request.POST)
 
         if form.is_valid():
+            
             Address.objects.create(
                 user=request.user,
+                full_name=form.cleaned_data['full_name'],
                 street=form.cleaned_data['street'],
                 city=form.cleaned_data['city'],
                 state=form.cleaned_data['state'],
                 zip=form.cleaned_data['zip'],
                 country=form.cleaned_data['country']
             )
-
+            messages.success(request, "Address has been added")
             return redirect('user_overview')
 
-        return render(request, 'user/add_address.html', {'error_message': 'Invalid input'})
+        messages.error(request, f"Form data invalid: {form.errors}")
     return render(request, 'user/add_address.html')
 
 
@@ -74,6 +78,7 @@ def edit_address(request, address_id):
                 if address.is_used:
                     Address.objects.create(
                         user=request.user,
+                        full_name=form.cleaned_data['full_name'],
                         street=form.cleaned_data['street'],
                         city=form.cleaned_data['city'],
                         state=form.cleaned_data['state'],
@@ -81,6 +86,7 @@ def edit_address(request, address_id):
                         country=form.cleaned_data['country']
                     )
                 else:
+                    address.full_name = form.cleaned_data['full_name']
                     address.street = form.cleaned_data['street']
                     address.city = form.cleaned_data['city']
                     address.state = form.cleaned_data['state']
@@ -88,6 +94,7 @@ def edit_address(request, address_id):
                     address.country = form.cleaned_data['country']
                     address.save()
 
+                messages.success(request, "Address has been edited")
                 return redirect('user_overview')
             print(form.errors)
             return render(request, 'user/edit_address.html', {'error_message': 'Invalid input'})
@@ -104,8 +111,6 @@ def delete_address(request, address_id):
     address = get_object_or_404(Address, pk=address_id)
 
     if address.user == request.user:
-        print(request.method)
-
         if request.method == 'POST':
             # Check if address is used
             # If it is used only set it to inactive
@@ -115,5 +120,7 @@ def delete_address(request, address_id):
                 address.save()
             else:
                 address.delete()
-    # TODO: Add errors for naughty users
+            messages.success(request, "Address has been deleted")
+    else:
+        messages.error(request, "Not your address")
     return redirect('user_overview')

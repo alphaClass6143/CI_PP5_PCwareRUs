@@ -1,25 +1,26 @@
-from django.shortcuts import render, redirect
-
-from user.models import Address
-from checkout.forms import AddressForm
-
-import stripe
-import json
-from django.contrib import messages
-
+'''
+Checkout views
+'''
+import uuid
 from django.conf import settings
-
-from checkout.models import Order, OrderPosition
-
-from product.models import Product
-
-
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.http import JsonResponse, HttpResponse
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
+from user.models import Address
+from checkout.models import Order, OrderPosition
+from product.models import Product
+
+from checkout.forms import AddressForm
+
+import stripe
+import json
+
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
 
 # Create your views here.
 def load_step(request):
@@ -31,10 +32,11 @@ def load_step(request):
     cart_info = request.session.get('cart_info', {})
     cart = request.session.get('cart', {})
 
-
     if not cart:
-        messages.error(request,
-                        "There's nothing in your bag at the moment")
+        messages.error(
+            request,
+            "There's nothing in your bag at the moment"
+        )
         return redirect('home')
 
     # Load cart overview
@@ -72,6 +74,9 @@ def load_step(request):
 
     # Load payment step
     elif step == 3:
+        if request.method == 'POST':
+            print("post please success")
+
         stripe_public_key = settings.STRIPE_PUBLIC_KEY
         stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -80,12 +85,17 @@ def load_step(request):
 
         total = float(cart_info["total"]) + float(cart_info["delivery_fee"])
 
+        order_id = str(uuid.uuid4().hex.upper())
+
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
             amount=round(total * 100),
             currency=settings.STRIPE_CURRENCY,
+            metadata={
+                'order_number': order_id,
+            },
         )
-        
+
         if 'delivery' in cart_info and cart_info['delivery'] == 'custom':
             delivery = Address.objects.create(
                 full_name=delivery_address["full_name"],
@@ -114,9 +124,11 @@ def load_step(request):
         else:
             billing = Address.objects.get(id=billing_address)
 
-        # Create Order 
+        # Create Order
         if request.user.is_authenticated:
             order = Order.objects.create(
+                order_id=order_id,
+                email=request.session.get('order_email'),
                 total=total,
                 payment_id=intent.id,
                 user=request.user,
@@ -125,7 +137,9 @@ def load_step(request):
             )
         else:
             order = Order.objects.create(
+                order_id=order_id,
                 total=total,
+                email=request.session.get('order_email'),
                 payment_id=intent.id,
                 delivery_address=delivery,
                 billing_address=billing
@@ -143,8 +157,6 @@ def load_step(request):
                 quantity=item_data["quantity"]
             )
             counter += 1
-        
-        
 
         if not stripe_public_key:
             messages.warning(
@@ -164,7 +176,18 @@ def load_step(request):
         }
 
         return render(request, template, context)
-    
+    elif step == 4:
+        del request.session['cart']
+        del request.session['cart_info']
+        del request.session['billing_address']
+        del request.session['delivery_address']
+        del request.session['step']
+
+        return render(
+            request,
+            'checkout/checkout_success.html'
+        )
+
     else:
         # Step does not exist
         request.session['step'] = 1
@@ -172,20 +195,6 @@ def load_step(request):
             request,
             'checkout/cart_step.html'
         )
-
-
-def previous_step(request):
-    '''
-    Previous step
-    '''
-    step = request.session.get('step')
-    if not step <= 1 and not step > 4:
-        request.session['step'] = step - 1
-        print("redirecting")
-        return redirect('load_step')
-
-    return render(request,
-                  'home/index.html')
 
 
 
@@ -197,10 +206,7 @@ def confirm_order(request):
     print(order_id)
     print(payment_id)
 
-    return render(
-        request,
-        'checkout/success.html'
-    )
+    
 
 
 def confirm_address(request):
@@ -208,10 +214,9 @@ def confirm_address(request):
     Confirming the address
     '''
     if request.method == 'POST':
-        print("confirming address")
         form = AddressForm(request.POST, user=request.user)
         if form.is_valid():
-            print("is valid")
+            request.session['order_email'] = request.POST['email']
             if request.POST['delivery_address'] == 'custom':
                 request.session['cart_info']['delivery'] = 'custom'
                 delivery_address = {
@@ -248,15 +253,11 @@ def confirm_address(request):
                 else:
                     request.session['billing_address'] = request.POST['billing_address']
             
-            print("advance")
             step = request.session.get('step')
             request.session['step'] = step + 1
             return redirect('load_step')
         else:
             print(form.errors)
-    else:
-
-        print("not post")
 
 
 
@@ -282,31 +283,3 @@ def cancel_step(request):
         
     return render(request,
                   'home/index.html')
-
-
-
-@csrf_exempt
-def stripe_webhook(request):
-    stripe.api_key = settings.STRIPE_SECRET_KEY
-    endpoint_secret = "whsec_8aed239c419596300cd5b87147604ca4465ca01b3f4ef647f7043028c9cd06b9"
-    payload = request.body
-    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
-    event = None
-    print("Received stripe")
-    try:
-        event = stripe.Webhook.construct_event(
-            payload, sig_header, endpoint_secret
-        )
-    except ValueError as e:
-        # Invalid payload
-        return HttpResponse(status=400)
-    except stripe.error.SignatureVerificationError as e:
-        # Invalid signature
-        return HttpResponse(status=400)
-
-    # Handle the checkout.session.completed event
-    if event['type'] == 'checkout.session.completed':
-        print("Payment was successful.")
-        # TODO: run some custom code here
-
-    return HttpResponse(status=200)

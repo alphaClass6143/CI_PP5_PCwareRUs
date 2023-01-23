@@ -9,21 +9,16 @@ from product.widgets import CustomClearableFileInput
 from django.forms.widgets import ClearableFileInput
 
 
-class ReviewAddForm(forms.Form):
+class ReviewForm(forms.Form):
     '''
-    Review add form
+    Review form
     '''
-    rating = forms.IntegerField()
+    rating_choices = [(i, f"{i} star") for i in range(1, 6)]
 
-    content = forms.CharField(
-        widget=forms.Textarea
+    rating = forms.ChoiceField(
+        choices=rating_choices
     )
 
-
-class ReviewEditForm(forms.Form):
-    '''
-    Review edit form
-    '''
     content = forms.CharField(
         widget=forms.Textarea
     )

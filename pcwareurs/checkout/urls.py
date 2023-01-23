@@ -15,11 +15,6 @@ urlpatterns = [
         name='next_step'
     ),
     path(
-        'checkout/previous_step',
-        views.previous_step,
-        name='previous_step'
-    ),
-    path(
         'checkout/load_step',
         views.load_step,
         name='load_step'

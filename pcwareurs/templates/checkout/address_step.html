@@ -18,6 +18,15 @@
     <h1>Address</h1>
     <form method="post" action="{% url 'confirm_address' %}">
         {% csrf_token %}
+        
+            <div class="form-group">
+                <label for="email">Your email: </label>
+                {% if request.user.is_authenticated %}
+                    <input type="text" class="form-control" id="email" name="email" value="{{ request.user.email }}">
+                {% else %}
+                    <input type="text" class="form-control" id="email" name="email">
+                {% endif %}
+            </div>        
         <fieldset>
             <h2>Your delivery address</h2>
             <div class="form-user-address-container">

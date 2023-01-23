@@ -7,6 +7,8 @@ class AddressForm(forms.Form):
     '''
     AddressForm to confirm the address
     '''
+    email = forms.EmailField()
+    
     delivery_address = forms.ChoiceField(
         choices=[('custom', 'Custom Address')]
     )

@@ -2,7 +2,7 @@ Thank you for your order {{ order.delivery_address.full_name }}!
 
 This is your confirmation for your order:
 
-Order Number: {{ order.id }}
+Order Number: {{ order.order_id }}
 Order Date: {{ order.ordered_at }}
 
 Order Total: ${{ order.total }}
