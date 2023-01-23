@@ -1,0 +1,5 @@
+Thank you for signing up to the PCwareRUs newsletter {{ name }}!
+
+You will get regular news about the newest events and best deals!
+
+If you have any questions, feel free to contact us at {{ contact_email }}.

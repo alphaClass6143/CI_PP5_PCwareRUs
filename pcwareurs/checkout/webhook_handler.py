@@ -1,13 +1,12 @@
-
-
+'''
+Webhook handler
+'''
 from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 
 from checkout.models import Order
-
-
 
 
 class StripeWH_Handler:

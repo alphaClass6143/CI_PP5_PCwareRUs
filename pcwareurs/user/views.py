@@ -1,18 +1,15 @@
 '''
 User views
 '''
-from datetime import datetime
 from django.shortcuts import render, redirect, get_object_or_404
-
 from django.contrib.auth.decorators import login_required
-
-from user.forms import AddressForm
-
 from django.contrib import messages
 
 from user.models import Address
 from checkout.models import Order
 from product.models import Review
+
+from user.forms import AddressForm
 
 # Create your views here.
 @login_required
@@ -38,8 +35,6 @@ def add_address(request):
     '''
     Adds address
     '''
-    
-
     if request.method == 'POST':
         form = AddressForm(request.POST)
 
@@ -96,10 +91,12 @@ def edit_address(request, address_id):
 
                 messages.success(request, "Address has been edited")
                 return redirect('user_overview')
-            print(form.errors)
-            return render(request, 'user/edit_address.html', {'error_message': 'Invalid input'})
+
+            messages.error(request, "Invalid input")
+
         return render(request, 'user/edit_address.html', {'address': address})
-    # TODO: Add restricted access message
+
+    messages.error(request, "This address does not belong to you")
     return redirect('user_overview')
 
 

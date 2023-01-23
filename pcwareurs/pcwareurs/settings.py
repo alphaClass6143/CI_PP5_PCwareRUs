@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'allauth.socialaccount.providers.github',
-    'allauth.socialaccount.providers.google',
     'sass_processor',
     'compressor',
     'allauth',

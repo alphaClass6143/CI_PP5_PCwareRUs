@@ -13,7 +13,7 @@ urlpatterns = [
         name='privacy_policy'
     ),
     path(
-        'conditions/',
+        'terms-and-conditions/',
         views.conditions,
         name='conditions'
     ),
