@@ -180,6 +180,7 @@ def load_step(request):
         del request.session['cart']
         del request.session['cart_info']
         del request.session['billing_address']
+        del request.session['email']
         del request.session['delivery_address']
         del request.session['step']
 

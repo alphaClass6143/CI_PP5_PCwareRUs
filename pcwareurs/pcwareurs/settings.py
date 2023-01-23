@@ -212,7 +212,7 @@ if 'USE_AWS' in os.environ:
 
 
 # Sass setup
-SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static/sass')
+SASS_PROCESSOR_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
