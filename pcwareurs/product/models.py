@@ -79,7 +79,6 @@ class Product(models.Model):
         null=True
     )
 
-
     def __str__(self):
         '''
         Returns product name

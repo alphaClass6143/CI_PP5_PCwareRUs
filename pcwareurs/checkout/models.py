@@ -8,8 +8,6 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 
-
-
 # Create your models here.
 class Order(models.Model):
     '''
@@ -26,7 +24,7 @@ class Order(models.Model):
         max_digits=9,
         decimal_places=2
     )
-    
+
     email = models.EmailField()
 
     ordered_at = models.DateTimeField(

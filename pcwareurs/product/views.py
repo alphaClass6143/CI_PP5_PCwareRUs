@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db.models import Avg
 
 from product.forms import ReviewForm, ProductForm
 
@@ -22,11 +23,13 @@ def product_detail(request, category_handle, product_handle):
     get_object_or_404(Category, category_handle=category_handle)
     product = get_object_or_404(Product, product_handle=product_handle)
     reviews = Review.objects.filter(product=product)
+    rating = Review.objects.filter(product=product).aggregate(Avg('rating'))
 
     template = 'product/product_detail.html'
     context = {
         'product': product,
-        'reviews': reviews
+        'reviews': reviews,
+        'rating': rating,
     }
     return render(request, template, context)
 
@@ -34,7 +37,7 @@ def product_detail(request, category_handle, product_handle):
 
 @login_required
 def add_product(request):
-    """ 
+    """
     Add a product
     """
     if not request.user.is_staff:
@@ -52,11 +55,11 @@ def add_product(request):
                     'category_handle': product.category.category_handle,
                     'product_handle': product.product_handle
                 }))
-        else:
-            messages.error(
-                request,
-                'Invalid form data'
-            )
+
+        messages.error(
+            request,
+            'Invalid form data'
+        )
     else:
         form = ProductForm()
 
@@ -70,7 +73,7 @@ def add_product(request):
 
 @login_required
 def edit_product(request, product_id):
-    """ 
+    """
     Edit a product
     """
     if not request.user.is_staff:
@@ -92,10 +95,11 @@ def edit_product(request, product_id):
                     'category_handle': product.category.category_handle,
                     'product_handle': product.product_handle
                 }))
-        else:
-            messages.error(request,
-                           ('Failed to update product. '
-                            'Please ensure the form is valid.'))
+
+        messages.error(
+            request,
+            'Invalid product information'
+        )
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.product_name}')
@@ -139,23 +143,20 @@ def add_review(request, product_id):
     # Query for the product
     product = get_object_or_404(Product, pk=product_id)
 
-    # Get form
-    form = ReviewForm()
+    # Add a new review
+    if not Review.objects.filter(user=request.user, product=product).exists():
+        if request.method == 'POST':
+            form = ReviewForm(request.POST)
 
-    # Check if review exists
-    # Add a new comment
-    if request.method == 'POST':
-        if not Review.objects.filter(user=request.user).exists():
-  
             if form.is_valid():
+
                 Review.objects.create(
                     user=request.user,
                     product=product,
                     content=form.cleaned_data['content'],
                     rating=form.cleaned_data['rating'],
-                    created_at=datetime.now()
                 )
-
+                messages.success(request, 'Thank you for your review')
                 return redirect(reverse(
                     'product_detail',
                     kwargs={
@@ -164,27 +165,22 @@ def add_review(request, product_id):
                     })
                 )
 
-            messages.error(request, 'Invalid form')   
-
-        # Invalid request for review add -> exists
-        messages.error(request, 'This review does not exist')
+            messages.error(request, 'Invalid form')
+        form = ReviewForm()
         return render(
-            request,
-            'home/index.html',
-        )
+                request,
+                'product/add_review.html',
+                {
+                    'product': product,
+                    'form': form
+                }
+            )
 
-    if Review.objects.filter(user=request.user).exists():
-        messages.error(request, 'You already reviewed this product')
-        return redirect('product_detail', product_id=product.id)
-
-
-    return render(
-        request,
-        'product/add_review.html',
-        {
-            'product':product,
-            'form': form
-        }
+    messages.error(request, 'You already reviewed this product')
+    return redirect(
+        'product_detail',
+        category_handle=product.category.category_handle,
+        product_handle=product.product_handle
     )
 
 
@@ -193,25 +189,42 @@ def edit_review(request, review_id):
     '''
     Edit review route
     '''
-    review = Review.objects.get(id=review_id)
+    # Get review
+    review = get_object_or_404(Review, pk=review_id)
 
     if request.user == review.user:
         if request.method == 'POST':
             form = ReviewForm(request.POST)
             if form.is_valid():
 
+                review.rating = form.cleaned_data['rating']
                 review.content = form.cleaned_data['content']
                 review.modified_at = datetime.now()
                 review.save()
-                return redirect('product_detail', review_id=review.product.id)
+                messages.success(request, "Edit successful")
+                return redirect(
+                    'product_detail',
+                    category_handle=review.product.category.category_handle,
+                    product_handle=review.product.product_handle
+                )
 
-            return render(request,
-                          'product/edit_review.html',
-                          {'error_message': 'Invalid input'})
+            messages.error(request, "Invalid input")
 
-        return render(request,
-                      'product/edit_review.html',
-                      {'review': review})
+        else:
+            form = ReviewForm(instance=review)
+            messages.info(
+                request,
+                f'You are editing your review for {review.product.product_name}'
+            )
+
+        return render(
+            request,
+            'product/edit_review.html',
+            {
+                'review': review,
+                'form': form
+            }
+        )
 
     # User is not logged in and not allowed to edit it
     messages.error(
@@ -228,5 +241,24 @@ def edit_review(request, review_id):
 @login_required
 def delete_review(request, review_id):
     '''
-    Delete review route
+    Delete review
     '''
+    # Get review
+    review = get_object_or_404(Review, pk=review_id)
+
+    if request.user == review.user:
+
+        # Product for redirect later
+        product = review.product
+
+        review.delete()
+
+        messages.success(request, 'Review has been deleted')
+        return redirect(
+            'product_detail',
+            category_handle=product.category.category_handle,
+            product_handle=product.product_handle
+        )
+
+    messages.error(request, 'This is not your product')
+    return redirect('home')

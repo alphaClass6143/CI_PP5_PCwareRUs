@@ -33,7 +33,7 @@
                 {% for address in address_list %}
                     {% if address.id|stringformat:'d' == delivery_address %}                     
                         <div class="address-option-container">
-                            <label for="address-option-{{ address.id }}">
+                            <label for="address-option-{{ address.id }}" class="card">
                                 <input type="radio" name="delivery_address" id="address-option-{{ address.id }}" value="{{ address.id }}" checked>
                                 <div class="address-option">
                                     <p>{{ address.full_name }}</p>
@@ -47,7 +47,7 @@
                         </div>
                     {% else %}
                         <div class="address-option-container">
-                            <label for="address-option-{{ address.id }}">
+                            <label for="address-option-{{ address.id }}" class="card btn">
                                 <input type="radio" name="delivery_address" id="address-option-{{ address.id }}" value="{{ address.id }}">
                                 <div class="address-option">
                                     <p>{{ address.full_name }}</p>

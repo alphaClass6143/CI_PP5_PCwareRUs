@@ -23,9 +23,6 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-
-
-
     <!-- Include Bootstrap CSS from BootstrapCDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
@@ -34,10 +31,13 @@
     {% block header %}
     <header>
         <section id="header-menu">
+            <!-- Logo -->
             <a id="header-logo" href="{% url 'home' %}">
                 <img src="{{ MEDIA_URL }}/logo/pcwarerus-logo.png" alt="PCwareRUs logo">
             </a>
+            <!-- User -->
             <div id="header-user">
+                <!-- Cart btn -->
                 <button class="btn btn-secondary cart-btn">
                     <i class="fa-solid fa-cart-shopping"></i>
                 </button>
@@ -71,13 +71,15 @@
                 </div>
                 
             </div>
-            <div id="header-search">
-                <input type="text" name="search" id="search" class="search-input">
-                <button class="search-btn">
+            <!-- Search (middle on larger screens) -->
+            <form method="GET" action="{% url 'search' %}" id="header-search">
+                <input type="text" name="query" id="query" class="search-input" aria-label="Search box">
+                <button type="submit" class="search-btn" aria-label="Search button">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-            </div>
+            </form>
         </section>
+        <!-- Category list -->
         <nav class="navbar navbar-dark navbar-expand-lg" id="category-links">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -106,29 +108,7 @@
             
             <div id="cart-content">
             {% block cart_content %}
-                {% for item in cart_list %}
-                    <div class="cart-item">
-                        <a class="cart-item-overview" href="{% url 'product_detail' category_handle=item.category_handle product_handle=item.product_handle %}">
-                            <img src="https://picsum.photos/200/200" alt="">
-                            <h3>{{ item.product_name }}</h3>
-                        </a>
-                        <div class="cart-item-control">
-                            <div class="cart-item-quantity">
-                                <button class="cart-item-quantity-minus btn btn-danger" onclick="updateCart({{ item.product_id }}, {{ item.quantity}}-1)">
-                                    <i class="fa-solid fa-minus"></i>
-                                </button>
-                                <input type="number" class="quantity-number" value="{{ item.quantity }}" readonly>
-                                <button class="cart-item-quantity-plus btn btn-success" onclick="updateCart({{ item.product_id }}, {{ item.quantity}}+1)">
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
-                            </div>
-                            <button class="btn btn-danger" onclick="removeFromCart({{ item.product_id }})">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </div>
-                    </div>
-                {% endfor %}
-                <h5>Total: ${{ cart_info.total }}</h5>
+                {% include 'cart/cart.html' %}
             {% endblock cart_content %}
 
             </div>
@@ -188,12 +168,12 @@
     </footer>
     {% endblock footer %}
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
     <form>
         <input type="hidden" id="csrf_token" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
         <!-- other fields and buttons -->
     </form>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-
 
     {% block postloadjs %}
     <script src="{% static 'script/cart.js' %}"></script>

@@ -13,8 +13,14 @@ class ManufacturerAdmin(admin.ModelAdmin):
     Manufacturer list in the admin panel
     '''
     list_filter = ['manufacturer_added_at']
-    search_fields = ['manufacturer_name', 'manufacturer_added_at', 'manufacturer_modified_at']
-    list_display = ['manufacturer_name', 'manufacturer_added_at', 'manufacturer_modified_at']
+    search_fields = [
+        'manufacturer_name', 'manufacturer_added_at',
+        'manufacturer_modified_at'
+    ]
+    list_display = [
+        'manufacturer_name', 'manufacturer_added_at',
+        'manufacturer_modified_at'
+    ]
 
 
 @admin.register(Product)
@@ -24,7 +30,10 @@ class ProductAdmin(admin.ModelAdmin):
     '''
     list_filter = ['product_created_at']
     search_fields = ['product_created_at', 'product_name']
-    list_display = ['product_name', 'product_description', 'category', 'manufacturer', 'product_created_at', 'product_modified_at']
+    list_display = [
+        'product_name', 'product_description', 'category',
+        'manufacturer', 'product_created_at', 'product_modified_at'
+    ]
 
 
 @admin.register(Review)

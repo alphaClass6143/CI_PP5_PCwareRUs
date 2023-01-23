@@ -2,23 +2,30 @@
     {% for item in cart_list %}
         <div class="cart-item">
             <a class="cart-item-overview" href="{% url 'product_detail' category_handle=item.category_handle product_handle=item.product_handle %}">
-                <img src="https://picsum.photos/200/200" alt="">
+                <img src="{{ item.product_image }}" alt="Picture for {{ item.product_name }}">
                 <h3>{{ item.product_name }}</h3>
             </a>
             <div class="cart-item-control">
                 <div class="cart-item-quantity">
-                    <button class="cart-item-quantity-minus btn btn-danger" onclick="updateCart({{ item.product_id }}, {{ item.quantity}}-1)">
+                    <button class="cart-item-quantity-minus btn btn-danger btn-sm" onclick="updateCart({{ item.product_id }}, {{ item.quantity}}-1)">
                         <i class="fa-solid fa-minus"></i>
                     </button>
                     <input type="number" class="quantity-number" value="{{ item.quantity }}" readonly>
-                    <button class="cart-item-quantity-plus btn btn-success" onclick="updateCart({{ item.product_id }}, {{ item.quantity}}+1)">
+                    <button class="cart-item-quantity-plus btn btn-success btn-sm" onclick="updateCart({{ item.product_id }}, {{ item.quantity}}+1)">
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
                 <button class="btn btn-danger" onclick="removeFromCart({{ item.product_id }})">
-                    <i class="fa-solid fa-trash-can"></i>
+                    <i class="fa-solid fa-trash-can btn-sm"></i>
                 </button>
             </div>
         </div>
     {% endfor %}
+    <div>
+        <p>Delivery fee: ${{ cart_info.delivery_fee }}</p>
+        <p>Sub total: ${{ cart_info.sub_total }}</p>
+        <h5>Total: ${{ cart_info.total }}</h5>
+    </div>
+    
+
 {% endblock cart_content %}

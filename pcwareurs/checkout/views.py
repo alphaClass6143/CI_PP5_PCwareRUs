@@ -35,7 +35,7 @@ def load_step(request):
     if not cart:
         messages.error(
             request,
-            "There's nothing in your bag at the moment"
+            "There's nothing in your cart at the moment"
         )
         return redirect('home')
 
@@ -74,16 +74,13 @@ def load_step(request):
 
     # Load payment step
     elif step == 3:
-        if request.method == 'POST':
-            print("post please success")
-
         stripe_public_key = settings.STRIPE_PUBLIC_KEY
         stripe_secret_key = settings.STRIPE_SECRET_KEY
 
         delivery_address = request.session.get('delivery_address')
         billing_address = request.session.get('billing_address')
 
-        total = float(cart_info["total"]) + float(cart_info["delivery_fee"])
+        total = float(cart_info["total"])
 
         order_id = str(uuid.uuid4().hex.upper())
 
@@ -109,6 +106,8 @@ def load_step(request):
             )
         else:
             delivery = Address.objects.get(id=delivery_address)
+            delivery.is_used = True
+            delivery.save()
 
         if 'billing' in cart_info and cart_info['billing'] == 'custom':
             billing = Address.objects.create(
@@ -123,6 +122,8 @@ def load_step(request):
             )
         else:
             billing = Address.objects.get(id=billing_address)
+            billing.is_used = True
+            billing.save()
 
         # Create Order
         if request.user.is_authenticated:
@@ -171,16 +172,15 @@ def load_step(request):
             'client_secret': intent.client_secret,
             'order_id': order.id,
             'payment_id': intent.id,
-            'total': cart_info["total"],
-            'delivery_fee': cart_info["delivery_fee"]
         }
 
         return render(request, template, context)
+    # Confirmation screen
     elif step == 4:
         del request.session['cart']
         del request.session['cart_info']
         del request.session['billing_address']
-        del request.session['email']
+        del request.session['order_email']
         del request.session['delivery_address']
         del request.session['step']
 
@@ -196,19 +196,6 @@ def load_step(request):
             request,
             'checkout/cart_step.html'
         )
-
-
-
-
-def confirm_order(request):
-    order_id = request.POST['order_id']
-    payment_id = request.POST['payment_id']
-
-    print(order_id)
-    print(payment_id)
-
-    
-
 
 def confirm_address(request):
     '''
@@ -278,7 +265,7 @@ def next_step(request):
 
 def cancel_step(request):
     '''
-    Cancel step
+    Cancel cancels checkout
     '''
     del request.session['step']
         

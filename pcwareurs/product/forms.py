@@ -2,26 +2,35 @@
 Forms for the product app
 '''
 from django import forms
-
-from product.models import Product, Manufacturer
-from category.models import Category
-from product.widgets import CustomClearableFileInput
 from django.forms.widgets import ClearableFileInput
 
+from product.models import Product, Review, Manufacturer
+from category.models import Category
 
-class ReviewForm(forms.Form):
+
+class ReviewForm(forms.ModelForm):
     '''
     Review form
     '''
-    rating_choices = [(i, f"{i} star") for i in range(1, 6)]
+    class Meta:
+        '''
+        Meta
+        '''
+        model = Review
+        fields = [
+            'rating',
+            'content'
+        ]
 
-    rating = forms.ChoiceField(
-        choices=rating_choices
-    )
+    def __init__(self, *args, **kwargs):
+        '''
+        Init
+        '''
+        super().__init__(*args, **kwargs)
+        rating_choices = [(i, f"{i} star") for i in range(1, 6)]
 
-    content = forms.CharField(
-        widget=forms.Textarea
-    )
+        self.fields['rating'].choices = rating_choices
+        self.fields['rating'].widget = forms.Select(choices=rating_choices)
 
 
 class ProductForm(forms.ModelForm):
@@ -49,8 +58,12 @@ class ProductForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        category_choices = [(c.id, c.category_name) for c in Category.objects.all()]
-        manufacturer_choices = [(m.id, m.manufacturer_name) for m in Manufacturer.objects.all()]
+        category_choices = [
+            (c.id, c.category_name) for c in Category.objects.all()
+        ]
+        manufacturer_choices = [
+            (m.id, m.manufacturer_name) for m in Manufacturer.objects.all()
+        ]
 
         self.fields['category'].choices = category_choices
         self.fields['manufacturer'].choices = manufacturer_choices

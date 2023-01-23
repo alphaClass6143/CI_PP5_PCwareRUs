@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main class="main g-2">
+    <h2>Search results to: "{{ query }}"</h2>
+    <section id="search-products">
+        <div class="item-container">
+
+            {% for product in product_list %}
+                <a href="{% url 'product_detail' category_handle=product.category.category_handle product_handle=product.product_handle %}" class="product-item">
+                    <img src="{{ product.image.url }}" alt="Product image for {{ product.product_name }}">
+                    <div class="item-description">
+                        <p>{{ product.product_name }}</p>
+                        <p>$ {{ product.price }}</p>
+                    </div>
+                    
+                </a>
+            {% endfor %}
+        </div>
+        
+    </section>
+</main>
+
+{%endblock%}

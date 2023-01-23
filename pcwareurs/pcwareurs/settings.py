@@ -186,7 +186,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-
+# AWS setup
 if 'USE_AWS' in os.environ:
     # Cache control
     AWS_S3_OBJECT_PARAMETERS = {
@@ -226,7 +226,6 @@ FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_FEE = 10
 STRIPE_CURRENCY = 'usd'
 
-
 # All auth setup
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -237,7 +236,7 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
-
+# Email setup
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'contact@pcwarerus.com'
@@ -250,7 +249,7 @@ else:
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
-# Socialaccount
+# Socialaccount setup
 SOCIALACCOUNT_PROVIDERS = {
     'github': {
         'SCOPE': ['user:email'],

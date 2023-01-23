@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 d-flex ">
                 <i class="fa-solid fa-star"></i>
-                <h2>4</h2>
+                <h2>{{ rating }}</h2>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <h2>{{ reviews|length }} - Reviews</h2>
@@ -55,12 +55,40 @@
         {% endif %}
     </section>
     <section id="review-list">
-        {% for review in reviews %}
-            <div class="review">
-                {{ review.content }}
-            </div>
-            
-        {% endfor%}
+        {% if review.count == 0 %}
+            <p class="row-centered">No comments so far, be the first to comment!</p>
+        {% else %}
+            {% for review in reviews %}
+                <!-- Review -->
+                <div class="review card shadow-sm p-3">
+                    <!-- Review top (including edit)-->
+                    <div class="card-title d-flex justify-content-between px-3 py-1">
+                        <!-- User display -->
+                        <div class="row-aligned text-reset text-decoration-none gap-3 p-2">
+                            {% if review.user.user_picture %}
+                                <img class="profile-icon" src="{{ review.user.user_picture }}" alt="Profile picture">
+                            {% else %}
+                                <i class="fa-solid fa-user fa-2x"></i>
+                            {% endif %}
+                            <h4>{{ review.user.username }}</h4>
+                        </div>
+
+                        <!-- Edit button -->
+                        <div>
+                            {% if user == review.user %}
+                                <a class="btn btn-primary" href="{% url 'edit_review' review.id %}">Edit</a>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- Post center date and text -->
+                    <p class="px-4">Reviewed at: {{ review.review_created_at }}</p>
+                    <p class="card-text px-4">{{ review.content }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
     </section>
 </main>
 
