@@ -38,12 +38,12 @@
             </div>
     </section>
     <section class="container">
-        <div class="row">
-            <div class="col-12 col-md-6 col-lg-4 d-flex ">
+        <div class="card d-flex justify-content-around align-items-center flex-row g-3 p-4">
+            <div class="d-flex align-items-center">
                 <i class="fa-solid fa-star"></i>
                 <h2>{{ rating }}</h2>
             </div>
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="">
                 <h2>{{ reviews|length }} - Reviews</h2>
             </div>
         </div>
@@ -54,7 +54,7 @@
             <a class="btn btn-primary" href="{% url 'add_review' product.id %}">Write a review</a>
         {% endif %}
     </section>
-    <section id="review-list">
+    <section id="review-list" class="container">
         {% if review.count == 0 %}
             <p class="row-centered">No comments so far, be the first to comment!</p>
         {% else %}

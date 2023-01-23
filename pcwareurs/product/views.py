@@ -29,7 +29,7 @@ def product_detail(request, category_handle, product_handle):
     context = {
         'product': product,
         'reviews': reviews,
-        'rating': rating,
+        'rating': rating['rating__avg'],
     }
     return render(request, template, context)
 
