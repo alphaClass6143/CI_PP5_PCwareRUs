@@ -45,6 +45,11 @@
 
 ## About
 
+PCwareRUs is a small E-Commerce B2C shop, where you can buy pc parts.
+The user can browse the categories, search for products and add them to their cart.
+If logged in the user can add addresses to their profile and write reviews and rate a product.
+It is written in Django and uses bootstrap as CSS framework.
+
 ## Strategy
 
 ### Site Owner Goals
