@@ -42,6 +42,7 @@ class Order(models.Model):
     user = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
+        null=True
     )
 
     delivery_address = models.ForeignKey(
