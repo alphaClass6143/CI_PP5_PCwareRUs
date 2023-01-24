@@ -96,6 +96,10 @@
 
 ## Bugs
 
+|Status|Bug|Fix|
+|---|---|---|
+||||
+
 ## Deployment
 
 1. Follow the clone steps below and go to step 2
