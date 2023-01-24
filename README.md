@@ -607,6 +607,8 @@ pipenv install
     - STRIPE_SECRET_KEY --> Stripe secret key
     - STRIPE_PUBLIC_KEY --> Stripe public key
     - STRIPE_WH_SECRET --> Stripe webhook secret
+    - GH_CLIENT_ID --> The GitHub client id for oauth applications
+    - GH_SECRET_KEY --> The secret key for the github oauth
     - AWS_ACCESS_KEY_ID --> The AWS access key
     - AWS_SECRET_ACCESS_KEY --> The AWS secret key
     - DATABASE_URL --> Your link to your postgres database
@@ -614,6 +616,7 @@ pipenv install
     - EMAIL_HOST_USER --> Your email host (address)
     - EMAIL_HOST_PASS --> Your email password for programatic access
     - SECRET_KEY --> A random secret key, can be anything
+    - DEVELOPMENT --> Is optional, uses the console as email client if set
 
 4. Enter the following command to start up the server:
 
@@ -640,6 +643,8 @@ Heroku:
     - STRIPE_SECRET_KEY --> Stripe secret key
     - STRIPE_PUBLIC_KEY --> Stripe public key
     - STRIPE_WH_SECRET --> Stripe webhook secret
+    - GH_CLIENT_ID --> The GitHub client id for oauth applications
+    - GH_SECRET_KEY --> The secret key for the github oauth
     - AWS_ACCESS_KEY_ID --> The AWS access key
     - AWS_SECRET_ACCESS_KEY --> The AWS secret key
     - DATABASE_URL --> Your link to your postgres database
