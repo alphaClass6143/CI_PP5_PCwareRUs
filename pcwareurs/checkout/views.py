@@ -51,7 +51,7 @@ def load_step(request):
         billing_address = request.session.get('billing_address')
 
         if request.user.is_authenticated:
-            address_list = Address.objects.filter(user=request.user)
+            address_list = Address.objects.filter(user=request.user, is_active=True)
 
             context = {
                 'address_list': address_list,

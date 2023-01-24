@@ -1,7 +1,6 @@
 
 document.querySelector('.cart-btn').addEventListener('click', function() {
     document.querySelector('#cart').classList.toggle('cart-toggle');
-    console.log("Used")
 });
 
 document.querySelector('#close-cart-btn').addEventListener('click', function() {
@@ -26,8 +25,8 @@ function addToCart(productId, quantity) {
         if (data.success) {
             console.log("success")
 
-            if (!document.querySelector('#cart-content').classList.contains("cart-toggle")) {
-                document.querySelector('#cart-content').classList.toggle('cart-toggle');
+            if (!document.querySelector('#cart').classList.contains("cart-toggle")) {
+                document.querySelector('#cart').classList.toggle('cart-toggle');
             }
             
             document.querySelector('#cart-content').innerHTML = data.cart_html
@@ -55,8 +54,8 @@ function removeFromCart(productId) {
         if (data.success) {
             console.log("success")
             
-            if (!document.querySelector('#cart-content').classList.contains("cart-toggle")) {
-                document.querySelector('#cart-content').classList.toggle('cart-toggle');
+            if (!document.querySelector('#cart').classList.contains("cart-toggle")) {
+                document.querySelector('#cart').classList.toggle('cart-toggle');
             }
 
             document.querySelector('#cart-content').innerHTML = data.cart_html
@@ -83,10 +82,9 @@ function updateCart(productId, quantity) {
     .then(data => {
         // handle the response from the server
         if (data.success) {
-            console.log("success")
             
-            if (!document.querySelector('#cart-content').classList.contains("cart-toggle")) {
-                document.querySelector('#cart-content').classList.toggle('cart-toggle');
+            if (!document.querySelector('#cart').classList.contains("cart-toggle")) {
+                document.querySelector('#cart').classList.toggle('cart-toggle');
             }
             
             document.querySelector('#cart-content').innerHTML = data.cart_html

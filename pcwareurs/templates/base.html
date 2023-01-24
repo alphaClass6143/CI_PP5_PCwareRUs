@@ -13,7 +13,7 @@
     {% endblock %}
 
     {% load static %}
-    <link rel="icon" type="image/x-icon" href="{{ MEDIA_URL }}/logo/pcwarerus-icon.png">
+    <link rel="icon" type="image/x-icon" href="{{ MEDIA_URL }}logo/pcwarerus-icon.png">
 
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -33,7 +33,7 @@
         <section id="header-menu">
             <!-- Logo -->
             <a id="header-logo" href="{% url 'home' %}">
-                <img src="{{ MEDIA_URL }}/logo/pcwarerus-logo.png" alt="PCwareRUs logo">
+                <img src="{{ MEDIA_URL }}logo/pcwarerus-logo.png" alt="PCwareRUs logo">
             </a>
             <!-- User -->
             <div id="header-user">
@@ -132,7 +132,7 @@
     {% block footer %}
     <footer class="d-flex flex-wrap">
         <section>
-            <img src="{{ MEDIA_URL }}/logo/pcwarerus-logo.png" alt="PCwareRUs logo">
+            <img src="{{ MEDIA_URL }}logo/pcwarerus-logo.png" alt="PCwareRUs logo">
         </section>
         <section>
             <ul>

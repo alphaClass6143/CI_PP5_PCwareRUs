@@ -5,6 +5,7 @@ from django.shortcuts import render
 
 from product.models import Product
 
+from django.conf import settings
 
 # Create your views here.
 def home(request):
@@ -25,6 +26,8 @@ def home(request):
         'product_newest_list': product_newest_list,
         'product_best_price': product_best_price,
     }
+
+    print(settings.MEDIA_URL+ "/logo/pcwarerus-logo.png")
 
     return render(
         request,
