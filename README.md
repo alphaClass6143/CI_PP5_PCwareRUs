@@ -94,6 +94,9 @@ Keyword and description Meta tags have been added for SEO.
 
 ### Design Choices
 
+The design is minimalistic. Its a simple bootstrap layout with colours and fonts from bootstrap.
+The design is simple and gives a clear overview about the products.
+
 ### Structure
 
 ### Database model
