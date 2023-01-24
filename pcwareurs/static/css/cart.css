@@ -12,55 +12,83 @@
     left: 105vw;
     box-shadow: 5px 0px 15px 0px rgba(0, 0, 0, 0.75);
     gap: 2rem;
-    padding: 2rem; }
-    #cart #cart-header {
-      display: flex;
-      width: 100%;
-      justify-content: space-between; }
-    #cart #cart-content {
+    padding: 2rem; 
+}
+
+#cart #cart-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between; 
+}
+
+#cart #cart-content {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2rem; }
-    #cart .cart-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem;
-      width: clamp(5rem, 90vw, 20rem);
-      background: azure;
-      border-radius: 10px;
-      gap: 1rem;
-      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75); }
-      #cart .cart-item .cart-item-overview {
-        display: flex;
-        flex-direction: column;
-        align-items: center; }
-      #cart .cart-item .cart-item-control {
-        display: flex;
-        width: 100%;
-        justify-content: space-between; }
-        #cart .cart-item .cart-item-control .quantity-number {
-          width: 2rem; }
+      gap: 2rem; 
+
+}
+#cart .cart-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    width: clamp(5rem, 90vw, 20rem);
+    background: rgb(249, 253, 253);
+    border-radius: 10px;
+    gap: 1rem;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75); 
+}
+
+#cart .cart-item .cart-item-overview {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-decoration: none;
+    color:black;
+}
+
+#cart .cart-item .cart-item-control {
+    display: flex;
+    width: 100%;
+    justify-content: space-between; 
+}
+
+#cart .cart-item .cart-item-control .quantity-number {
+    width: 2rem; 
+}
   
-  #cart.cart-toggle {
+#cart.cart-toggle {
     left: 0;
-    transition: 0.5s; }
+    transition: 0.5s;
+}
   
-  @media only screen and (min-width: 800px) {
+@media only screen and (min-width: 800px) {
     #cart {
-      width: 50vw; }
+        width: 50vw; 
+    }
+
     #cart.cart-toggle {
-      left: 50vw; } }
-  
-  @media only screen and (min-width: 600px) {
+        left: 50vw; 
+    } 
+}
+
+@media only screen and (min-width: 600px) {
     #cart {
-      width: 75vw; }
+        width: 75vw; 
+    }
+
     #cart.cart-toggle {
-      left: 25vw; } }
-  
-  @media only screen and (min-width: 900px) {
+        left: 25vw; 
+    } 
+}
+
+@media only screen and (min-width: 900px) {
     #cart {
-      width: 30rem; }
+        width: 30rem; 
+    }
+
     #cart.cart-toggle {
-      left: calc(100vw - 30rem); } }
+        left: calc(100vw - 30rem); 
+    } 
+}

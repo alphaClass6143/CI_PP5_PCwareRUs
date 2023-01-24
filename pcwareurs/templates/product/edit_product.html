@@ -4,7 +4,6 @@
 
 {% block content %}
 <main class="main">
-    <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -15,9 +14,9 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row d-flex justify-content-center">
             <div class="col-12 col-md-6">
-                <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2" enctype="multipart/form-data">
+                <form method="POST" action="{% url 'edit_product' product.id %}" class="d-flex flex-column" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form %}
                         {% if field.name != 'image' %}
@@ -27,8 +26,8 @@
                         {% endif %}
                     {% endfor %}
 
-                    <div class="text-right">
-                        <a class="btn btn-danger" href="{% url 'delete_product' product.id %}">
+                    <div class="text-right mt-4">
+                        <a class="btn btn-danger" aria-label="Delete button" data-bs-toggle="modal" data-bs-target="#delete-product-modal">
                             <i class="fa-solid fa-trash-can fa-inverse"></i>
                         </a>
                         <a class="btn btn-danger" href="{% url 'home' %}">Cancel</a>
@@ -37,6 +36,27 @@
                     </div>
                 </form>
             </div>            
+        </div>
+    </div>
+    <!-- Delete product confirmation modal -->
+    <div class="modal fade" id="delete-product-modal" tabindex="-1" role="dialog" aria-label="delete-product-modal-label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete Product</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">Are you sure you want to delete this product?</div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="post" action="{% url 'delete_product' product.id %}">
+                    {% csrf_token %}
+                    <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+                </form>
+                </div>
+            </div>
         </div>
     </div>
 </main>

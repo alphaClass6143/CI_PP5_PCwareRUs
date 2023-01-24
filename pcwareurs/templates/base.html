@@ -38,11 +38,11 @@
             <!-- User -->
             <div id="header-user">
                 <!-- Cart btn -->
-                <button class="btn btn-secondary cart-btn">
+                <button class="btn btn-secondary cart-btn" aria-label="Toggle cart">
                     <i class="fa-solid fa-cart-shopping"></i>
                 </button>
                 {% if request.user.is_staff %}
-                    <a href="{% url 'add_product' %}" class="btn btn-success">
+                    <a href="{% url 'add_product' %}" class="btn btn-success" aria-label="Add product">
                         <i class="fa-solid fa-plus"></i>
                     </a>
                 {% endif %}
@@ -58,17 +58,6 @@
                     <a class="btn btn-warning" role="button" href="{% url 'account_signup' %}">Register</a>
 
                 {% endif %}
-
-                <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                    {% if request.user.is_authenticated %}
-                        
-                        <a href="{% url 'user_overview' %}" class="dropdown-item">Account</a>
-                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                    {% else %}
-                        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                    {% endif %}
-                </div>
                 
             </div>
             <!-- Search (middle on larger screens) -->
@@ -95,13 +84,11 @@
             </div>
           </nav>
 
-
-        
-        
+        <!-- Cart -->
         <div id="cart" aria-busy="true">
             <div id="cart-header">
                 <h2>Shopping cart</h2>
-                <button id="close-cart-btn" class="btn btn-danger">
+                <button id="close-cart-btn" class="btn btn-danger" aria-label="Close cart overlay">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -143,26 +130,26 @@
     {% endblock content %}
 
     {% block footer %}
-    <footer>
+    <footer class="d-flex flex-wrap">
         <section>
-            <h1>PCwareRUs</h1>
+            <img src="{{ MEDIA_URL }}/logo/pcwarerus-logo.png" alt="PCwareRUs logo">
         </section>
         <section>
             <ul>
                 <li>
-                    <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
+                    <a href="{% url 'privacy_policy' %}" class="text-decoration-none">Privacy Policy</a>
                 </li>
                 <li>
-                    <a href="{% url 'conditions' %}">Conditions</a>
+                    <a href="{% url 'conditions' %}" class="text-decoration-none">Conditions</a>
                 </li>
                 <li>
-                    <a href="{% url 'newsletter' %}">Newsletter</a>
+                    <a href="{% url 'newsletter' %}" class="text-decoration-none">Newsletter</a>
                 </li>
             </ul>
         </section>
         <section>
-            <a href="https://www.facebook.com/profile.php?id=100089887771680" target="_blank">
-                <i class="fa-brands fa-facebook text-white"></i>
+            <a href="https://www.facebook.com/profile.php?id=100089887771680" target="_blank" rel="noreferrer" aria-label="Facebook button">
+                <i class="fa-brands fa-facebook text-white fa-2x"></i>
             </a>
         </section>
     </footer>

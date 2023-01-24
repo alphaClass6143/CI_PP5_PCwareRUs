@@ -3,47 +3,70 @@
 {% block content %}
 
 
-<main class="main">
-    <section>
-        {% if user.user_picture %}
-            <img class="profile-icon" src="{{ user.user_picture }}" alt="Profile picture"/>
-        {% else %}
-            <i class="fa-solid fa-user fa-inverse fa-2x"></i>
-        {% endif %}
-        <h2>{{ user.username }}</h2>
-        <p>{{ user.first_name }}{{ user.last_name }}</p>
-        <p>{{ user.date_joined }}</p>
+<main class="container d-flex flex-column mt-5 gap-5">
+    <section class="container d-flex flex-column card p-3">
+        <div class="d-flex gap-2">
+            {% if user.user_picture %}
+                <img class="profile-icon" src="{{ user.user_picture }}" alt="Profile picture"/>
+            {% else %}
+                <i class="fa-solid fa-user fa-2x"></i>
+            {% endif %}
+            <h2>{{ user.username }}</h2>
+        </div>
+        <p>Joined at: {{ user.date_joined }}</p>
     </section>
     <section>
         <div>
             <h2>Addresses</h2>
+            <div class="container d-flex mb-4">
             {% for address in address_list %}
-                <div>
-                    <p>{{ address.full_name }}</p>
-                    <p>{{ address.street }}</p>
-                    <p>{{ address.zip }}, {{ address.city }}</p>
-                    <p>{{ address.state }}</p>
-                    <p>{{ address.country }}</p>
+                <div class="card p-4">
+                    <div class="d-flex flex-column ">
+                        <span>{{ address.full_name }}</span>
+                        <span>{{ address.street }}</span>
+                        <span>{{ address.zip }}, {{ address.city }}</span>
+                        <span>{{ address.state }}</span>
+                        <span>{{ address.country }}</span>
+                    </div>
+                    
 
-                    <a href="{% url 'edit_address' address.id %}" class="btn btn-primary" aria-label="Edit address">Edit address</a>
-                    <form action="{% url 'delete_address' address.id %}" method="post">
-                        {% csrf_token %}
-                        <input type="submit" value="Delete address" class="btn btn-primary"/>
-                    </form>
+                    <div class="d-flex justify-content-between gap-3 mt-2">
+                        <a href="{% url 'edit_address' address.id %}" class="btn btn-primary" aria-label="Edit address">Edit address</a>
+                        <form action="{% url 'delete_address' address.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Delete address" class="btn btn-primary"/>
+                        </form>
+                    </div>
+                    
                 </div>
-                
+            </div>    
             {% endfor %}
             <a href="{% url 'add_address' %}" class="btn btn-primary" aria-label="Add address">Add address</a>
         </div>
+    </section>
+    <section>
         <div>
-            <h2>View order</h2>
+            <h2>Yours View orders</h2>
             {% for order in order_list %}
-            <div>
-                {{ order.total }}
-                {{ order.ordered_at }}
-                {{ order }}
-
-            </div>
+                <div class="card mb-2">
+                    <div class="d-flex flex-column d-flex justify-content-between">
+                        <div class="d-flex flex-column">
+                            <span>{{ order.ordered_at }}</span>
+                            <span>Total: ${{ order.total }}</span>
+                            <span>Delivered to:</span>
+                        </div>
+                        
+                        <div class="d-flex flex-column ">
+                            <span>{{ order.delivery_address.full_name }}</span>
+                            <span>{{ order.delivery_address.street }}</span>
+                            <span>{{ order.delivery_address.zip }}, {{ order.delivery_address.city }}</span>
+                            <span>{{ order.delivery_address.state }}</span>
+                            <span>{{ order.delivery_address.country }}</span>
+                        </div>
+    
+                    </div>
+                </div>
+                
             {% endfor %}
         </div>
     </section>
