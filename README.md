@@ -100,9 +100,50 @@ The design is simple and gives a clear overview about the products.
 
 ### Structure
 
-PCwareRUs
+PCwareRUs consists of several categories and the product views. Users can review on 
 
 ### Database model
+
+#### User
+
+- The default allauth
+
+#### Address
+
+- The Address field for to associate orders and users
+- Contains these fields (id, user_id, full_name, street, city, zip, state, country, is_active, is_used, created_at)
+
+#### Review
+
+- Review for a product
+- Contains these fields (id, rating, content, user_id, product_id, created_at, modified_at)
+
+#### Category
+
+- A category for a product
+- Contains these fields (id, name, handle, description, created_at, modified_at)
+
+#### Product
+
+- Represents a product
+- Contains these fields (id, name, handle, description, manufacturer, category, price, active, created_at, modified_at)
+
+#### Manufacturer
+
+- Represents a manufacturer (for normalisation)
+- Contains these fields (id, name, added_at)
+
+#### Order
+
+- Represents an order
+- Contains these fields (id, total, ordered_at, payment_id, user_id, delivery_address, billing_address)
+
+#### OrderPosition
+
+- Has all the products in an order
+- Contains these fields (id, position, position_price, order_id, product_id, quantity)
+
+![Database model](docs/database-model.png)
 
 ## Technologies Used
 
@@ -121,22 +162,22 @@ PCwareRUs
 
 ### Python Libraries
 
-django = "*"
-stripe = "*"
-pylint = "*"
-boto3 = "*"
-django-storages = "*"
-pillow = "*"
-psycopg2 = "*"
-dj-database-url = "*"
-load-dotenv = "*"
-django-allauth = "*"
-libsass = "*"
-django-compressor = "*"
-django-sass-processor = "*"
-gunicorn = "*"
-django-crispy-forms = "*"
-django-countries = "*"
+- django = "*"
+- stripe = "*"
+- pylint = "*"
+- boto3 = "*"
+- django-storages = "*"
+- pillow = "*"
+- psycopg2 = "*"
+- dj-database-url = "*"
+- load-dotenv = "*"
+- django-allauth = "*"
+- libsass = "*"
+- django-compressor = "*"
+- django-sass-processor = "*"
+- gunicorn = "*"
+- django-crispy-forms = "*"
+- django-countries = "*"
 
 ### Tools
 
