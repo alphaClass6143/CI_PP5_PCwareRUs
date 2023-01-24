@@ -303,38 +303,143 @@ Webkit based browser (Safari) could not be tested. Chromium based and Quantum ba
 
 |Feature|Action|Expected result|Actual result|
 |---|---|---|---|
-||||
+|Category overview|At the top of every page|See list of all categories|Works as intended|
 
 2. see the newest items, so that I know what this shop is currently offering.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Home|Navigate to the home page|Shows newest items|Works as intended|
+
 3. see the details of a product, so that I can decide if I want to buy an item.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Product detail|Navigate to product|Shows product details|Works as intended|
+
 4. be able to put in two addresses, so that I can have a delivery address and a billing address.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Address checkout|Unselect the checkbox "Use same address" to unlock billing address|Shows second form for billing address|Works as intended|
+
 5. see the product list in my shopping cart, so that I know what I buy.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Cart|Open shopping cart at the top|Slides out menu to show items in cart|Works as intended|
+
 6. see the total for my shopping cart, so that so that I know how much I need to pay and to not exceed my budget.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Cart|Open shopping cart at the top|Slides out menu to show total|Works as intended|
+
 7. delete products out of my shopping cart, so that I can change my opinion on something I want to buy.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Delete button|Open cart and click trash can icon on product|Deletes product from cart|Works as intended|
+
 8. the quantity of the products in my shopping cart, so that I can buy more or less of one product.
-9. add products to my shopping cart,so that I can keep track of the items that I want to buy.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Plus and minus button|Open cart and click one of those buttons to update the quantity|Updates quantity|Works as intended|
+
+9. add products to my shopping cart, so that I can keep track of the items that I want to buy.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Add to cart button|Navigate to product detail and click add cart button|Adds product to cart|Works as intended|
+
 10. be able to login with one of my social media accounts, so that I don't have to remember a password for a new account.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Social login|Navigate to login and click Sign in with GitHub|Allows login with GitHub|Works as intended|
+
 11. see the reviews on a product, so that I know what others think about the product and if I want this product.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Review section|Navigate to product detail and scroll down|Shows reviews|Works as intended|
+
 12. be able to register an account, so that I can set an order address and have an order history.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Register|Navigate to register page and fill out form|Registers user|Works as intended|
 
 #### As a customer I want to:
 
 13. edit a review that I have written, so that I can change my opinion about a product or update when something good or bad happened to a product.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Edit review|Navigate either to the user overview or the product page scroll down to the review and click edit and fill out form|Edits review|Works as intended|
+
 14. delete a review that I have written, so that I can change my mind about a product.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Delete button|Navigate to the edit page and click the delete button at the bottom|Deletes review|Works as intended|
+
 15. view all my reviews that I have written, so that I can potentially edit them or know how many reviews I have written.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Review list|Navigate to user overview and scroll down to review list|Shows review list|Works as intended|
+
 16. delete my addresses, so that I can remove outdated addresses.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Delete address button|Navigate to the user overview and scroll to the addresses and click delete button|Deletes address|Works as intended|
+
 17. be able to edit my addresses, so that I can make sure they are still correct.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Edit address|Navigate to the user overview click edit address and fill out the form|Edits address|Works as intended|
+
 18. see all my saved addresses, so that I know if they are still correct.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Address list|Navigate to user overview and scroll to address list|Shows saved addresses|Works as intended|
+
 19. set multiple addresses, so that I can quickly select an address when checking out.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+||||Works as intended|
+
 20. be able to reset my password, so that I can access my account if I have forgotten my password.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Reset password|Click on forgot password on the login screen|Sends out email to reset password|Works as intended|
 
 #### As a owner I want to:
 
 21. be able to add products, so that I can expand my shop.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Add product|As staff logged in click on the plus sign at the top right and fill out form|Adds product|Works as intended|
+
 22. be able to edit products, so that I can correct any mistakes.
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Edit product|As staff logged in navigate to product detail, click edit and fill out form|Edits product|Works as intended|
+
 23. be able to delete products, so that they are not available in the shop anymore.
 
-
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+|Delete product|Navigate to the edit product page and click the trash can item at the bottom|Deletes product|Works as intended|
 
 ## Bugs
 

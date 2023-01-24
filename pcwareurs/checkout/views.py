@@ -193,6 +193,7 @@ def load_step(request):
             'checkout/cart_step.html'
         )
 
+
 def confirm_address(request):
     '''
     Confirming the address
@@ -272,7 +273,7 @@ def next_step(request):
     if not step < 1 and not step >= 4:
         request.session['step'] = step + 1
         return redirect('load_step')
-        
+
     return render(request,
                   'home/index.html')
 
@@ -285,5 +286,5 @@ def cancel_step(request):
     del request.session['billing_address']
     del request.session['order_email']
     del request.session['delivery_address']
-        
+ 
     return redirect('home')
