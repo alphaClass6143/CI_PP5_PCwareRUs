@@ -98,6 +98,79 @@
 
 ## Deployment
 
+1. Follow the clone steps below and go to step 2
+2. Run the following command to install all required packages
+
+```
+pipenv install
+```
+
+3. Create a .env file and add the following keys to it:
+    - STRIPE_SECRET_KEY --> Stripe secret key
+    - STRIPE_PUBLIC_KEY --> Stripe public key
+    - STRIPE_WH_SECRET --> Stripe webhook secret
+    - AWS_ACCESS_KEY_ID --> The AWS access key
+    - AWS_SECRET_ACCESS_KEY --> The AWS secret key
+    - DATABASE_URL --> Your link to your postgres database
+    - DEBUG --> Set either to True or False
+    - EMAIL_HOST_USER --> Your email host (address)
+    - EMAIL_HOST_PASS --> Your email password for programatic access
+    - SECRET_KEY --> A random secret key, can be anything
+
+4. Enter the following command to start up the server:
+
+```
+pipenv shell
+cd pcwareurs
+python3 manage.py runserver
+```
+
+5. The package can now be accessed locally under [localhost:8000](https://localhost:8000)
+6. Don't forget to create a super user to access the admin panel with the following command:
+
+```
+python3 manage.py createsuperuser
+```
+
+Heroku:
+
+1. Create an account at Heroku and login.
+2. Click the "Create new app" button on your dashboard, add app name and region.
+3. Click on the "Create app" button.
+4. Click on the "Settings" tab.
+5. Under "Config Vars" click "Reveal Config Vars" add the following keys:
+    - STRIPE_SECRET_KEY --> Stripe secret key
+    - STRIPE_PUBLIC_KEY --> Stripe public key
+    - STRIPE_WH_SECRET --> Stripe webhook secret
+    - AWS_ACCESS_KEY_ID --> The AWS access key
+    - AWS_SECRET_ACCESS_KEY --> The AWS secret key
+    - DATABASE_URL --> Your link to your postgres database
+    - DEBUG --> Set either to True or False
+    - EMAIL_HOST_USER --> Your email host (address)
+    - EMAIL_HOST_PASS --> Your email password for programatic access
+    - SECRET_KEY --> A random secret key, can be anything
+6. Under "Buildpacks" click "Add buildpack" and then choose "Python" first and click "Save changes"
+7. Go to the "Deploy" tab and choose GitHub as your deployment method
+8. Connect your GitHub account
+9. Enter your repository name, search for it and click connect when it appears below.
+10. In the manual deploy section click "Deploy branch"
+11. Optional: You can enable automatic deploys if you want the app to automatically update
+
+You can fork the repository by following these steps:
+
+1. Go to the repository on GitHub  
+2. Click on the "Fork" button in the upper right hand corner
+
+You can clone the repository by following these steps:
+
+1. Go to the repository on GitHub
+2. Locate the "Code" button above the list of files and click it  
+3. Select if you prefer to clone using HTTPS, SSH, or Github CLI and click the "copy" button to copy the URL to your clipboard
+4. Open Git Bash
+5. Change the current working directory to the one where you want the cloned directory
+6. Type git clone and paste the URL from the clipboard ($ git clone <https://github.com/YOUR-USERNAME/YOUR-REPOSITORY>)  
+7. Press Enter to create your local clone.
+
 ## Credits
 
 ### Media
