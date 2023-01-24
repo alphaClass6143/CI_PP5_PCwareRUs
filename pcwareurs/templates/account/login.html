@@ -40,10 +40,16 @@
     </form>
 
     <div class="socialaccount_ballot">
+        {% get_providers as socialaccount_providers %}
+            {% for provider in socialaccount_providers %}
+                {% if provider.name == "GitHub" %}
+                    <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}} btn btn-primary" 
+                    href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">
+                        <i class="fa-brands fa-github fa-inverse"></i> Sign in with {{provider.name}}
+                    </a>
+                {% endif %}
+            {% endfor %}
 
-        <ul class="socialaccount_providers">
-            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-        </ul>
     
     
     </div>
