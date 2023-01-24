@@ -53,6 +53,11 @@
 
 ### Target Audience
 
+- PC enthusiasts
+- Private PC builders
+- People looking into building their first PC
+- People who want to upgrade their current system
+
 ### Business Model
 
 PCwareRUs is designed as a minimalistic shop for PC parts directly selling to the consumer. (B2C)
