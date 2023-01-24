@@ -2,7 +2,7 @@
 
 (Developer: Robin Bosch)
 
-![PCwareRUs](docs/mockup.jpg)
+![PCwareRUs](docs/mockup.png)
 
 [View live site](https://ci-pp5-pcwareurs.herokuapp.com/)
 
@@ -111,6 +111,38 @@ There is the possibilities for more social media pages and running google ads to
 Contests could be hosted to win prices and bring more people to join the newsletter.
 
 ## User stories
+
+As a user I want to:
+
+1. see an overview of all categories, so that I know what categories of products are offered.
+2. see the newest items, so that I know what this shop is currently offering.
+3. see the details of a product, so that I can decide if I want to buy an item.
+4. be able to put in two addresses, so that I can have a delivery address and a billing address.
+5. see the product list in my shopping cart, so that I know what I buy.
+6. see the total for my shopping cart, so that so that I know how much I need to pay and to not exceed my budget.
+7. delete products out of my shopping cart, so that I can change my opinion on something I want to buy.
+8. the quantity of the products in my shopping cart, so that I can buy more or less of one product.
+9. add products to my shopping cart,so that I can keep track of the items that I want to buy.
+10. be able to login with one of my social media accounts, so that I don't have to remember a password for a new account.
+11. see the reviews on a product, so that I know what others think about the product and if I want this product.
+12. be able to register an account, so that I can set an order address and have an order history.
+
+As a customer I want to:
+
+13. edit a review that I have written, so that I can change my opinion about a product or update when something good or bad happened to a product.
+14. delete a review that I have written, so that I can change my mind about a product.
+15. view all my reviews that I have written, so that I can potentially edit them or know how many reviews I have written.
+16. delete my addresses, so that I can remove outdated addresses.
+17. be able to edit my addresses, so that I can make sure they are still correct.
+18. see all my saved addresses, so that I know if they are still correct.
+19. set multiple addresses, so that I can quickly select an address when checking out.
+20. be able to reset my password, so that I can access my account if I have forgotten my password.
+
+As a owner I want to:
+
+21. be able to add products, so that I can expand my shop.
+22. be able to edit products, so that I can correct any mistakes.
+23. be able to delete products, so that they are not available in the shop anymore.
 
 ## Design
 
