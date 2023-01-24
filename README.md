@@ -720,4 +720,4 @@ Guides on Flexbox and Grid from CSS-Tricks, that have been used multiple times a
 ## License
 
 This project is published under the MIT license.  
-[License](/LICENSE.txt)
+[License](LICENSE)
