@@ -243,6 +243,153 @@ The user has the possibility to review a product or add addresses to their accou
 
 ## Features
 
+### Add address
+
+![Add address](docs/features/add-address.png)
+
+- Allows for adding addresses to the user
+- Only works when logged in
+- User stories covered: 19
+
+### Add product
+
+![Add product](docs/features/add-product.png)
+
+- Allows staff members to add a product
+- Only works for staff members
+- Is accessible for staff with the plus icon in the header
+- User stories covered: 21
+
+#### Address view
+
+- Shows an overview of all addresses that the user has added
+- Only works when logged in
+- User stories covered: 18
+
+![Address view](docs/features/address-view.png)
+
+#### Cart-User view
+
+- Shows the cart button
+- Shows login, logout and register button
+- Shows the user profile icon
+- Staff can see the plus button to add products
+- User stories covered: 10, 12
+
+![Cart-User view](docs/features/cart-user-view.png)
+
+#### Cart
+
+- Shows the current cart in a slideout menu
+- Shows items and allows for deleting and updating quantity
+- Shows total and and checkout button
+- User stories covered: 5, 6, 7, 8
+
+![Cart](docs/features/cart.png)
+
+#### Category list
+
+- Shows a list of all categories available
+- Is a burger menu on smaller screens
+- User stories covered: 1
+
+![Category list](docs/features/category-list.png)
+
+#### Category view
+
+- Shows all the items in a certain category
+
+![Category view](docs/features/category-view.png)
+
+#### Checkout address
+
+- Shows the address form in the checkout
+- Allows for selecting an address that has been user defined
+- User stories covered: 4, 19
+
+![Checkout address](docs/features/checkout-address.png)
+
+#### Checkout overview
+
+- Shows all items in the cart in the checkout
+- Also displays the cart total
+
+![Checkout overview](docs/features/checkout-overview.png)
+
+#### Checkout payment
+
+- Allows user to enter the payment and complete the checkout
+- Shows total again and then redirects to success pages
+
+![Checkout payment](docs/features/checkout-payment.png)
+
+#### Edit address
+
+- Allows the user to edit their address
+- Creates a new address if it has been used before in an order so that the correct order details are preserved
+- User stories covered: 17
+
+![Edit address](docs/features/edit-address.png)
+
+#### Edit product
+
+- Allows staff to edit the product
+- User stories covered: 22
+
+![Edit product](docs/features/edit-product.png)
+
+#### Edit Review
+
+- Allows the user give a review for a product with a certain rating from 1-5
+- User stories covered: 13
+
+![Edit review](docs/features/edit-review.png)
+
+#### Home
+
+- Introduces the user to the pages
+- Has a banner and the newest products
+- Also includes a list of cheapest products
+- User stories covered: 2
+
+![Home](docs/features/home.png)
+
+#### Privacy Policy
+
+- Privacy Policy page
+
+![Privacy Policy](docs/features/privacy-policy.png)
+
+#### Product detail
+
+- Shows the information about a product
+- Has the add to cart button
+- User stories covered: 3, 9
+
+![Product details](docs/features/product-detail.png)
+
+#### Review section
+
+- Shows the reviews and the ratings
+- Has an overview at the top with the current rating
+- User stories covered: 11, 15
+
+![Review section](docs/features/review-section.png)
+
+#### Search
+
+- Input for the user to search something
+- Displays the search result
+
+![Search](docs/features/search.png)
+![Search result](docs/features/search-result.png)
+
+#### Terms and Conditions
+
+- Terms and Conditions page
+
+![Terms and Conditions](docs/features/terms-conditions.png)
+
 ## Validation and Testing
 
 ### HTML validation
