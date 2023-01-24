@@ -34,7 +34,6 @@ def product_detail(request, category_handle, product_handle):
     return render(request, template, context)
 
 
-
 @login_required
 def add_product(request):
     """

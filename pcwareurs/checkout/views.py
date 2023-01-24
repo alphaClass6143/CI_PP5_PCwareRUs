@@ -5,9 +5,6 @@ import uuid
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.http import JsonResponse, HttpResponse
-from django.views import View
-from django.views.decorators.csrf import csrf_exempt
 
 from user.models import Address
 from checkout.models import Order, OrderPosition

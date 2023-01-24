@@ -61,5 +61,12 @@
         "fields": {
             "manufacturer_name": "Crucial"
         }
+    },
+    {
+        "model": "product.manufacturer",
+        "pk": 10,
+        "fields": {
+            "manufacturer_name": "NVIDIA"
+        }
     }
 ]

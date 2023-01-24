@@ -222,10 +222,62 @@
             "manufacturer": 9,
             "category": 4
         }
+    },
+    {
+        "model": "product.Product",
+        "pk": 17,
+        "fields": {
+            "product_name": "NVIDIA GeForce RTX 3080",
+            "product_handle": "nvidia-rtx-3080",
+            "product_description": "A powerful graphics card featuring NVIDIA's Ampere architecture, with 10496 CUDA cores and a boost clock speed of 1.71GHz",
+            "price": 899.99,
+            "image": "nvidia-rtx-3080.jpg",
+            "is_active": true,
+            "manufacturer": 10,
+            "category": 2
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 18,
+        "fields": {
+            "product_name": "AMD Radeon RX 6700 XT",
+            "product_handle": "amd-rx-6700-xt",
+            "product_description": "A high-performance graphics card featuring AMD's RDNA 2 architecture, with 40 compute units and a boost clock speed of 2.58GHz",
+            "price": 549.99,
+            "image": "amd-rx-6700-xt.jpg",
+            "is_active": true,
+            "manufacturer": 2,
+            "category": 2
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 19,
+        "fields": {
+            "product_name": "EVGA GeForce GTX 1660 Super",
+            "product_handle": "evga-gtx-1660-super",
+            "product_description": "A budget-friendly graphics card featuring NVIDIA's Turing architecture, with 1408 CUDA cores and a boost clock speed of 1.78GHz",
+            "price": 229.99,
+            "image": "evga-gtx-1660-super.jpg",
+            "is_active": true,
+            "manufacturer": 4,
+            "category": 2
+        }
+    },
+    {
+        "model": "product.Product",
+        "pk": 20,
+        "fields": {
+            "product_name": "ASUS ROG Strix Radeon RX 6800",
+            "product_handle": "asus-rx-6800",
+            "product_description": "A high-performance graphics card featuring AMD's RDNA 2 architecture, with 80 compute units and a boost clock speed of 2.25GHz",
+            "price": 699.99,
+            "image": "asus-rx-6800.jpg",
+            "is_active": true,
+            "manufacturer": 3,
+            "category": 2
+        }
     }
-
-
-
-
 ]
            

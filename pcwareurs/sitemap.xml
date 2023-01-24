@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/accounts/login/</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/accounts/signup/</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/processors/</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/graphics-cards/</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/motherboards/</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/memory/</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/graphics-cards/asus-rx-6800</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/graphics-cards/evga-gtx-1660-super</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/graphics-cards/amd-rx-6700-xt</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/graphics-cards/nvidia-rtx-3080</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/memory/ballistix-sport-lt-ddr4-3200</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/memory/hyperx-fury-ddr4-3200</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/memory/vengeance-lpx-ddr4-3200</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/memory/ripjaws-v-ddr4-3200</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/motherboards/prime-z490-a</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/motherboards/evga-z490-ftw</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/processors/ryzen-5-3600x</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/processors/i5-10600K</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/motherboards/mpg-z490-gaming-edge</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/privacy-policy/</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/terms-and-conditions/</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/accounts/password/reset/</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/accounts/github/login/?process=</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/processors/i9-10900K</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/processors/ryzen-9-3900x</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/processors/ryzen-7-5800x</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/processors/i7-10700K</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/processors/ryzen-9-5950x</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/processors/ryzen-7-3700x</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ci-pp5-pcwareurs.herokuapp.com/categories/motherboards/rog-maximus-xii-hero</loc>
+  <lastmod>2023-01-24T05:53:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
