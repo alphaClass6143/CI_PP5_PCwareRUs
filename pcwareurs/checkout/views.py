@@ -261,6 +261,7 @@ def confirm_address(request):
             step = request.session.get('step')
             request.session['step'] = step + 1
         else:
+            print(form.errors)
             messages.error(request, "Invalid address")
     return redirect('load_step')
 

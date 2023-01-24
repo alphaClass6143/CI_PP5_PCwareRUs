@@ -98,7 +98,7 @@ class AddressForm(forms.Form):
 
         # Check if form is valid:
         # If the address is same check just for custom delivery address
-        if same_address == '1':
+        if same_address:
             if delivery_address == 'custom':
                 if not all([
                     cleaned_data.get("custom_delivery_full_name"),

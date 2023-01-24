@@ -65,11 +65,13 @@
                     {% endfor %}
                 </div>
                 {% if address_list %}
-                <div>
-                    <label>
-                        <input type="radio" name="delivery_address" value="custom" checked>Use custom address
-                    </label>
-                </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="delivery_address" value="custom" checked>Use custom address
+                        </label>
+                    </div>
+                {% else %}
+                    <input type="hidden" name="delivery_address" value="custom">
                 {% endif %}
 
                 <div id="delivery-address-fields" class="address-fields">
@@ -120,11 +122,15 @@
                         </label>
                     {% endfor %}
                 </div>
-                <div>
-                    <label>
-                        <input type="radio" name="billing_address" value="custom" checked>Use custom address
-                    </label>
-                </div>
+                {% if address_list %}
+                    <div>
+                        <label>
+                            <input type="radio" name="delivery_address" value="custom" checked>Use custom address
+                        </label>
+                    </div>
+                {% else %}
+                    <input type="hidden" name="delivery_address" value="custom">
+                {% endif %}
                 <div class="form-group">
                     <label for="billing_full_name">Full name: </label>
                     <input type="text" class="form-control" id="billing_full_name" name="custom_billing_full_name">
