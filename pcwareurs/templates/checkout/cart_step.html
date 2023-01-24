@@ -15,32 +15,28 @@
         </div>
     </div>
     <h1>Cart overview</h1>
-    <div class="cart-overview-container cart-view">
-        {% for key, item in cart.items %}
-            <div class="cart-item">
-                <img src="https://picsum.photos/200/200" alt="">
-                <h3>{{ item.product_name }}</h3>
-                <div class="cart-item-control">
-                    <div class="cart-item-quantity">
-                        <button class="cart-item-quantity-minus" onclick="updateCart({{ key }}, {{ item.quantity}}-1)">
-                            <i class="fa-solid fa-minus"></i>
-                        </button>
-                        <input type="number" id="" value="{{ item.quantity }}">
-                        <button class="cart-item-quantity-plus" onclick="updateCart({{ key }}, {{ item.quantity}}+1)">
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
-                    </div>
-                    <button class="btn btn-primary" onclick="removeFromCart({{ key }})">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
+    <div class="item-container">
+        {% for product in cart_list %}
+            <a class="product-item">
+                <img src="{{ product.product_image }}" alt="Product image for {{ product.product_name }}">
+                <div class="item-description">
+                    <p>{{ product.product_name }}</p>
+                    <p>Quantity: {{ product.quantity }}</p>
                 </div>
-            </div>
+                
+            </a>
         {% endfor %}
+    </div>
+    <div>
+        <p>Delivery fee: ${{ cart_info.delivery_fee }}</p>
+        <p>Sub total: ${{ cart_info.sub_total }}</p>
+        <h5>Total: ${{ cart_info.total }}</h5>
+    </div>
 
     </div>
     
     <div>
-        <a href="{% url 'cancel_step' %}" class="btn btn-primary">Cancel</a>
+        <a href="{% url 'cancel_step' %}" class="btn btn-danger">Cancel</a>
         <a href="{% url 'next_step' %}" class="btn btn-primary">Next</a>
     </div>
     

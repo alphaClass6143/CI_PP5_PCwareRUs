@@ -240,13 +240,11 @@ def confirm_address(request):
                     }
                 else:
                     request.session['billing_address'] = request.POST['billing_address']
-            
+
             step = request.session.get('step')
             request.session['step'] = step + 1
-            return redirect('load_step')
-        else:
-            print(form.errors)
-
+        messages.error(request, "Invalid address")
+    return redirect('load_step')
 
 
 def next_step(request):
