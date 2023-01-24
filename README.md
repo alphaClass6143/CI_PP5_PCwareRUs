@@ -30,11 +30,12 @@
 7. [Validation and Testing](#validation-and-testing)
     1. [HTML Validation](#html-validation)
     2. [CSS Validation](#css-validation)
-    3. [Accessibility](#accessibility)
-    4. [Performance](#performance)
-    5. [Device testing](#device-testing)
-    6. [Browser compatibility](#browser-compatibility)
-    7. [Testing user stories](#testing-user-stories)
+    3. [Python Validation](#python-validation)
+    4. [Accessibility](#accessibility)
+    5. [Performance](#performance)
+    6. [Device testing](#device-testing)
+    7. [Browser compatibility](#browser-compatibility)
+    8. [Testing user stories](#testing-user-stories)
 8. [Bugs](#bugs)
 9. [Deployment](#deployment)
 10. [Credits](#credits)
@@ -99,6 +100,8 @@ The design is simple and gives a clear overview about the products.
 
 ### Structure
 
+PCwareRUs
+
 ### Database model
 
 ## Technologies Used
@@ -149,17 +152,63 @@ django-countries = "*"
 
 ### HTML validation
 
+The HTML validation tests have been passed.  
+
+![HTML validation](docs/validation/html.png)
+
 ### CSS validation
+
+The full website gets errors in the CSS validation test from the font awesome framework and bootstrap.  
+The own written css comes with no errors
+
+![CSS validation](docs/validation/css.png)
+
+### Python validation
+
+The linter used was pycodestyle. There were a few lines which exceeded the 80 character limit, breaking them into new lines would always break the code.
+Every other issue was fixed. Imports were sorted django generated files were not touched (came with warnings as well).
 
 ### Accessibility
 
+All Wave accessibility tests pass with a few alerts.
+
+![Accessibility](docs/validation/wave.png)
+
 ### Performance
+
+The lighthouse tests had minimal issues.
+Performance can be improved by replacing the picture by more compressed ones.
+
+![Performance](docs/validation/lighthouse.png)
 
 ### Device testing
 
+The website was tested on the following devices:
+
+- Windows 11 PC (Screen resolution: 2560x1440)
+- Xiaomi MI 9 with Android 11 (Screen resolution: 1080x2280)
+
+Other screen resolutions were tested in the browser with dev tools from 2560x1440 down to 320x568.
+
 ### Browser compatibility
 
+The following browser were tested:
+
+- Microsoft Edge (Chromium based version)
+- Google Chrome
+- Mozilla Firefox
+
+Webkit based browser (Safari) could not be tested. Chromium based and Quantum based browser should be working.
+
 ### Testing user stories
+
+#### As a user I want to
+
+1. 
+
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+||||
 
 ## Bugs
 
