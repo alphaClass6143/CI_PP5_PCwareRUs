@@ -55,7 +55,15 @@
 
 ### Business Model
 
+PCwareRUs is designed as a minimalistic shop for PC parts directly selling to the consumer. (B2C)
+
+The user can order their products online and then the products will be shipped to them.
+
 ### SEO
+
+Descriptive urls have been used for the main site navigation to be more SEO friendly.
+
+Keyword and description Meta tags have been added for SEO.
 
 ### Marketing
 
