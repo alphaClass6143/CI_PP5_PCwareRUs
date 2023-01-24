@@ -198,7 +198,7 @@ def confirm_address(request):
     Confirming the address
     '''
     if request.method == 'POST':
-        form = AddressForm(request.POST)
+        form = AddressForm(request.POST, user=request.user)
         if form.is_valid():
             request.session['order_email'] = request.POST['email']
 

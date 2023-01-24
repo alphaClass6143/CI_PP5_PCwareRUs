@@ -77,7 +77,9 @@ class AddressForm(forms.Form):
         '''
         __init__
         '''
+        
         user = kwargs.pop('user', None)
+
         super().__init__(*args, **kwargs)
         self.fields['delivery_address'].choices += [
             (address.id, address) for address in Address.objects.filter(user=user)

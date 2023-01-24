@@ -10,6 +10,7 @@
     width: 100vw;
     transition: 0.5s;
     left: 105vw;
+    z-index:100;
     box-shadow: 5px 0px 15px 0px rgba(0, 0, 0, 0.75);
     gap: 2rem;
     padding: 2rem; 
