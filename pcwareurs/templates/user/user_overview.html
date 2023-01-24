@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<main class="container d-flex flex-column mt-5 gap-5">
+<main class="main d-flex flex-column mt-5 gap-5 mb-5">
     <section class="container d-flex flex-column card p-3">
         <div class="d-flex gap-2">
             {% if user.user_picture %}
@@ -45,38 +45,69 @@
         </div>
     </section>
     <section>
-        <div>
-            <h2>Yours View orders</h2>
-            {% for order in order_list %}
-                <div class="card mb-2">
-                    <div class="d-flex flex-column d-flex justify-content-between">
-                        <div class="d-flex flex-column">
-                            <span>{{ order.ordered_at }}</span>
-                            <span>Total: ${{ order.total }}</span>
-                            <span>Delivered to:</span>
-                        </div>
+        <h2>Yours orders</h2>
+        {% for order in order_list %}
+            <div class="card mb-2 d-flex flex-wrap">
+                <div class="d-flex flex-wrap justify-content-around p-2">
+                    <div class="d-flex flex-column p-2">
+                        <span>Order information:</span>
+                        <span>Order number: {{ order.order_id }}</span>
+                        <span>Order date: {{ order.ordered_at }}</span>
+                        <span>Total: ${{ order.total }}</span>
                         
-                        <div class="d-flex flex-column ">
-                            <span>{{ order.delivery_address.full_name }}</span>
-                            <span>{{ order.delivery_address.street }}</span>
-                            <span>{{ order.delivery_address.zip }}, {{ order.delivery_address.city }}</span>
-                            <span>{{ order.delivery_address.state }}</span>
-                            <span>{{ order.delivery_address.country }}</span>
-                        </div>
-    
+                    </div>
+
+                    <div class="d-flex flex-column p-2">
+                        <span>Billed to:</span>
+                        <span>{{ order.billing_address.full_name }}</span>
+                        <span>{{ order.billing_address.street }}</span>
+                        <span>{{ order.billing_address.zip }}, {{ order.billing_address.city }}</span>
+                        <span>{{ order.billing_address.state }}</span>
+                        <span>{{ order.billing_address.country }}</span>
+                    </div>
+                    
+                    <div class="d-flex flex-column p-2">
+                        <span>Delivered to:</span>
+                        <span>{{ order.delivery_address.full_name }}</span>
+                        <span>{{ order.delivery_address.street }}</span>
+                        <span>{{ order.delivery_address.zip }}, {{ order.delivery_address.city }}</span>
+                        <span>{{ order.delivery_address.state }}</span>
+                        <span>{{ order.delivery_address.country }}</span>
+                    </div>
+
+                </div>
+            </div>
+            
+        {% endfor %}
+    </section>
+    <section id="user-review" class="container">
+        <h2>Yours reviews</h2>
+        {% for review in review_list %}
+            <!-- Review -->
+            <div class="review card shadow-sm p-3">
+                <!-- Review top (including edit)-->
+                <div class="card-title d-flex justify-content-between px-3 py-1">
+                    <!-- Product display -->
+                    <div class="d-flex text-reset text-decoration-none gap-3 p-2 flex-wrap">
+                        <img src="{{ review.product.image.url }}" alt="Image for {{ review.product.product_name }}">
+                        <h6>{{ review.product.product_name }}</h6>
+                    </div>
+
+                    <!-- Edit button -->
+                    <div>
+                        {% if user == review.user %}
+                            <a class="btn btn-primary" href="{% url 'edit_review' review.id %}">Edit</a>
+                        {% endif %}
                     </div>
                 </div>
-                
-            {% endfor %}
-        </div>
-    </section>
-    <section>
-        <div>
-            <h2></h2>
-        </div>
-        <div>
-            <h2></h2>
-        </div>
+
+                <!-- Review center date and text -->
+                <p class="px-4">Reviewed at: <br>{{ review.review_created_at }}</p>
+                <p class="card-text px-4">Content: <br>{{ review.content }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </section>
 </main>
 

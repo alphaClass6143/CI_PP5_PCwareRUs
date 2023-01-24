@@ -11,6 +11,7 @@ from product.models import Review
 
 from user.forms import AddressForm
 
+
 # Create your views here.
 @login_required
 def user_overview(request):
@@ -18,8 +19,8 @@ def user_overview(request):
     User overview
     '''
     address_list = Address.objects.filter(user=request.user, is_active=True)
-    order_list = Order.objects.filter(user=request.user)
-    review_list = Review.objects.filter(user=request.user)
+    order_list = Order.objects.filter(user=request.user)[:10]
+    review_list = Review.objects.filter(user=request.user)[:10]
 
     template = 'user/user_overview.html'
     context = {
@@ -39,7 +40,7 @@ def add_address(request):
         form = AddressForm(request.POST)
 
         if form.is_valid():
-            
+
             Address.objects.create(
                 user=request.user,
                 full_name=form.cleaned_data['full_name'],
