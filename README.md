@@ -49,7 +49,18 @@
 
 ### Site Owner Goals
 
+- Get people to buying products
+- Promote own business
+- Making money
+- Add products
+
 ### User Goals
+
+- Register or Login to shop
+- Selecting products
+- Searching for products
+- Buying products
+- Review product
 
 ### Target Audience
 
