@@ -107,3 +107,6 @@
 ### Acknowledgements
 
 ## License
+
+This project is published under the MIT license.  
+[License](/LICENSE.txt)
