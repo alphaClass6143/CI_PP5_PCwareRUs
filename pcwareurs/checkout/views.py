@@ -16,7 +16,6 @@ from product.models import Product
 from checkout.forms import AddressForm
 
 import stripe
-import json
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -205,33 +204,51 @@ def confirm_address(request):
         form = AddressForm(request.POST, user=request.user)
         if form.is_valid():
             request.session['order_email'] = request.POST['email']
-            if request.POST['delivery_address'] == 'custom':
-                request.session['cart_info']['delivery'] = 'custom'
-                delivery_address = {
-                    'full_name': request.POST['custom_delivery_full_name'],
-                    'street': request.POST['custom_delivery_street'],
-                    'city': request.POST['custom_delivery_city'],
-                    'zip': request.POST['custom_delivery_zip'],
-                    'state': request.POST['custom_delivery_state'],
-                    'country': request.POST['custom_delivery_country']
-                }
-                request.session['delivery_address'] = delivery_address
-            
+
+            # Same address
             if request.POST['same_address'] == '1':
+
+                # Set custom address with same address
                 if request.POST['delivery_address'] == 'custom':
+                    request.session['cart_info']['delivery'] = 'custom'
+                    request.session['cart_info']['billing'] = 'custom'
+                    delivery_address = {
+                        'full_name': request.POST['custom_delivery_full_name'],
+                        'street': request.POST['custom_delivery_street'],
+                        'city': request.POST['custom_delivery_city'],
+                        'zip': request.POST['custom_delivery_zip'],
+                        'state': request.POST['custom_delivery_state'],
+                        'country': request.POST['custom_delivery_country']
+                    }
+                    request.session['delivery_address'] = delivery_address
                     request.session['billing_address'] = delivery_address
 
+                # Set selected address
                 else:
                     request.session['delivery_address'] = request.POST['delivery_address']
                     request.session['billing_address'] = request.POST['delivery_address']
 
+            # Two different addresses
             else:
-                if not request.POST['delivery_address'] == 'custom':
+                # Check if delivery is custom
+                if request.POST['delivery_address'] == 'custom':
+                    request.session['cart_info']['delivery'] = 'custom'
+                    request.session['delivery_address'] = {
+                        'full_name': request.POST['custom_delivery_full_name'],
+                        'street': request.POST['custom_delivery_street'],
+                        'city': request.POST['custom_delivery_city'],
+                        'zip': request.POST['custom_delivery_zip'],
+                        'state': request.POST['custom_delivery_state'],
+                        'country': request.POST['custom_delivery_country']
+                    }
+                else:
                     request.session['delivery_address'] = request.POST['delivery_address']
 
+                # Check if billing is custom
                 if request.POST['billing_address'] == 'custom':
                     request.session['cart_info']['billing'] = 'custom'
                     request.session['billing_address'] = {
+                        'full_name': request.POST['custom_billing_full_name'],
                         'street': request.POST['custom_billing_street'],
                         'city': request.POST['custom_billing_city'],
                         'zip': request.POST['custom_billing_zip'],
@@ -243,7 +260,8 @@ def confirm_address(request):
 
             step = request.session.get('step')
             request.session['step'] = step + 1
-        messages.error(request, "Invalid address")
+        else:
+            messages.error(request, "Invalid address")
     return redirect('load_step')
 
 
@@ -266,6 +284,8 @@ def cancel_step(request):
     Cancel cancels checkout
     '''
     del request.session['step']
+    del request.session['billing_address']
+    del request.session['order_email']
+    del request.session['delivery_address']
         
-    return render(request,
-                  'home/index.html')
+    return redirect('home')
