@@ -31,50 +31,52 @@ def conditions(request):
     )
 
 
-def newsletter(request):
-    '''
-    Loads the newsletter page
-    '''
+# Deactivated code for a newsletter signup on own site without mailchimp
 
-    if request.method == 'POST':
-        form = NewsletterForm(request.POST)
-        if form.is_valid():
+# def newsletter(request):
+#     '''
+#     Loads the newsletter page
+#     '''
 
-            # Prepare mail
-            customer_email = request.POST["email"]
-            subject = render_to_string(
-                'pages/email/newsletter_subject.txt',
-                {
-                    'name': request.POST["name"]
-                }
-            )
-            body = render_to_string(
-                'pages/email/newsletter_body.txt',
-                {
-                    'name': request.POST["name"],
-                    'contact_email': settings.DEFAULT_FROM_EMAIL
-                }
-            )
+#     if request.method == 'POST':
+#         form = NewsletterForm(request.POST)
+#         if form.is_valid():
 
-            # Send mail
-            send_mail(
-                subject,
-                body,
-                settings.DEFAULT_FROM_EMAIL,
-                [customer_email]
-            )
+#             # Prepare mail
+#             customer_email = request.POST["email"]
+#             subject = render_to_string(
+#                 'pages/email/newsletter_subject.txt',
+#                 {
+#                     'name': request.POST["name"]
+#                 }
+#             )
+#             body = render_to_string(
+#                 'pages/email/newsletter_body.txt',
+#                 {
+#                     'name': request.POST["name"],
+#                     'contact_email': settings.DEFAULT_FROM_EMAIL
+#                 }
+#             )
 
-            messages.success(
-                request,
-                'You have been signed up to the newsletter. Check your emails'
-            )
-        else:
-            messages.error(
-                request,
-                'Invalid form data'
-            )
+#             # Send mail
+#             send_mail(
+#                 subject,
+#                 body,
+#                 settings.DEFAULT_FROM_EMAIL,
+#                 [customer_email]
+#             )
 
-    return render(
-        request,
-        'pages/newsletter.html'
-    )
+#             messages.success(
+#                 request,
+#                 'You have been signed up to the newsletter. Check your emails'
+#             )
+#         else:
+#             messages.error(
+#                 request,
+#                 'Invalid form data'
+#             )
+
+#     return render(
+#         request,
+#         'pages/newsletter.html'
+#     )

@@ -17,9 +17,11 @@ urlpatterns = [
         views.conditions,
         name='conditions'
     ),
-    path(
-        'newsletter/',
-        views.newsletter,
-        name='newsletter'
-    )
+
+    # Deactivated path for a newsletter signup on own site without mailchimp
+    # path(
+    #     'newsletter/',
+    #     views.newsletter,
+    #     name='newsletter'
+    # )
 ]

@@ -8,7 +8,7 @@
 
     {% block meta %}
         <meta name="description" content="PCwareRUs - PC? Shop with Us!">
-        <meta name="keywords" content="shop, pc parts, intel, amd, hardware, shipping, processor, graphics card, motherboard">
+        <meta name="keywords" content="shop, pc parts, intel, amd, hardware, shipping, processor, graphics card, motherboard, buying, best price, pc, pc building, e-commerce, asus">
         <meta name="author" content="Robin Bosch">
     {% endblock %}
 
@@ -18,10 +18,6 @@
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/brands.min.css">
-
-    <!-- <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"> -->
-
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <!-- Include Bootstrap CSS from BootstrapCDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -142,15 +138,36 @@
                 <li>
                     <a href="{% url 'conditions' %}" class="text-decoration-none">Conditions</a>
                 </li>
-                <li>
-                    <a href="{% url 'newsletter' %}" class="text-decoration-none">Newsletter</a>
-                </li>
             </ul>
         </section>
         <section>
             <a href="https://www.facebook.com/profile.php?id=100089887771680" target="_blank" rel="noreferrer" aria-label="Facebook button">
-                <i class="fa-brands fa-facebook text-white fa-2x"></i>
+                <i class="fa-brands fa-facebook text-white fa-4x"></i>
             </a>
+        </section>
+        <section>
+            <div id="mc_embed_signup">
+                <form action="https://gmx.us8.list-manage.com/subscribe/post?u=f1cbd0b76219bc87340b3136b&amp;id=2106c4e680&amp;f_id=00c603e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                    <div id="mc_embed_signup_scroll">
+                    <h2>Subscribe to our newsletter</h2>
+                    <div class="mc-field-group d-flex flex-column p-3">
+                        <label for="mce-EMAIL">Email Address:</label>
+                        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+                        <span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+                    </div>
+                    <div id="mce-responses" class="clear foot">
+                        <div class="response d-flex justify-content-center" id="mce-error-response" style="display:none"></div>
+                        <div class="response d-flex justify-content-center" id="mce-success-response" style="display:none"></div>
+                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_f1cbd0b76219bc87340b3136b_2106c4e680" tabindex="-1" value=""></div>
+                        <div class="optionalParent">
+                            <div class="clear foot d-flex mt-2 justify-content-center">
+                                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-secondary">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </section>
     </footer>
     {% endblock footer %}
@@ -161,6 +178,12 @@
         <input type="hidden" id="csrf_token" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
         <!-- other fields and buttons -->
     </form>
+
+    <!-- <style type="text/css">
+        #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;  width:600px;}
+        /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+           We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+    </style> -->
 
     {% block postloadjs %}
     <script src="{% static 'script/cart.js' %}"></script>
@@ -173,6 +196,10 @@
         };
 
     </script>
+
+
+
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
     {% endblock %}
     
 </body>
