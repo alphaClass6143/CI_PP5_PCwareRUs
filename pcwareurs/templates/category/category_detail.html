@@ -10,7 +10,11 @@
         <div class="item-container">
             {% for product in products %}
                 <a href="{% url 'product_detail' category_handle=product.category.category_handle product_handle=product.product_handle %}" class="product-item">
-                    <img src="{{ product.image.url }}" alt="Product image for {{ product.product_name }}">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="Product image for {{ product.product_name }}">
+                    {% else %}
+                        <img  src="{{ MEDIA_URL }}noimage.png" alt="Product image for {{ product.product_name }}">
+                    {% endif %}
                     <div class="item-description">
                         <p>{{ product.product_name }}</p>
                         <p>$ {{ product.price }}</p>
