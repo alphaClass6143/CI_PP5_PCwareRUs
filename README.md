@@ -24,7 +24,8 @@
 5. [Technologies Used](#technologies-used)
     1. [Languages](#languages)
     2. [Frameworks](#frameworks)
-    3. [Tools](#tools)
+    3. [Python libraries](#python-libraries)
+    4. [Tools](#tools)
 6. [Features](#features)
 7. [Validation and Testing](#validation-and-testing)
     1. [HTML Validation](#html-validation)
@@ -72,9 +73,43 @@
 
 ### Languages
 
+- HTML  
+- CSS
+- Python
+- JavaScript
+
 ### Frameworks
 
+- [Django](https://www.djangoproject.com/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Font Awesome](https://fontawesome.com/icons)
+
+### Python Libraries
+
+django = "*"
+stripe = "*"
+pylint = "*"
+boto3 = "*"
+django-storages = "*"
+pillow = "*"
+psycopg2 = "*"
+dj-database-url = "*"
+load-dotenv = "*"
+django-allauth = "*"
+libsass = "*"
+django-compressor = "*"
+django-sass-processor = "*"
+gunicorn = "*"
+django-crispy-forms = "*"
+django-countries = "*"
+
 ### Tools
+
+- [Git](https://git-scm.com/)
+- [GitHub](https://github.com/)
+- [diagrams.net](https://www.diagrams.net/)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Balsamiq](https://balsamiq.com/)
 
 ## Features
 
